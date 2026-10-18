@@ -1,0 +1,62 @@
+{
+  "SI": {
+    "symbol": "SI",
+    "name": "Silver (銀)",
+    "url": "https://k1rpapa.github.io/options-gex-radar/index.html",
+    "as_of_info": "Expiry: 11_24_26  |  As of: 10-17-2026",
+    "spot_price": 57.307,
+    "zero_gamma": 61.371,
+    "put_wall": 55.0,
+    "call_wall": 60.0,
+    "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+    "is_positive_gamma": false,
+    "alert_title": "ZG SPIKE ALERT: Zero-Gamma 急騰 🚀",
+    "alert_text": "ZG SPIKE ALERT: Zero-Gamma 急騰 🚀 ZGが直近比較で +4.25 (+7.4%) 大幅変動（57.12 ➔ 61.37）。ZGが大幅に切り上がったため、SpotがNegative Gamma圏へ転落しやすく、ボラティリティ急拡大・下落スクイーズへの警戒が必要です。",
+    "ai_summary": "🥈 シルバー (SI) 分析現在の重力場: Spot 57.307 は Zero-Gamma 61.371 から大きく乖離しており、市場は NEGATIVE GAMMA REGIME (パニック売り警戒) にあります。特に警戒すべきは ZG SPIKE ALERT (Zero-Gamma 急騰) で、Zero-Gammaが直近で +7.4% と大幅に上昇しています。これは市場の重心が急激に上方に移動したことを示唆しますが、NEGATIVE GAMMA REGIMEであるため、スポット価格がこの高いZero-Gammaに引き寄せられるとは限らず、むしろ上値抵抗となる可能性も高まります。キーレベル: 強力なPut Wall (サポート) は 55.0 (-6.51 GEX) にあります。Call"
+  },
+  "NG": {
+    "symbol": "NG",
+    "name": "Natural Gas (天然ガス)",
+    "url": "https://k1rpapa.github.io/options-gex-radar/ng.html",
+    "as_of_info": "Expiry: 10_27_26  |  As of: 10-17-2026",
+    "spot_price": 3.116,
+    "zero_gamma": 3.073,
+    "put_wall": 3.0,
+    "call_wall": 3.4,
+    "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+    "is_positive_gamma": true,
+    "alert_title": "ZG STABLE: 安定レジーム維持",
+    "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 +0.0239 / +0.8%）。現在の防衛ラインが機能中です。",
+    "ai_summary": "🔥 天然ガス (NG) 分析現在の重力場: Spot 3.116 は Zero-Gamma 3.073 のすぐ上に位置し、市場は POSITIVE GAMMA REGIME (押し目買い優位) を安定して維持しています。Zero-Gammaの変動も小さく、ZG STABLE (安定レジーム維持) と判断されます。キーレベル: 強力なPut Wall (サポート) は 3.0 (-1.62 GEX) にあります。Call Wall (レジスタンス) は 3.4 (1.10 GEX) と 3.5 (0.87 GEX) にあります。Zero-Gamma 3.073 が中心的なピボットとして機能します。トレード戦略 (初心者向け): 安定したPOSITIVE GAMMA REGIMEであるため、価格"
+  },
+  "ZC": {
+    "symbol": "ZC",
+    "name": "Corn (トウモロコシ)",
+    "url": "https://k1rpapa.github.io/options-gex-radar/zc.html",
+    "as_of_info": "Expiry: 11_20_26  |  As of: 10-17-2026",
+    "spot_price": 475.0,
+    "zero_gamma": 485.436,
+    "put_wall": 490.0,
+    "call_wall": 490.0,
+    "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+    "is_positive_gamma": false,
+    "alert_title": "ZG STABLE: 安定レジーム維持",
+    "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -0.8019 / -0.2%）。現在の防衛ラインが機能中です。",
+    "ai_summary": "🌽 トウモロコシ (ZC) 分析現在の重力場: Spot 475.0 は Zero-Gamma 485.436 の下に位置し、市場は NEGATIVE GAMMA REGIME (パニック売り警戒) を維持しています。Zero-Gammaは安定しているものの、わずかな下落傾向で、ZG STABLE (安定レジーム維持) と判断されます。スポットがZero-Gammaから離れて下方にあるため、上値は重いでしょう。キーレベル: Call Wall (レジスタンス) は 490.0 (69.48 GEX) と 500.0 (54.14 GEX) にあります。Put Wall (サポート) も 490.0 (-56.15 GEX) および 500.0 (-52.26 GEX) に存在し、これらのスト"
+  },
+  "HE": {
+    "symbol": "HE",
+    "name": "Lean Hogs (豚肉)",
+    "url": "https://k1rpapa.github.io/options-gex-radar/he.html",
+    "as_of_info": "Expiry: 12_14_26  |  As of: 10-18-2026",
+    "spot_price": 66.925,
+    "zero_gamma": 66.011,
+    "put_wall": 68.0,
+    "call_wall": 70.0,
+    "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+    "is_positive_gamma": true,
+    "alert_title": "ZG STABLE: 安定レジーム維持",
+    "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -0.0037 / -0.0%）。現在の防衛ラインが機能中です。",
+    "ai_summary": "🐷 豚肉 (HE) 分析現在の重力場: Spot 66.925 は Zero-Gamma 66.011 のすぐ上に位置し、市場は POSITIVE GAMMA REGIME (押し目買い優位) を安定して維持しています。Zero-Gammaの変動も小さく、ZG STABLE (安定レジーム維持) と判断されます。キーレベル: 直近のPut Wall (サポート) は 68.0 (-5.74 GEX) にあり、Zero-Gamma 66.011 も強力なサポートとなります。Call Wall (レジスタンス) は 70.0 (5.72 GEX) にあります。Put Wall 75.0 はスポットより上にあり、これは特殊な状況ですが、直近の強力なPut/Call Wallに焦点を当てます。トレー"
+  }
+}

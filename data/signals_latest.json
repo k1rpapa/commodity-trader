@@ -1,0 +1,202 @@
+{
+  "SI": {
+    "symbol": "SI",
+    "name": "Silver (銀先物 / CME)",
+    "unit": "USD / oz",
+    "rakuten_name": "シルバーCFD",
+    "action": "STRONG_BUY_SETUP",
+    "action_label": "🔥 高確度ロング・スクイーズ警戒",
+    "badge_color": "#00e676",
+    "score": 5.5,
+    "spot_price": 57.307,
+    "cot_summary": {
+      "commercial_index": 82.7,
+      "managed_money_index": 25.0,
+      "commercial_net": -39442,
+      "managed_money_net": 5619,
+      "commercial_weekly_chg": 2150,
+      "managed_money_weekly_chg": -1909,
+      "bias": "EXTREME_LONG_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+      "is_positive": false,
+      "zero_gamma": 61.371,
+      "put_wall": 55.0,
+      "call_wall": 60.0
+    },
+    "technicals": {
+      "close": 57.305,
+      "ema20": 60.3399,
+      "ema50": 62.4097,
+      "atr14": 1.307,
+      "rsi14": 36.3
+    },
+    "signals": [
+      "【COT極限】商業筋COT指数 82.7%(極限買い) ＆ ファンド指数 25.0%(歴史的ショート積層)",
+      "【スマートマネー先回り】商業筋今週+2,150枚買い増し / ファンド売り",
+      "【季節性サイクル】秋の調整を経て年末年始ラリーに向けた仕込み期（中立〜強気寄り）",
+      "【GEXレジーム】Negative Gamma（高ボラティリティ、ブレイクアウト加速・スクイーズ急動意警戒）",
+      "Spot(57.307)がZero-Gamma(61.371)を下回っており、上値抵抗として意識"
+    ],
+    "trade_plan": {
+      "direction": "買い (LONG)",
+      "entry_price": 57.305,
+      "stop_loss": 54.608,
+      "take_profit": 60.0,
+      "risk_reward_ratio": 1.0,
+      "atr_14": 1.307,
+      "put_wall_support": 55.0,
+      "call_wall_target": 60.0,
+      "risk_distance": 2.697,
+      "notes": "楽天CFDの指値/逆指値OCO注文にて発注。Put Wall防衛線を背にした損小利大設計。"
+    }
+  },
+  "NG": {
+    "symbol": "NG",
+    "name": "Natural Gas (天然ガス先物 / NYMEX)",
+    "unit": "USD / MMBtu",
+    "rakuten_name": "天然ガスCFD",
+    "action": "STRONG_BUY_SETUP",
+    "action_label": "🔥 高確度ロング・スクイーズ警戒",
+    "badge_color": "#00e676",
+    "score": 5.5,
+    "spot_price": 3.116,
+    "cot_summary": {
+      "commercial_index": 99.5,
+      "managed_money_index": 12.7,
+      "commercial_net": 218838,
+      "managed_money_net": -126481,
+      "commercial_weekly_chg": -1009,
+      "managed_money_weekly_chg": 18056,
+      "bias": "EXTREME_LONG_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+      "is_positive": true,
+      "zero_gamma": 3.073,
+      "put_wall": 3.0,
+      "call_wall": 3.4
+    },
+    "technicals": {
+      "close": 3.116,
+      "ema20": 3.1075,
+      "ema50": 3.0139,
+      "atr14": 0.137,
+      "rsi14": 57.1
+    },
+    "signals": [
+      "【COT極限】商業筋COT指数 99.5%(極限買い) ＆ ファンド指数 12.7%(歴史的ショート積層)",
+      "【季節性サイクル】秋の在庫注入完了期。暖冬予報で軟調だが、初冬の寒波プレミアムで反発を狙う過渡期",
+      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put壁/ZGによる下値支持が強固）"
+    ],
+    "trade_plan": {
+      "direction": "買い (LONG)",
+      "entry_price": 3.116,
+      "stop_loss": 2.91,
+      "take_profit": 3.4,
+      "risk_reward_ratio": 1.38,
+      "atr_14": 0.137,
+      "put_wall_support": 3.0,
+      "call_wall_target": 3.4,
+      "risk_distance": 0.206,
+      "notes": "楽天CFDの指値/逆指値OCO注文にて発注。Put Wall防衛線を背にした損小利大設計。"
+    }
+  },
+  "ZC": {
+    "symbol": "ZC",
+    "name": "Corn (トウモロコシ先物 / CBOT)",
+    "unit": "USセント / bu",
+    "rakuten_name": "コーンCFD",
+    "action": "NEUTRAL",
+    "action_label": "様子見 / 監視継続",
+    "badge_color": "#8e918f",
+    "score": 1.0,
+    "spot_price": 475.0,
+    "cot_summary": {
+      "commercial_index": 19.7,
+      "managed_money_index": 78.2,
+      "commercial_net": -326958,
+      "managed_money_net": 246425,
+      "commercial_weekly_chg": 83994,
+      "managed_money_weekly_chg": -83414,
+      "bias": "EXTREME_SHORT_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+      "is_positive": false,
+      "zero_gamma": 485.436,
+      "put_wall": 490.0,
+      "call_wall": 490.0
+    },
+    "technicals": {
+      "close": 474.25,
+      "ema20": 496.3378,
+      "ema50": 493.2875,
+      "atr14": 11.482,
+      "rsi14": 19.4
+    },
+    "signals": [
+      "【COT過熱売り】商業筋COT指数 19.7% ＆ ファンドロング過多 78.2%",
+      "【スマートマネー先回り】商業筋今週+83,994枚買い増し / ファンド売り",
+      "【季節性サイクル】全米収穫圧力（Harvest Pressure）の最終局面。年間最安値をつけやすい底入れゾーン",
+      "【GEXレジーム】Negative Gamma（高ボラティリティ、ブレイクアウト加速・スクイーズ急動意警戒）",
+      "Spot(475.0)がZero-Gamma(485.436)を下回っており、上値抵抗として意識",
+      "【テクニカル】日足RSI(14)が 19.4 と売られすぎ極限域に到達"
+    ],
+    "trade_plan": null
+  },
+  "HE": {
+    "symbol": "HE",
+    "name": "Lean Hogs (豚肉先物 / CME)",
+    "unit": "USセント / lb",
+    "rakuten_name": "豚肉先物CFD",
+    "action": "STRONG_BUY_SETUP",
+    "action_label": "🔥 高確度ロング・スクイーズ警戒",
+    "badge_color": "#00e676",
+    "score": 7.0,
+    "spot_price": 66.925,
+    "cot_summary": {
+      "commercial_index": 100.0,
+      "managed_money_index": 1.0,
+      "commercial_net": 78874,
+      "managed_money_net": -48617,
+      "commercial_weekly_chg": 4889,
+      "managed_money_weekly_chg": -7113,
+      "bias": "EXTREME_LONG_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+      "is_positive": true,
+      "zero_gamma": 66.011,
+      "put_wall": 68.0,
+      "call_wall": 70.0
+    },
+    "technicals": {
+      "close": 66.925,
+      "ema20": 75.8149,
+      "ema50": 80.9008,
+      "atr14": 1.445,
+      "rsi14": 15.2
+    },
+    "signals": [
+      "【COT極限】商業筋COT指数 100.0%(極限買い) ＆ ファンド指数 1.0%(歴史的ショート積層)",
+      "【スマートマネー先回り】商業筋今週+4,889枚買い増し / ファンド売り",
+      "【季節性サイクル】秋の過剰出荷が一巡し、年末の感謝祭・クリスマスハム需要に向けた底打ち期（強気転換）",
+      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put壁/ZGによる下値支持が強固）",
+      "【テクニカル】日足RSI(14)が 15.2 と売られすぎ極限域に到達"
+    ],
+    "trade_plan": {
+      "direction": "買い (LONG)",
+      "entry_price": 66.925,
+      "stop_loss": 64.036,
+      "take_profit": 70.0,
+      "risk_reward_ratio": 1.06,
+      "atr_14": 1.445,
+      "put_wall_support": 68.0,
+      "call_wall_target": 70.0,
+      "risk_distance": 2.889,
+      "notes": "楽天CFDの指値/逆指値OCO注文にて発注。Put Wall防衛線を背にした損小利大設計。"
+    }
+  }
+}
