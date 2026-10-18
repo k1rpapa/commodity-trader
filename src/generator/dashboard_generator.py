@@ -1,12 +1,11 @@
 """
-Dashboard Generator (Institutional Upgrade)
+Dashboard Generator (Institutional Upgrade with Complete Guide Tab)
 Builds the advanced responsive HTML dashboard in docs/index.html with:
-1. Dual Trade Plan Display:
-   - Plan A: 🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様 RR 1:3 ~ 1:6)
-   - Plan B: ⚡ 成行・即時追随プラン
+1. Dual Trade Plan Display (Plan A: 引きつけ指値 RR 1:6+ vs Plan B: 成行)
 2. Put Wall Inversion & Dynamic Defense Floor Warnings
 3. COT 3-Day Lag Mid-Week Volume & Price Action Heuristics
 4. Active Contract Month & Calendar Spread Dynamics Monitor
+5. Comprehensive User & Quant Strategy Guide Tab (解説マニュアル)
 """
 
 import os
@@ -118,6 +117,7 @@ def generate_dashboard():
         }}
         .tab-btn:hover {{ background: #282e40; color: #fff; }}
         .tab-btn.active {{ background: #0b57d0; color: #fff; border-color: #3b82f6; box-shadow: 0 0 12px rgba(11,87,208,0.4); }}
+        .tab-btn.guide-tab-btn.active {{ background: #9333ea; border-color: #c084fc; box-shadow: 0 0 12px rgba(147,51,234,0.4); }}
         .header-meta {{
             margin-left: auto;
             font-size: 12px;
@@ -309,6 +309,60 @@ def generate_dashboard():
         table.matrix-table th {{ background: #161922; color: #8e918f; font-weight: 600; }}
         table.matrix-table tr:hover {{ background: #181c28; }}
 
+        /* Guide Page Styles */
+        .guide-container {{
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }}
+        .guide-box {{
+            background: #161a25;
+            border: 1px solid #252c3d;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-top: 12px;
+        }}
+        .formula-card {{
+            background: #0f131c;
+            border-left: 4px solid #38bdf8;
+            padding: 16px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: #7dd3fc;
+            border-radius: 0 8px 8px 0;
+            margin: 14px 0;
+            line-height: 1.6;
+        }}
+        .highlight-card {{
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid #f59e0b;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 14px 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #fef3c7;
+        }}
+        .success-card {{
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 14px 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #d1fae5;
+        }}
+        .guide-h3 {{
+            color: #60a5fa;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }}
+
         .btn-link {{
             color: #3b82f6;
             text-decoration: none;
@@ -329,12 +383,14 @@ def generate_dashboard():
         <button class="tab-btn" onclick="switchTab('SI')">🥈 シルバー (SI)</button>
         <button class="tab-btn" onclick="switchTab('ZC')">🌽 トウモロコシ (ZC)</button>
         <button class="tab-btn" onclick="switchTab('SUMMARY')">📋 4銘柄総合マトリクス</button>
+        <button class="tab-btn guide-tab-btn" onclick="switchTab('GUIDE')">📖 戦略解説マニュアル</button>
         <div class="header-meta">Updated: {now_str} | Data: CFTC & GEX Live</div>
     </div>
 
     <div class="container">
 """
 
+    # --- Render Individual Tabs for each Commodity ---
     for sym in symbols:
         data = frontend_data[sym]
         sig = data["signal"]
@@ -347,12 +403,10 @@ def generate_dashboard():
         badge_bg = sig.get("badge_color", "#8e918f")
         action_text = sig.get("action_label", "監視中")
 
-        # Plan cards HTML
         trade_plans_html = ""
         if plan_rec:
             trade_plans_html = f"""
             <div class="plans-container">
-                <!-- Recommended Pullback Limit Plan -->
                 <div class="plan-card-recommended">
                     <div class="plan-header">
                         <div class="plan-title-rec">{plan_rec['name']}</div>
@@ -385,7 +439,6 @@ def generate_dashboard():
                     </div>
                 </div>
 
-                <!-- Market Plan (Secondary) -->
                 <div class="plan-card-market">
                     <div class="plan-header">
                         <div class="plan-title-mkt">{plan_mkt['name']}</div>
@@ -414,7 +467,6 @@ def generate_dashboard():
         m_chg = sig["cot_summary"]["managed_money_weekly_chg"]
         cot_lag = sig["cot_summary"].get("cot_lag_note", "通常推移")
 
-        # Inversion Alert Styling
         is_inverted = gex_summary.get("put_wall_inverted", False)
         wall_alert_class = "inverted" if is_inverted else "solid"
 
@@ -424,9 +476,7 @@ def generate_dashboard():
         <!-- TAB: {sym} -->
         <div id="tab-{sym}" class="tab-pane {active_class}">
             
-            <!-- Top Row: Overview, Dual Plans, GEX Matrix -->
             <div class="top-row-grid">
-                <!-- Left: Signals & Dual Plans -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
@@ -462,7 +512,6 @@ def generate_dashboard():
                         </div>
                     </div>
 
-                    <!-- Put Wall Inversion Alert -->
                     <div class="wall-alert-box {wall_alert_class}">
                         <div style="font-size: 18px;">{'⚠️' if is_inverted else '🛡️'}</div>
                         <div>{gex_summary.get('put_wall_status_desc', '')}</div>
@@ -478,7 +527,6 @@ def generate_dashboard():
                     </div>
                 </div>
 
-                <!-- Right: Options GEX Cross-Matrix & Calendar Spread Monitor -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">🛡️ GEX重力場 ＆ スプレッド監視</div>
@@ -502,13 +550,11 @@ def generate_dashboard():
                         </div>
                     </div>
 
-                    <!-- COT 3-Day Lag Heuristics Box -->
                     <div style="margin-top: 14px; background: #171b26; padding: 14px; border-radius: 8px; border-left: 4px solid #38bdf8;">
                         <div style="font-size: 13px; font-weight: bold; color: #38bdf8;">🕒 COT集計タイムラグ（火曜➔金曜）手口補正</div>
                         <div style="font-size: 12.5px; color: #cbd5e1; margin-top: 4px; line-height: 1.5;">{cot_lag}</div>
                     </div>
 
-                    <!-- Calendar Spread Monitor Box -->
                     <div style="margin-top: 12px; background: #171b26; padding: 14px; border-radius: 8px; border-left: 4px solid #f9ab00;">
                         <div style="font-size: 13px; font-weight: bold; color: #f9ab00;">📅 限月 ＆ カレンダースプレッド動向</div>
                         <div style="font-size: 12.5px; color: #cbd5e1; margin-top: 4px; line-height: 1.5;">
@@ -524,7 +570,6 @@ def generate_dashboard():
                 </div>
             </div>
 
-            <!-- Chart Panel 1: Price & COT Net Positions -->
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">📈 価格推移 ＆ 大口投機筋 vs 商業筋 ネットポジション（過去3年）</div>
@@ -533,7 +578,6 @@ def generate_dashboard():
                 <div id="chart-cot-{sym}" style="height: 460px; width: 100%;"></div>
             </div>
 
-            <!-- Chart Panel 2: 3-Year COT Index (Oscillator) & Net Weekly Change -->
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">⚡ 3年 COT Index（0〜100%過熱度オシレーター）＆ ネットポジション週次増減</div>
@@ -603,23 +647,167 @@ def generate_dashboard():
                     </table>
                 </div>
             </div>
+        </div>
 
-            <!-- Strategy Guide Card -->
+        <!-- TAB: GUIDE (Strategy Explanation Manual) -->
+        <div id="tab-GUIDE" class="tab-pane">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">📖 戦略運用ルール ＆ 実戦ピット迎撃手順</div>
+                    <div class="card-title">📖 クオンツ・コモディティ戦略 完全解説マニュアル</div>
+                    <span style="font-size: 12px; color: #a855f7; font-weight: bold;">For Friends & Traders</span>
                 </div>
-                <div style="font-size: 14px; line-height: 1.7; color: #d1d5db;">
-                    <p><strong>■ プロ仕様の4層融合クオンツ設計:</strong></p>
-                    <ol>
-                        <li><strong>COTレポート（爆薬の充填度）:</strong> 商業筋COT指数 80%以上 ＆ ファンド指数 20%以下はショートスクイーズの爆薬満タン。さらに週半ばの日次出来高・取組高で投げ売り完了を確認。</li>
-                        <li><strong>GEX壁の動的判定（物理的防衛線）:</strong> SpotがPut Wallを下回った場合は一時的なレジスタンス反転を警戒し、防衛床を「Zero-Gamma」へ自動スイッチ。</li>
-                        <li><strong>引きつけ指値アルゴリズム（神リスクリワード）:</strong> 成行で飛びつかず、Zero-Gammaや防衛床への押し目をミリ単位で引きつける指値を投入。SLを直下にタイト配置することで【RR 1:3〜1:6】の損小利大を強制執行。</li>
-                        <li><strong>限月＆カレンダースプレッド:</strong> 期近のディスカウントから期先への需要回復期スプレッドを監視し、ロールオーバー時のコスト負けを排除。</li>
-                    </ol>
+                
+                <div class="guide-container">
+                    
+                    <!-- Section 0: Philosophy -->
+                    <div class="guide-box">
+                        <div style="font-size: 17px; font-weight: 800; color: #f9ab00;">🎯 なぜコモディティ市場で「普通のテクニカル分析」は負けるのか？</div>
+                        <p style="font-size: 14px; color: #cbd5e1; margin-top: 8px; line-height: 1.7;">
+                            株式やFXと決定的に異なるのは、コモディティが<strong>「現実世界の実物（アトム：農地・油田・鉱山・天候・保管コスト）」</strong>に完全に支配されている点です。<br>
+                            チャート上の単なるゴールデンクロスやオシレーターは、大口実需の買い集めやエルニーニョ寒波、巨大ファンドのロスカット（ショートスクイーズ）の前では無力です。<br>
+                            本ダッシュボードは、<strong>「大口の手口（COT）」「オプション市場の物理的な防衛壁（GEX）」「年間の季節性サイクル」「ミリ単位の引きつけ資金管理（ATR）」</strong>という4層の真実を統合し、個人投資家が機関投資家と同じ視線で<strong>「損小利大（リスクリワード 1:3〜1:6超）」</strong>を叩き出すためのコックピットです。
+                        </p>
+                    </div>
+
+                    <!-- Section 1: COT & Larry Williams Index -->
+                    <div class="guide-box">
+                        <div style="font-size: 17px; font-weight: 800; color: #38bdf8;">📊 1. COTレポート ＆ ラリー・ウィリアムズ流「3年COT指数」の計算ロジック</div>
+                        <p style="font-size: 14px; color: #cbd5e1; margin-top: 8px; line-height: 1.7;">
+                            米商品先物取引委員会（CFTC）は、毎週金曜日引け後に全先物市場の参加者別建玉（Commitments of Traders）を公開します。<br>
+                            市場には2大巨頭が存在します：
+                        </p>
+                        <ul class="bullet-list" style="margin-bottom: 12px;">
+                            <li><strong>商業筋（Commercials / 実需筋）:</strong> 農家、精肉パッカー、鉱山、製油所などのスマートマネー。価格が理論的コストより下がると、将来の現物調達のために猛烈に買い集めます。</li>
+                            <li><strong>投機筋（Managed Money / ヘッジファンド）:</strong> トレンド追随で売買する投機マネー。相場の大底でショートを極限まで積み上げ、反転時に巨大な「踏み上げ燃料（ショートスクイーズ）」となります。</li>
+                        </ul>
+
+                        <div class="guide-h3">① ネットポジション（純建玉）の算出式</div>
+                        <div class="formula-card">
+                            商業筋 Net = (Producers 買い + Swap Dealers 買い) - (Producers 売り + Swap Dealers 売り)<br>
+                            ファンド Net = Managed Money 買い - Managed Money 売り
+                        </div>
+
+                        <div class="guide-h3">② ラリー・ウィリアムズ流「3年COT Index（0〜100%）」正規化数式</div>
+                        <p style="font-size: 13.5px; color: #cbd5e1;">
+                            銘柄ごとに全体の枚数規模が違うため、<strong>「過去3年間（156週）の最大・最小レンジの中で現在どこにいるか」</strong>をパーセンタイル化（オシレーター化）します。
+                        </p>
+                        <div class="formula-card">
+                            COT Index (%) = [ (現在のNet - 過去3年間の最小Net) ÷ (過去3年間の最大Net - 過去3年間の最小Net) ] × 100
+                        </div>
+
+                        <div class="highlight-card">
+                            <strong>💡 数値の読み解きルール:</strong><br>
+                            ・<strong>COT指数 80%〜100%（緑ゾーン）:</strong> 過去3年間で最も買い越し（歴史的買い極限値・大底シグナル）<br>
+                            ・<strong>COT指数 0%〜20%（赤ゾーン）:</strong> 過去3年間で最も売り越し（歴史的ショート極限値・天井または踏み上げ燃料充填）<br>
+                            ・<strong>最強セットアップ:</strong> 「商業筋COT指数 80%超」かつ「ファンドCOT指数 20%未満」が同時に点灯した瞬間（今回の豚肉先物は商業筋100% vs ファンド1.0%の超特権状態）。
+                        </div>
+                    </div>
+
+                    <!-- Section 2: GEX Mechanics & Inversion -->
+                    <div class="guide-box">
+                        <div style="font-size: 17px; font-weight: 800; color: #c084fc;">🛡️ 2. オプションGEX（ガンマ・エクスポージャー）と防衛壁の力学</div>
+                        <p style="font-size: 14px; color: #cbd5e1; margin-top: 8px; line-height: 1.7;">
+                            オプションのマーケットメーカー（MM）は、顧客の注文と逆サイドを抱えるため、リスク中立（デルタヘッジ）を維持するために原資産先物を強制売買します。このヘッジ動向を可視化したのがGEXです。
+                        </p>
+                        <div class="gex-matrix" style="margin-top: 10px;">
+                            <div class="gex-node put">
+                                <div style="font-weight: bold; color: #c598ff;">Put Wall (機関支持線)</div>
+                                <div style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">価格が接近するとMMが強制買いヘッジを入れる「実弾の床」。損切りの安全な背。</div>
+                            </div>
+                            <div class="gex-node zg">
+                                <div style="font-weight: bold; color: #ff5252;">Zero-Gamma (転換線)</div>
+                                <div style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">相場の天気の境界線。この上はボラ安定（押し目買い優位）、下はボラ爆発（急動意警戒）。</div>
+                            </div>
+                            <div class="gex-node call">
+                                <div style="font-weight: bold; color: #06bbdf;">Call Wall (機関抵抗線)</div>
+                                <div style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">価格が接近するとMMが強制売りヘッジを入れる「実弾の天井」。安全な利確目標。</div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-card" style="margin-top: 16px;">
+                            <strong>⚠️ プロの奥義: Put Wall割れ時の「一時的レジスタンス反転」</strong><br>
+                            Put Wallは通常「強固な床」ですが、<strong>価格がいったんPut Wallの下に潜ると、支持線から一転して「戻りを叩く上値抵抗」へと力学が反転</strong>します。<br>
+                            この時、無理にPut Wallを背にすると損切り幅が広がりすぎます。当システムでは自動で**「実質防衛床をZero-Gamma（または次点Put Wall）にスイッチ」**し、タイトな損切りを再構築します。
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Dual Trade Plans & RR 1:6 -->
+                    <div class="guide-box">
+                        <div style="font-size: 17px; font-weight: 800; color: #34d399;">🎯 3. トレード指示プランの活用法（神リスクリワードの引きつけ指値）</div>
+                        <p style="font-size: 14px; color: #cbd5e1; margin-top: 8px; line-height: 1.7;">
+                            どんなに優れた相場観でも、「成行で飛びつき買い」をするとストップ狩りの下ヒゲに刈られ、損切り幅が広がりリスクリワード比が1:1程度に沈んでしまいます。<br>
+                            当レーダーでは**「2本立てプラン」**を提示しています：
+                        </p>
+                        <div class="success-card">
+                            <strong>🌟 【推奨】引きつけ指値プラン（RR 1:3〜1:6超の損小利大）:</strong><br>
+                            ・Zero-Gammaや実質防衛床への押し目をミリ単位で引きつける指値（例: 豚肉 66.20〜66.40）を投入。<br>
+                            ・損切り（SL）を防衛床割れの直下（65.70）に極薄配置。<br>
+                            ・利確目標（TP）をCall Wall（70.00）手前に設定。<br>
+                            ➔ <strong>リスクわずか0.60セントに対し、リワード3.70セント。驚異の【1 : 6.17】を実現！</strong>
+                        </div>
+                        <div style="font-size: 13px; color: #94a3b8; margin-top: 8px;">
+                            ※急反発にどうしても乗り遅れたくない場合は「⚡ 成行・即時追随プラン」も併用可能ですが、ロット数を半分以下に落とすのが鉄則です。
+                        </div>
+                    </div>
+
+                    <!-- Section 4: 4 Commodities & Spreads -->
+                    <div class="guide-box">
+                        <div style="font-size: 17px; font-weight: 800; color: #f59e0b;">🌾 4. 4大コモディティの特性 ＆ カレンダースプレッド（限月力学）</div>
+                        <div class="table-responsive" style="margin-top: 10px;">
+                            <table class="matrix-table">
+                                <thead>
+                                    <tr>
+                                        <th>銘柄</th>
+                                        <th>現物アトムの需給要因</th>
+                                        <th>年間サイクル（アノマリー）</th>
+                                        <th>カレンダースプレッド（限月サヤ）</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: bold; color: #f472b6;">🐷 豚肉 (HE)</td>
+                                        <td>全米スーパー特売拡大、牛肉高騰による豚肉回帰、パッカー調達</td>
+                                        <td>10月下旬に年中最深の大底 ➔ 年末〜春先へ+72%上昇波（ラリー原本p.90）</td>
+                                        <td>12月限ディスカウント ➔ 2月限・4月限への需要回復期スプレッド拡大</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold; color: #fb923c;">🔥 天然ガス (NG)</td>
+                                        <td>北米フリーズウォッチ（寒波警報）、EIA在庫余剰縮小、中東LNG地政学</td>
+                                        <td>秋の注入完了から初冬寒波プレミアムへ+63%〜+72%上昇波（ラリー原本p.86）</td>
+                                        <td>11月限から厳冬期（12月・1月限）への冬期プレミアム拡大（サヤ乗り換え監視）</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold; color: #94a3b8;">🥈 シルバー (SI)</td>
+                                        <td>米10年債利回り急低下（キャリーコスト激減）、中東有事インフレヘッジ実需</td>
+                                        <td>10月中旬に最終ボトムをつけ年末年始ラリーへ+59%上昇波（ラリー原本p.78）</td>
+                                        <td>受渡期（12月限）に向けた現物引き取り需要と安定コンタンゴ構造</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold; color: #facc15;">🌽 トウモロコシ (ZC)</td>
+                                        <td>USDA単収上方修正、新穀収穫加速、農家の現物売りヘッジ圧力</td>
+                                        <td>収穫圧力（Harvest Pressure）による底値形成期。200日線岩盤での自律反発待ち</td>
+                                        <td>新穀（12月限）ディスカウントから翌年作付け（翌3月/5月限）保ち合い</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Section 5: Risk Management -->
+                    <div class="guide-box">
+                        <div style="font-size: 17px; font-weight: 800; color: #ef4444;">🛡️ 5. 楽天CFDでの発注・資金管理の絶対鉄則</div>
+                        <ul class="bullet-list" style="line-height: 1.8;">
+                            <li><strong>1トレードの最大許容損失は口座資金の「1.0%〜2.0%以内」に固定:</strong><br>
+                                口座が100万円なら、1回の損切り額を最大1.5万円に制限します。ボラティリティ（ATR）が大きい天然ガスは自動でロットを小さく、コーンは適正ロットに配分されます。</li>
+                            <li><strong>成行乱発・ナンピン・お祈りホールドの完全禁止:</strong><br>
+                                コモディティCFDで退場する唯一の原因は「逆行時のナンピン」です。当レーダーの指定SL値（ストップロス）をエントリーと同時に楽天CFDのOCO注文で必ず装填してください。</li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- Embed Data & Chart Initialization Scripts -->
@@ -633,7 +821,11 @@ def generate_dashboard():
             const targetPane = document.getElementById('tab-' + sym);
             if (targetPane) targetPane.classList.add('active');
             
-            const btn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.textContent.includes(sym) || (sym === 'SUMMARY' && b.textContent.includes('マトリクス')));
+            const btn = Array.from(document.querySelectorAll('.tab-btn')).find(b => 
+                b.textContent.includes(sym) || 
+                (sym === 'SUMMARY' && b.textContent.includes('マトリクス')) ||
+                (sym === 'GUIDE' && b.textContent.includes('マニュアル'))
+            );
             if (btn) btn.classList.add('active');
 
             window.dispatchEvent(new Event('resize'));
@@ -772,7 +964,7 @@ def generate_dashboard():
     with open(index_file, "w", encoding="utf-8") as f:
         f.write(html_content)
 
-    print(f"[Success] Upgraded dashboard generated at {index_file}")
+    print(f"[Success] Dashboard with comprehensive Guide Tab generated at {index_file}")
     return index_file
 
 
