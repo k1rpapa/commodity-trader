@@ -1,201 +1,182 @@
 {
-  "HE": {
-    "symbol": "HE",
-    "name": "Lean Hogs (豚肉先物 / CME)",
-    "unit": "USセント / lb",
-    "rakuten_name": "豚肉先物CFD",
-    "active_contract": "HEZ26 (2026年12月限)",
+  "ES": {
+    "symbol": "ES",
+    "name": "S&P 500 (ES)",
+    "category": "株式指数",
+    "unit": "pt",
+    "rakuten_name": "米国S&P500 CFD",
+    "active_contract": "ESZ26 (12月限)",
     "spread_monitor": {
-      "current_contract": "12月限 (HEZ26)",
-      "next_contract": "2月限 (HEG27)",
-      "spread_dynamics": "秋の過剰出荷ピーク（12月限ディスカウント）から、年明け〜春先（2月限・4月限）の需要回復に向けたスプレッド拡大アノマリー。期近ロングのロールオーバー優位。"
+      "current_contract": "12月限",
+      "next_contract": "翌年3月限",
+      "spread_dynamics": "配当落ちと短期金利を織り込んだ順ざや（コンタンゴ）構造。"
     },
-    "action": "STRONG_BUY_SETUP",
-    "action_label": "🔥 高確度ロング・スクイーズ警戒",
-    "badge_color": "#00e676",
-    "score": 7.0,
-    "spot_price": 66.925,
+    "action": "NEUTRAL",
+    "action_label": "様子見 / 監視継続",
+    "badge_color": "#8e918f",
+    "score": 1.5,
+    "spot_price": 7703.25,
     "cot_summary": {
       "date": "2026-10-13",
-      "commercial_index": 100.0,
-      "managed_money_index": 1.0,
-      "commercial_net": 78874,
-      "managed_money_net": -48617,
-      "commercial_weekly_chg": 4889,
-      "managed_money_weekly_chg": -7113,
-      "bias": "EXTREME_LONG_SETUP",
-      "cot_lag_note": "火曜COT集計後の水〜金でファンドの売り叩きが過熱したものの、出来高急増とともに下ヒゲを形成。ファンドの投げ売りクライマックス（ストップ狩り完了・売り燃料枯渇）の兆候濃厚。"
+      "commercial_index": 67.8,
+      "managed_money_index": 28.0,
+      "commercial_net": 34667,
+      "managed_money_net": -140995,
+      "commercial_weekly_chg": -8398,
+      "managed_money_weekly_chg": 13075,
+      "bias": "NEUTRAL"
     },
     "gex_summary": {
-      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
-      "is_positive": true,
-      "zero_gamma": 66.011,
-      "put_wall": 68.0,
-      "call_wall": 70.0,
-      "put_wall_inverted": true,
-      "effective_floor": 66.011,
-      "floor_label": "Zero-Gamma (66.011)",
-      "put_wall_status_desc": "⚠️ Put Wall割れ（一時的レジスタンス化）: 現在値(66.925)はPW(68.0)の下方にあり、68.0は戻りを叩く上値抵抗として意識。実質防衛床は【Zero-Gamma (66.011)】に移行。"
-    },
-    "technicals": {
-      "close": 66.925,
-      "ema20": 75.8149,
-      "ema50": 80.9008,
-      "atr14": 1.445,
-      "rsi14": 15.2
-    },
-    "signals": [
-      "【COT極限】商業筋COT指数 100.0%(極限買い) ＆ ファンド指数 1.0%(歴史的ショート積層)",
-      "【スマートマネー先回り】商業筋今週+4,889枚買い増し / ファンド売り",
-      "【季節性サイクル】秋の出荷ピークが一巡し、全米スーパーでの特売拡大と年末ハム実需による年中最深大底（ラリー原本p.90: 年末〜春へ向けた+72%上昇波レール合致）",
-      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Zero-Gamma (66.011)による下値支持が強固）",
-      "【GEX防衛構造】⚠️ Put Wall割れ（一時的レジスタンス化）: 現在値(66.925)はPW(68.0)の下方にあり、68.0は戻りを叩く上値抵抗として意識。実質防衛床は【Zero-Gamma (66.011)】に移行。",
-      "【テクニカル】日足RSI(14)が 15.2 と売られすぎ極限域に到達"
-    ],
-    "trade_plans": {
-      "recommended_limit_plan": {
-        "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
-        "direction": "買い (LONG)",
-        "entry_target": 66.3,
-        "entry_range": "66.20〜66.40",
-        "stop_loss": 65.7,
-        "take_profit": 70.0,
-        "risk_reward_ratio": 6.17,
-        "risk_distance": 0.6,
-        "reward_distance": 3.7,
-        "strategy_memo": "【Zero-Gamma (66.011)】への押し目をミリ単位で引きつける指値注文。SLを直下にタイト配置することでリスク幅を極小化し、圧倒的な損小利大（RR 1:6.17）を実現。"
-      },
-      "market_plan": {
-        "name": "⚡ 成行・即時追随プラン",
-        "direction": "買い (LONG)",
-        "entry_target": 66.925,
-        "entry_range": "66.925 付近成行",
-        "stop_loss": 65.578,
-        "take_profit": 70.0,
-        "risk_reward_ratio": 2.28,
-        "risk_distance": 1.347,
-        "reward_distance": 3.075,
-        "strategy_memo": "急反発に乗り遅れないための成行エントリー。ただしSL幅が広がるためロット数を半分以下に落とすことが必須。"
-      }
-    },
-    "trade_plan": {
-      "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
-      "direction": "買い (LONG)",
-      "entry_target": 66.3,
-      "entry_range": "66.20〜66.40",
-      "stop_loss": 65.7,
-      "take_profit": 70.0,
-      "risk_reward_ratio": 6.17,
-      "risk_distance": 0.6,
-      "reward_distance": 3.7,
-      "strategy_memo": "【Zero-Gamma (66.011)】への押し目をミリ単位で引きつける指値注文。SLを直下にタイト配置することでリスク幅を極小化し、圧倒的な損小利大（RR 1:6.17）を実現。"
-    }
-  },
-  "NG": {
-    "symbol": "NG",
-    "name": "Natural Gas (天然ガス先物 / NYMEX)",
-    "unit": "USD / MMBtu",
-    "rakuten_name": "天然ガスCFD",
-    "active_contract": "NGX26/NGZ26 (2026年11/12月限)",
-    "spread_monitor": {
-      "current_contract": "11月限 (NGX26)",
-      "next_contract": "12月限 (NGZ26)",
-      "spread_dynamics": "秋の端境期から厳冬期（12月・1月限）に向けた冬期暖房プレミアム拡大期。在庫引き出し期への転換による期先主導の跳ね上がりに注目。"
-    },
-    "action": "BUY_PULLBACK",
-    "action_label": "🟢 押し目買い検討ゾーン",
-    "badge_color": "#44c265",
-    "score": 3,
-    "spot_price": 3.116,
-    "cot_summary": {
-      "date": "2026-10-13",
-      "commercial_index": 99.5,
-      "managed_money_index": 12.7,
-      "commercial_net": 218838,
-      "managed_money_net": -126481,
-      "commercial_weekly_chg": -1009,
-      "managed_money_weekly_chg": 18056,
-      "bias": "EXTREME_LONG_SETUP",
-      "cot_lag_note": "週末の北米フリーズウォッチ（寒波警報）とEIA在庫の鈍化を反映し、3.0ドルPut Wall近傍で実需の強力な買い支えを確認。"
-    },
-    "gex_summary": {
-      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
-      "is_positive": true,
-      "zero_gamma": 3.073,
-      "put_wall": 3.0,
-      "call_wall": 3.4,
+      "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+      "is_positive": false,
+      "zero_gamma": 7730.58,
+      "put_wall": 7700.0,
+      "call_wall": 7900.0,
       "put_wall_inverted": false,
-      "effective_floor": 3.0,
-      "floor_label": "Put Wall (3.0)",
-      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(3.116)はPut Wall(3.0)の上にあり、強固な機関買い支え床として機能。"
+      "effective_floor": 7700.0,
+      "floor_label": "Put Wall (7700.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(7703.25)はPut Wall(7700.0)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 3.116,
-      "ema20": 3.1075,
-      "ema50": 3.0139,
-      "atr14": 0.137,
-      "rsi14": 57.1
+      "close": 7704.25,
+      "ema20": 7778.0211,
+      "ema50": 7718.6576,
+      "atr14": 78.625,
+      "rsi14": 45.6
     },
     "signals": [
-      "【COT極限】商業筋COT指数 99.5%(極限買い) ＆ ファンド指数 12.7%(歴史的ショート積層)",
-      "【季節性サイクル】秋の在庫注入完了期。暖冬予報で一時軟調も、初冬の寒波プレミアムとエルニーニョ蛇行で年内最大の踏み上げ波へ（ラリー原本p.86: +63%〜+72%上昇波）",
-      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put Wall (3.0)による下値支持が強固）",
-      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(3.116)はPut Wall(3.0)の上にあり、強固な機関買い支え床として機能。"
+      "【季節性サイクル】10月後半は歴史的年末ラリー（Year-End Rally）の起点となる季節的底入れ期",
+      "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(7703.25)はPut Wall(7700.0)の上にあり、強固な機関買い支え床として機能。"
     ],
-    "trade_plans": {
-      "recommended_limit_plan": {
-        "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
-        "direction": "買い (LONG)",
-        "entry_target": 3.04,
-        "entry_range": "3.02〜3.05",
-        "stop_loss": 2.94,
-        "take_profit": 3.4,
-        "risk_reward_ratio": 3.6,
-        "risk_distance": 0.1,
-        "reward_distance": 0.36,
-        "strategy_memo": "【Put Wall (3.0)】への押し目をミリ単位で引きつける指値注文。SLを直下にタイト配置することでリスク幅を極小化し、圧倒的な損小利大（RR 1:3.6）を実現。"
-      },
-      "market_plan": {
-        "name": "⚡ 成行・即時追随プラン",
-        "direction": "買い (LONG)",
-        "entry_target": 3.116,
-        "entry_range": "3.116 付近成行",
-        "stop_loss": 2.959,
-        "take_profit": 3.4,
-        "risk_reward_ratio": 1.81,
-        "risk_distance": 0.157,
-        "reward_distance": 0.284,
-        "strategy_memo": "急反発に乗り遅れないための成行エントリー。ただしSL幅が広がるためロット数を半分以下に落とすことが必須。"
-      }
+    "trade_plans": {},
+    "trade_plan": null
+  },
+  "NQ": {
+    "symbol": "NQ",
+    "name": "NASDAQ 100 (NQ)",
+    "category": "株式指数",
+    "unit": "pt",
+    "rakuten_name": "米国NASDAQ100 CFD",
+    "active_contract": "NQZ26 (12月限)",
+    "spread_monitor": {
+      "current_contract": "12月限",
+      "next_contract": "翌年3月限",
+      "spread_dynamics": "大型ハイテク企業の決算期を跨ぐボラティリティプレミアム。"
     },
-    "trade_plan": {
-      "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
-      "direction": "買い (LONG)",
-      "entry_target": 3.04,
-      "entry_range": "3.02〜3.05",
-      "stop_loss": 2.94,
-      "take_profit": 3.4,
-      "risk_reward_ratio": 3.6,
-      "risk_distance": 0.1,
-      "reward_distance": 0.36,
-      "strategy_memo": "【Put Wall (3.0)】への押し目をミリ単位で引きつける指値注文。SLを直下にタイト配置することでリスク幅を極小化し、圧倒的な損小利大（RR 1:3.6）を実現。"
-    }
+    "action": "NEUTRAL",
+    "action_label": "様子見 / 監視継続",
+    "badge_color": "#8e918f",
+    "score": -2.0,
+    "spot_price": 29391.88,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 10.0,
+      "managed_money_index": 90.1,
+      "commercial_net": -59827,
+      "managed_money_net": 48523,
+      "commercial_weekly_chg": 8619,
+      "managed_money_weekly_chg": -9600,
+      "bias": "EXTREME_SHORT_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+      "is_positive": false,
+      "zero_gamma": 30740.51,
+      "put_wall": 28000.0,
+      "call_wall": 31500.0,
+      "put_wall_inverted": false,
+      "effective_floor": 28000.0,
+      "floor_label": "Put Wall (28000.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(29391.88)はPut Wall(28000.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 29391.5,
+      "ema20": 30473.6003,
+      "ema50": 30091.9419,
+      "atr14": 505.821,
+      "rsi14": 32.1
+    },
+    "signals": [
+      "【COT過熱売り】商業筋COT指数 10.0% ＆ ファンドロング過多 90.1%",
+      "【スマートマネー先回り】商業筋今週+8,619枚買い増し / ファンド売り",
+      "【季節性サイクル】秋の調整一巡後の年末モメンタム加速期",
+      "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(29391.88)はPut Wall(28000.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {},
+    "trade_plan": null
+  },
+  "GC": {
+    "symbol": "GC",
+    "name": "ゴールド (GC)",
+    "category": "貴金属",
+    "unit": "USD/oz",
+    "rakuten_name": "金（ゴールド）CFD",
+    "active_contract": "GCZ26 (12月限)",
+    "spread_monitor": {
+      "current_contract": "12月限",
+      "next_contract": "2月限",
+      "spread_dynamics": "実質金利低下と各国中銀の現物買いによる低コスト保有構造。"
+    },
+    "action": "NEUTRAL",
+    "action_label": "様子見 / 監視継続",
+    "badge_color": "#8e918f",
+    "score": 1.0,
+    "spot_price": 4319.0,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 45.9,
+      "managed_money_index": 45.1,
+      "commercial_net": -242531,
+      "managed_money_net": 107089,
+      "commercial_weekly_chg": 1996,
+      "managed_money_weekly_chg": -3898,
+      "bias": "NEUTRAL"
+    },
+    "gex_summary": {
+      "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+      "is_positive": false,
+      "zero_gamma": 4357.14,
+      "put_wall": 4300.0,
+      "call_wall": 4500.0,
+      "put_wall_inverted": false,
+      "effective_floor": 4300.0,
+      "floor_label": "Put Wall (4300.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(4319.0)はPut Wall(4300.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 4181.1001,
+      "ema20": 4219.9289,
+      "ema50": 4287.4246,
+      "atr14": 72.993,
+      "rsi14": 51.5
+    },
+    "signals": [
+      "【スマートマネー先回り】商業筋今週+1,996枚買い増し / ファンド売り",
+      "【季節性サイクル】秋の保ち合いから年末〜1月のアノマリー（インド婚礼・中国春節需要）へ",
+      "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(4319.0)はPut Wall(4300.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {},
+    "trade_plan": null
   },
   "SI": {
     "symbol": "SI",
-    "name": "Silver (銀先物 / CME)",
-    "unit": "USD / oz",
-    "rakuten_name": "シルバーCFD",
-    "active_contract": "SIZ26 (2026年12月限)",
+    "name": "シルバー (SI)",
+    "category": "貴金属",
+    "unit": "USD/oz",
+    "rakuten_name": "銀（シルバー）CFD",
+    "active_contract": "SIZ26 (12月限)",
     "spread_monitor": {
-      "current_contract": "12月限 (SIZ26)",
-      "next_contract": "3月限 (SIH27)",
-      "spread_dynamics": "米金利低下（キャリーコスト激減）とインフレヘッジ実弾買い。年末の受渡・現物需要に向けた安定的コンタンゴ構造。"
+      "current_contract": "12月限",
+      "next_contract": "3月限",
+      "spread_dynamics": "米金利低下とインフレヘッジ実需。受渡期に向けた安定コンタンゴ。"
     },
     "action": "STRONG_BUY_SETUP",
     "action_label": "🔥 高確度ロング・スクイーズ警戒",
     "badge_color": "#00e676",
-    "score": 5.5,
+    "score": 6.0,
     "spot_price": 57.307,
     "cot_summary": {
       "date": "2026-10-13",
@@ -205,8 +186,7 @@
       "managed_money_net": 5619,
       "commercial_weekly_chg": 2150,
       "managed_money_weekly_chg": -1909,
-      "bias": "EXTREME_LONG_SETUP",
-      "cot_lag_note": "週末にかけて暗号資産・テック株急落に伴う換金売りで一時軟調も、米10年債利回りの急低下（5.06%へ）を受け金利ヘッジ実弾買いが流入中。"
+      "bias": "EXTREME_LONG_SETUP"
     },
     "gex_summary": {
       "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
@@ -229,7 +209,7 @@
     "signals": [
       "【COT極限】商業筋COT指数 82.7%(極限買い) ＆ ファンド指数 25.0%(歴史的ショート積層)",
       "【スマートマネー先回り】商業筋今週+2,150枚買い増し / ファンド売り",
-      "【季節性サイクル】流動性ショックの換金売り一巡。10月中旬に年中最深の最終ボトムをつけ年末年始ラリーへ発進（ラリー原本p.78: +59%上昇波ターゲット65ドル）",
+      "【季節性サイクル】10月中旬に最終ボトムをつけ年末年始+59%上昇波（ラリー原本p.78）",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
       "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(57.307)はPut Wall(55.0)の上にあり、強固な機関買い支え床として機能。"
     ],
@@ -237,14 +217,14 @@
       "recommended_limit_plan": {
         "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
         "direction": "買い (LONG)",
-        "entry_target": 56.0,
-        "entry_range": "55.80〜56.20",
-        "stop_loss": 54.5,
+        "entry_target": 55.196,
+        "entry_range": "55.196 付近",
+        "stop_loss": 54.739,
         "take_profit": 60.0,
-        "risk_reward_ratio": 2.67,
-        "risk_distance": 1.5,
-        "reward_distance": 4.0,
-        "strategy_memo": "【Put Wall (55.0)】への押し目をミリ単位で引きつける指値注文。SLを直下にタイト配置することでリスク幅を極小化し、圧倒的な損小利大（RR 1:2.67）を実現。"
+        "risk_reward_ratio": 10.51,
+        "risk_distance": 0.457,
+        "reward_distance": 4.804,
+        "strategy_memo": "【Put Wall (55.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:10.51 の損小利大を強制執行。"
       },
       "market_plan": {
         "name": "⚡ 成行・即時追随プラン",
@@ -256,32 +236,377 @@
         "risk_reward_ratio": 1.0,
         "risk_distance": 2.697,
         "reward_distance": 2.695,
-        "strategy_memo": "急反発に乗り遅れないための成行エントリー。ただしSL幅が広がるためロット数を半分以下に落とすことが必須。"
+        "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
       }
     },
     "trade_plan": {
       "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
       "direction": "買い (LONG)",
-      "entry_target": 56.0,
-      "entry_range": "55.80〜56.20",
-      "stop_loss": 54.5,
+      "entry_target": 55.196,
+      "entry_range": "55.196 付近",
+      "stop_loss": 54.739,
       "take_profit": 60.0,
-      "risk_reward_ratio": 2.67,
-      "risk_distance": 1.5,
-      "reward_distance": 4.0,
-      "strategy_memo": "【Put Wall (55.0)】への押し目をミリ単位で引きつける指値注文。SLを直下にタイト配置することでリスク幅を極小化し、圧倒的な損小利大（RR 1:2.67）を実現。"
+      "risk_reward_ratio": 10.51,
+      "risk_distance": 0.457,
+      "reward_distance": 4.804,
+      "strategy_memo": "【Put Wall (55.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:10.51 の損小利大を強制執行。"
     }
+  },
+  "PL": {
+    "symbol": "PL",
+    "name": "プラチナ (PL)",
+    "category": "貴金属",
+    "unit": "USD/oz",
+    "rakuten_name": "プラチナCFD",
+    "active_contract": "PLF27 (1月限)",
+    "spread_monitor": {
+      "current_contract": "1月限",
+      "next_contract": "4月限",
+      "spread_dynamics": "自動車触媒・水素産業需要。ゴールドに対する割安是正スプレッド。"
+    },
+    "action": "NEUTRAL",
+    "action_label": "様子見 / 監視継続",
+    "badge_color": "#8e918f",
+    "score": 1.0,
+    "spot_price": 1759.7,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 64.4,
+      "managed_money_index": 55.3,
+      "commercial_net": -16289,
+      "managed_money_net": 7043,
+      "commercial_weekly_chg": 1497,
+      "managed_money_weekly_chg": -1432,
+      "bias": "NEUTRAL"
+    },
+    "gex_summary": {
+      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+      "is_positive": true,
+      "zero_gamma": 1756.32,
+      "put_wall": 1650.0,
+      "call_wall": 2000.0,
+      "put_wall_inverted": false,
+      "effective_floor": 1650.0,
+      "floor_label": "Put Wall (1650.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(1759.7)はPut Wall(1650.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 1623.3,
+      "ema20": 1684.1317,
+      "ema50": 1724.2377,
+      "atr14": 33.536,
+      "rsi14": 35.9
+    },
+    "signals": [
+      "【スマートマネー先回り】商業筋今週+1,497枚買い増し / ファンド売り",
+      "【季節性サイクル】秋の底固め期",
+      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put Wall (1650.0)による下値支持が強固）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(1759.7)はPut Wall(1650.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {},
+    "trade_plan": null
+  },
+  "CL": {
+    "symbol": "CL",
+    "name": "原油 WTI (CL)",
+    "category": "エネルギー",
+    "unit": "USD/bbl",
+    "rakuten_name": "WTI原油CFD",
+    "active_contract": "CLX26 (11月限)",
+    "spread_monitor": {
+      "current_contract": "11月限",
+      "next_contract": "12月限",
+      "spread_dynamics": "地政学プレミアムとOPEC+減産政策。期近プレミアム（バックワーデーション）監視。"
+    },
+    "action": "BUY_PULLBACK",
+    "action_label": "🟢 押し目買い検討ゾーン",
+    "badge_color": "#44c265",
+    "score": 3.0,
+    "spot_price": 91.85,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 75.4,
+      "managed_money_index": 27.0,
+      "commercial_net": -125335,
+      "managed_money_net": 40574,
+      "commercial_weekly_chg": 1123,
+      "managed_money_weekly_chg": -13024,
+      "bias": "LONG_BIAS"
+    },
+    "gex_summary": {
+      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+      "is_positive": true,
+      "zero_gamma": 91.645,
+      "put_wall": 90.0,
+      "call_wall": 90.0,
+      "put_wall_inverted": false,
+      "effective_floor": 90.0,
+      "floor_label": "Put Wall (90.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(91.85)はPut Wall(90.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 99.02,
+      "ema20": 93.6986,
+      "ema50": 91.2679,
+      "atr14": 3.939,
+      "rsi14": 64.6
+    },
+    "signals": [
+      "【COT追い風】商業筋COT指数 75.4% 買い越し基調",
+      "【スマートマネー先回り】商業筋今週+1,123枚買い増し / ファンド売り",
+      "【季節性サイクル】秋の製油所定期修理（メンテナンス）による需要減退から冬期暖房油需要への転換",
+      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put Wall (90.0)による下値支持が強固）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(91.85)はPut Wall(90.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {
+      "recommended_limit_plan": {
+        "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+        "direction": "買い (LONG)",
+        "entry_target": 90.591,
+        "entry_range": "90.591 付近",
+        "stop_loss": 89.212,
+        "take_profit": 100.439,
+        "risk_reward_ratio": 7.14,
+        "risk_distance": 1.379,
+        "reward_distance": 9.848,
+        "strategy_memo": "【Put Wall (90.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.14 の損小利大を強制執行。"
+      },
+      "market_plan": {
+        "name": "⚡ 成行・即時追随プラン",
+        "direction": "買い (LONG)",
+        "entry_target": 99.02,
+        "entry_range": "99.02 付近成行",
+        "stop_loss": 88.818,
+        "take_profit": 119.424,
+        "risk_reward_ratio": 2.0,
+        "risk_distance": 10.202,
+        "reward_distance": 20.404,
+        "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
+      }
+    },
+    "trade_plan": {
+      "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+      "direction": "買い (LONG)",
+      "entry_target": 90.591,
+      "entry_range": "90.591 付近",
+      "stop_loss": 89.212,
+      "take_profit": 100.439,
+      "risk_reward_ratio": 7.14,
+      "risk_distance": 1.379,
+      "reward_distance": 9.848,
+      "strategy_memo": "【Put Wall (90.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.14 の損小利大を強制執行。"
+    }
+  },
+  "NG": {
+    "symbol": "NG",
+    "name": "天然ガス (NG)",
+    "category": "エネルギー",
+    "unit": "USD/MMBtu",
+    "rakuten_name": "天然ガスCFD",
+    "active_contract": "NGX26/NGZ26 (11/12月限)",
+    "spread_monitor": {
+      "current_contract": "11月限",
+      "next_contract": "12月限",
+      "spread_dynamics": "在庫注入期から引き出し期への冬期暖房プレミアム拡大。"
+    },
+    "action": "BUY_PULLBACK",
+    "action_label": "🟢 押し目買い検討ゾーン",
+    "badge_color": "#44c265",
+    "score": 3.5,
+    "spot_price": 3.116,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 99.5,
+      "managed_money_index": 12.7,
+      "commercial_net": 218838,
+      "managed_money_net": -126481,
+      "commercial_weekly_chg": -1009,
+      "managed_money_weekly_chg": 18056,
+      "bias": "EXTREME_LONG_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+      "is_positive": true,
+      "zero_gamma": 3.073,
+      "put_wall": 3.0,
+      "call_wall": 3.4,
+      "put_wall_inverted": false,
+      "effective_floor": 3.0,
+      "floor_label": "Put Wall (3.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(3.116)はPut Wall(3.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 3.116,
+      "ema20": 3.1075,
+      "ema50": 3.0139,
+      "atr14": 0.137,
+      "rsi14": 57.1
+    },
+    "signals": [
+      "【COT極限】商業筋COT指数 99.5%(極限買い) ＆ ファンド指数 12.7%(歴史的ショート積層)",
+      "【季節性サイクル】初冬の寒波プレミアムとエルニーニョ蛇行による年内最大の踏み上げ波（ラリー原本p.86）",
+      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put Wall (3.0)による下値支持が強固）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(3.116)はPut Wall(3.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {
+      "recommended_limit_plan": {
+        "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+        "direction": "買い (LONG)",
+        "entry_target": 3.021,
+        "entry_range": "3.021 付近",
+        "stop_loss": 2.973,
+        "take_profit": 3.4,
+        "risk_reward_ratio": 7.9,
+        "risk_distance": 0.048,
+        "reward_distance": 0.379,
+        "strategy_memo": "【Put Wall (3.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.9 の損小利大を強制執行。"
+      },
+      "market_plan": {
+        "name": "⚡ 成行・即時追随プラン",
+        "direction": "買い (LONG)",
+        "entry_target": 3.116,
+        "entry_range": "3.116 付近成行",
+        "stop_loss": 2.959,
+        "take_profit": 3.4,
+        "risk_reward_ratio": 1.81,
+        "risk_distance": 0.157,
+        "reward_distance": 0.284,
+        "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
+      }
+    },
+    "trade_plan": {
+      "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+      "direction": "買い (LONG)",
+      "entry_target": 3.021,
+      "entry_range": "3.021 付近",
+      "stop_loss": 2.973,
+      "take_profit": 3.4,
+      "risk_reward_ratio": 7.9,
+      "risk_distance": 0.048,
+      "reward_distance": 0.379,
+      "strategy_memo": "【Put Wall (3.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.9 の損小利大を強制執行。"
+    }
+  },
+  "HG": {
+    "symbol": "HG",
+    "name": "銅 (HG)",
+    "category": "工業用金属",
+    "unit": "USD/lb",
+    "rakuten_name": "銅CFD",
+    "active_contract": "HGZ26 (12月限)",
+    "spread_monitor": {
+      "current_contract": "12月限",
+      "next_contract": "3月限",
+      "spread_dynamics": "世界電化・AIデータセンター送電網需要。LME・COMEX在庫逼迫度。"
+    },
+    "action": "NEUTRAL",
+    "action_label": "様子見 / 監視継続",
+    "badge_color": "#8e918f",
+    "score": 1.0,
+    "spot_price": 6.573,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 20.7,
+      "managed_money_index": 83.0,
+      "commercial_net": -76637,
+      "managed_money_net": 61058,
+      "commercial_weekly_chg": 1286,
+      "managed_money_weekly_chg": -76,
+      "bias": "NEUTRAL"
+    },
+    "gex_summary": {
+      "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+      "is_positive": false,
+      "zero_gamma": 6.592,
+      "put_wall": 6.55,
+      "call_wall": 6.8,
+      "put_wall_inverted": false,
+      "effective_floor": 6.55,
+      "floor_label": "Put Wall (6.55)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(6.573)はPut Wall(6.55)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 6.5735,
+      "ema20": 6.5894,
+      "ema50": 6.5485,
+      "atr14": 0.08,
+      "rsi14": 50.5
+    },
+    "signals": [
+      "【スマートマネー先回り】商業筋今週+1,286枚買い増し / ファンド売り",
+      "【季節性サイクル】世界景況感と中国政策期待の綱引き（レンジ）",
+      "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(6.573)はPut Wall(6.55)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {},
+    "trade_plan": null
+  },
+  "ZS": {
+    "symbol": "ZS",
+    "name": "大豆 (ZS)",
+    "category": "穀物・農産物",
+    "unit": "USc/bu",
+    "rakuten_name": "大豆CFD",
+    "active_contract": "ZSX26 (11月限)",
+    "spread_monitor": {
+      "current_contract": "11月限",
+      "next_contract": "1月限",
+      "spread_dynamics": "全米収穫進行（期近売り圧力）と南米（ブラジル）作付け天候相場。"
+    },
+    "action": "NEUTRAL",
+    "action_label": "様子見 / 監視継続",
+    "badge_color": "#8e918f",
+    "score": -2.0,
+    "spot_price": 1286.0,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 2.5,
+      "managed_money_index": 96.6,
+      "commercial_net": -245739,
+      "managed_money_net": 249807,
+      "commercial_weekly_chg": 4258,
+      "managed_money_weekly_chg": -8259,
+      "bias": "EXTREME_SHORT_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+      "is_positive": true,
+      "zero_gamma": 1284.22,
+      "put_wall": 1250.0,
+      "call_wall": 1300.0,
+      "put_wall_inverted": false,
+      "effective_floor": 1250.0,
+      "floor_label": "Put Wall (1250.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(1286.0)はPut Wall(1250.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 1261.25,
+      "ema20": 1285.1541,
+      "ema50": 1267.6243,
+      "atr14": 19.304,
+      "rsi14": 37.1
+    },
+    "signals": [
+      "【COT過熱売り】商業筋COT指数 2.5% ＆ ファンドロング過多 96.6%",
+      "【スマートマネー先回り】商業筋今週+4,258枚買い増し / ファンド売り",
+      "【季節性サイクル】収穫圧力ピークによる年間最安値形成期",
+      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put Wall (1250.0)による下値支持が強固）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(1286.0)はPut Wall(1250.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {},
+    "trade_plan": null
   },
   "ZC": {
     "symbol": "ZC",
-    "name": "Corn (トウモロコシ先物 / CBOT)",
-    "unit": "USセント / bu",
+    "name": "トウモロコシ (ZC)",
+    "category": "穀物・農産物",
+    "unit": "USc/bu",
     "rakuten_name": "コーンCFD",
-    "active_contract": "ZCZ26 (2026年12月限)",
+    "active_contract": "ZCZ26 (12月限)",
     "spread_monitor": {
-      "current_contract": "12月限 (ZCZ26)",
-      "next_contract": "3月限 (ZCH27)",
-      "spread_dynamics": "全米収穫圧力（新穀現物売り）に伴う期近ディスカウント。ファンドのロング整理完了を待つ期先保ち合い局面。"
+      "current_contract": "12月限",
+      "next_contract": "3月限",
+      "spread_dynamics": "新穀収穫加速に伴う現物売り圧力。200日線岩盤での底固め。"
     },
     "action": "NEUTRAL",
     "action_label": "様子見 / 監視継続",
@@ -296,8 +621,7 @@
       "managed_money_net": 246425,
       "commercial_weekly_chg": 83994,
       "managed_money_weekly_chg": -83414,
-      "bias": "EXTREME_SHORT_SETUP",
-      "cot_lag_note": "USDAの需給上方修正と天候好転による収穫加速で上値重く、ファンドのロング投げが週後半も継続中。"
+      "bias": "EXTREME_SHORT_SETUP"
     },
     "gex_summary": {
       "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
@@ -320,12 +644,684 @@
     "signals": [
       "【COT過熱売り】商業筋COT指数 19.7% ＆ ファンドロング過多 78.2%",
       "【スマートマネー先回り】商業筋今週+83,994枚買い増し / ファンド売り",
-      "【季節性サイクル】全米収穫圧力（Harvest Pressure）の最終局面。農家のヘッジ売り残存のため、200日線岩盤での底固めを確認するまで慎重な見極めが必須",
+      "【季節性サイクル】全米収穫圧力（Harvest Pressure）の最終局面。農家のヘッジ売り一巡待ち",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
       "【GEX防衛構造】⚠️ Put Wall割れ（一時的レジスタンス化）: 現在値(475.0)はPW(490.0)の下方にあり、490.0は戻りを叩く上値抵抗として意識。実質防衛床は【第2防衛床 (472.777)】に移行。",
       "【テクニカル】日足RSI(14)が 19.4 と売られすぎ極限域に到達"
     ],
     "trade_plans": {},
     "trade_plan": null
+  },
+  "ZW": {
+    "symbol": "ZW",
+    "name": "小麦 (ZW)",
+    "category": "穀物・農産物",
+    "unit": "USc/bu",
+    "rakuten_name": "小麦CFD",
+    "active_contract": "ZWZ26 (12月限)",
+    "spread_monitor": {
+      "current_contract": "12月限",
+      "next_contract": "3月限",
+      "spread_dynamics": "黒海・豪州生産動向と北半球冬小麦の作付け天候。"
+    },
+    "action": "NEUTRAL",
+    "action_label": "様子見 / 監視継続",
+    "badge_color": "#8e918f",
+    "score": 1.0,
+    "spot_price": 670.0,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 28.3,
+      "managed_money_index": 65.8,
+      "commercial_net": 14876,
+      "managed_money_net": -32555,
+      "commercial_weekly_chg": 1206,
+      "managed_money_weekly_chg": -3725,
+      "bias": "NEUTRAL"
+    },
+    "gex_summary": {
+      "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+      "is_positive": false,
+      "zero_gamma": 683.345,
+      "put_wall": 650.0,
+      "call_wall": 680.0,
+      "put_wall_inverted": false,
+      "effective_floor": 650.0,
+      "floor_label": "Put Wall (650.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(670.0)はPut Wall(650.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 660.5,
+      "ema20": 685.1287,
+      "ema50": 686.2399,
+      "atr14": 16.036,
+      "rsi14": 36.4
+    },
+    "signals": [
+      "【スマートマネー先回り】商業筋今週+1,206枚買い増し / ファンド売り",
+      "【季節性サイクル】冬小麦作付け進捗と秋の安値圏（底堅い）",
+      "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(670.0)はPut Wall(650.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {},
+    "trade_plan": null
+  },
+  "SB": {
+    "symbol": "SB",
+    "name": "砂糖 (SB)",
+    "category": "ソフトコモディティ",
+    "unit": "USc/lb",
+    "rakuten_name": "砂糖CFD",
+    "active_contract": "SBH27 (3月限)",
+    "spread_monitor": {
+      "current_contract": "3月限",
+      "next_contract": "5月限",
+      "spread_dynamics": "ブラジル・インドのサトウキビ圧搾期終了に伴う端境期供給。"
+    },
+    "action": "SELL_RALLY",
+    "action_label": "🔴 戻り売り警戒ゾーン",
+    "badge_color": "#ff5252",
+    "score": -4.5,
+    "spot_price": 20.245,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 0.0,
+      "managed_money_index": 100.0,
+      "commercial_net": -287190,
+      "managed_money_net": 259549,
+      "commercial_weekly_chg": -9846,
+      "managed_money_weekly_chg": 7035,
+      "bias": "EXTREME_SHORT_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+      "is_positive": true,
+      "zero_gamma": 18.033,
+      "put_wall": 18.0,
+      "call_wall": 20.0,
+      "put_wall_inverted": false,
+      "effective_floor": 18.0,
+      "floor_label": "Put Wall (18.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(20.245)はPut Wall(18.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 20.85,
+      "ema20": 19.7599,
+      "ema50": 18.3835,
+      "atr14": 0.763,
+      "rsi14": 77.2
+    },
+    "signals": [
+      "【COT過熱売り】商業筋COT指数 0.0% ＆ ファンドロング過多 100.0%",
+      "【季節性サイクル】ブラジル製糖終盤による秋の保ち合い",
+      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put Wall (18.0)による下値支持が強固）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(20.245)はPut Wall(18.0)の上にあり、強固な機関買い支え床として機能。",
+      "【テクニカル】日足RSI(14)が 77.2 と買われすぎ域に到達"
+    ],
+    "trade_plans": {},
+    "trade_plan": null
+  },
+  "CT": {
+    "symbol": "CT",
+    "name": "コットン (CT)",
+    "category": "ソフトコモディティ",
+    "unit": "USc/lb",
+    "rakuten_name": "綿花CFD",
+    "active_contract": "CTZ26 (12月限)",
+    "spread_monitor": {
+      "current_contract": "12月限",
+      "next_contract": "3月限",
+      "spread_dynamics": "米南部・テキサス収穫進捗と世界アパレル需要。"
+    },
+    "action": "SELL_RALLY",
+    "action_label": "🔴 戻り売り警戒ゾーン",
+    "badge_color": "#ff5252",
+    "score": -3.0,
+    "spot_price": 80.53,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 19.2,
+      "managed_money_index": 76.5,
+      "commercial_net": -101446,
+      "managed_money_net": 58025,
+      "commercial_weekly_chg": 2059,
+      "managed_money_weekly_chg": 907,
+      "bias": "EXTREME_SHORT_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+      "is_positive": false,
+      "zero_gamma": 81.0,
+      "put_wall": 80.0,
+      "call_wall": 80.0,
+      "put_wall_inverted": false,
+      "effective_floor": 80.0,
+      "floor_label": "Put Wall (80.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(80.53)はPut Wall(80.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 80.0,
+      "ema20": 79.2259,
+      "ema50": 80.0376,
+      "atr14": 1.602,
+      "rsi14": 53.1
+    },
+    "signals": [
+      "【COT過熱売り】商業筋COT指数 19.2% ＆ ファンドロング過多 76.5%",
+      "【季節性サイクル】収穫期による上値の重い保ち合い",
+      "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(80.53)はPut Wall(80.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {},
+    "trade_plan": null
+  },
+  "CC": {
+    "symbol": "CC",
+    "name": "ココア (CC)",
+    "category": "ソフトコモディティ",
+    "unit": "USD/MT",
+    "rakuten_name": "ココアCFD",
+    "active_contract": "CCZ26 (12月限)",
+    "spread_monitor": {
+      "current_contract": "12月限",
+      "next_contract": "3月限",
+      "spread_dynamics": "西アフリカ（コートジボワール・ガーナ）のメインクロップ収穫状況。"
+    },
+    "action": "STRONG_BUY_SETUP",
+    "action_label": "🔥 高確度ロング・スクイーズ警戒",
+    "badge_color": "#00e676",
+    "score": 5.0,
+    "spot_price": 5671.0,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 83.4,
+      "managed_money_index": 10.6,
+      "commercial_net": 7056,
+      "managed_money_net": -11921,
+      "commercial_weekly_chg": -2607,
+      "managed_money_weekly_chg": -869,
+      "bias": "EXTREME_LONG_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+      "is_positive": false,
+      "zero_gamma": 5675.79,
+      "put_wall": 5500.0,
+      "call_wall": 5500.0,
+      "put_wall_inverted": false,
+      "effective_floor": 5500.0,
+      "floor_label": "Put Wall (5500.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(5671.0)はPut Wall(5500.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 5686.0,
+      "ema20": 5690.9451,
+      "ema50": 5648.9142,
+      "atr14": 291.643,
+      "rsi14": 53.5
+    },
+    "signals": [
+      "【COT極限】商業筋COT指数 83.4%(極限買い) ＆ ファンド指数 10.6%(歴史的ショート積層)",
+      "【季節性サイクル】秋のメインクロップ初動。歴史的減産懸念からの底値買い需要（強気）",
+      "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(5671.0)はPut Wall(5500.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {
+      "recommended_limit_plan": {
+        "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+        "direction": "買い (LONG)",
+        "entry_target": 5543.746,
+        "entry_range": "5543.746 付近",
+        "stop_loss": 5441.671,
+        "take_profit": 6272.853,
+        "risk_reward_ratio": 7.14,
+        "risk_distance": 102.075,
+        "reward_distance": 729.107,
+        "strategy_memo": "【Put Wall (5500.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.14 の損小利大を強制執行。"
+      },
+      "market_plan": {
+        "name": "⚡ 成行・即時追随プラン",
+        "direction": "買い (LONG)",
+        "entry_target": 5686.0,
+        "entry_range": "5686.0 付近成行",
+        "stop_loss": 5412.507,
+        "take_profit": 6232.986,
+        "risk_reward_ratio": 2.0,
+        "risk_distance": 273.493,
+        "reward_distance": 546.986,
+        "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
+      }
+    },
+    "trade_plan": {
+      "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+      "direction": "買い (LONG)",
+      "entry_target": 5543.746,
+      "entry_range": "5543.746 付近",
+      "stop_loss": 5441.671,
+      "take_profit": 6272.853,
+      "risk_reward_ratio": 7.14,
+      "risk_distance": 102.075,
+      "reward_distance": 729.107,
+      "strategy_memo": "【Put Wall (5500.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.14 の損小利大を強制執行。"
+    }
+  },
+  "KC": {
+    "symbol": "KC",
+    "name": "コーヒー (KC)",
+    "category": "ソフトコモディティ",
+    "unit": "USc/lb",
+    "rakuten_name": "コーヒーCFD",
+    "active_contract": "KCZ26 (12月限)",
+    "spread_monitor": {
+      "current_contract": "12月限",
+      "next_contract": "3月限",
+      "spread_dynamics": "ブラジルの開花期降雨量と認証在庫の低水準維持。"
+    },
+    "action": "BUY_PULLBACK",
+    "action_label": "🟢 押し目買い検討ゾーン",
+    "badge_color": "#44c265",
+    "score": 4.5,
+    "spot_price": 305.6,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 83.3,
+      "managed_money_index": 36.5,
+      "commercial_net": -14252,
+      "managed_money_net": 15270,
+      "commercial_weekly_chg": 3260,
+      "managed_money_weekly_chg": -3766,
+      "bias": "LONG_BIAS"
+    },
+    "gex_summary": {
+      "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+      "is_positive": false,
+      "zero_gamma": 313.514,
+      "put_wall": 300.0,
+      "call_wall": 300.0,
+      "put_wall_inverted": false,
+      "effective_floor": 300.0,
+      "floor_label": "Put Wall (300.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(305.6)はPut Wall(300.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 305.55,
+      "ema20": 295.884,
+      "ema50": 304.9271,
+      "atr14": 10.411,
+      "rsi14": 63.3
+    },
+    "signals": [
+      "【COT追い風】商業筋COT指数 83.3% 買い越し基調",
+      "【スマートマネー先回り】商業筋今週+3,260枚買い増し / ファンド売り",
+      "【季節性サイクル】開花期天候不順リスクを織り込む反発期（強気）",
+      "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(305.6)はPut Wall(300.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {
+      "recommended_limit_plan": {
+        "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+        "direction": "買い (LONG)",
+        "entry_target": 301.562,
+        "entry_range": "301.562 付近",
+        "stop_loss": 297.918,
+        "take_profit": 327.589,
+        "risk_reward_ratio": 7.14,
+        "risk_distance": 3.644,
+        "reward_distance": 26.027,
+        "strategy_memo": "【Put Wall (300.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.14 の損小利大を強制執行。"
+      },
+      "market_plan": {
+        "name": "⚡ 成行・即時追随プラン",
+        "direction": "買い (LONG)",
+        "entry_target": 305.55,
+        "entry_range": "305.55 付近成行",
+        "stop_loss": 296.877,
+        "take_profit": 322.896,
+        "risk_reward_ratio": 2.0,
+        "risk_distance": 8.673,
+        "reward_distance": 17.346,
+        "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
+      }
+    },
+    "trade_plan": {
+      "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+      "direction": "買い (LONG)",
+      "entry_target": 301.562,
+      "entry_range": "301.562 付近",
+      "stop_loss": 297.918,
+      "take_profit": 327.589,
+      "risk_reward_ratio": 7.14,
+      "risk_distance": 3.644,
+      "reward_distance": 26.027,
+      "strategy_memo": "【Put Wall (300.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.14 の損小利大を強制執行。"
+    }
+  },
+  "HE": {
+    "symbol": "HE",
+    "name": "豚肉 (HE)",
+    "category": "畜産",
+    "unit": "USc/lb",
+    "rakuten_name": "豚肉先物CFD",
+    "active_contract": "HEZ26 (12月限)",
+    "spread_monitor": {
+      "current_contract": "12月限",
+      "next_contract": "2月限",
+      "spread_dynamics": "秋の出荷ピークから年末ハム・春先需要回復へのスプレッド拡大アノマリー。"
+    },
+    "action": "STRONG_BUY_SETUP",
+    "action_label": "🔥 高確度ロング・スクイーズ警戒",
+    "badge_color": "#00e676",
+    "score": 7.5,
+    "spot_price": 66.925,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 100.0,
+      "managed_money_index": 1.0,
+      "commercial_net": 78874,
+      "managed_money_net": -48617,
+      "commercial_weekly_chg": 4889,
+      "managed_money_weekly_chg": -7113,
+      "bias": "EXTREME_LONG_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+      "is_positive": true,
+      "zero_gamma": 66.011,
+      "put_wall": 68.0,
+      "call_wall": 70.0,
+      "put_wall_inverted": true,
+      "effective_floor": 66.011,
+      "floor_label": "Zero-Gamma (66.011)",
+      "put_wall_status_desc": "⚠️ Put Wall割れ（一時的レジスタンス化）: 現在値(66.925)はPW(68.0)の下方にあり、68.0は戻りを叩く上値抵抗として意識。実質防衛床は【Zero-Gamma (66.011)】に移行。"
+    },
+    "technicals": {
+      "close": 66.925,
+      "ema20": 75.8149,
+      "ema50": 80.9008,
+      "atr14": 1.445,
+      "rsi14": 15.2
+    },
+    "signals": [
+      "【COT極限】商業筋COT指数 100.0%(極限買い) ＆ ファンド指数 1.0%(歴史的ショート積層)",
+      "【スマートマネー先回り】商業筋今週+4,889枚買い増し / ファンド売り",
+      "【季節性サイクル】全米スーパー特売拡大と年末ハム実需による年中最深大底（ラリー原本p.90: +72%上昇波）",
+      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Zero-Gamma (66.011)による下値支持が強固）",
+      "【GEX防衛構造】⚠️ Put Wall割れ（一時的レジスタンス化）: 現在値(66.925)はPW(68.0)の下方にあり、68.0は戻りを叩く上値抵抗として意識。実質防衛床は【Zero-Gamma (66.011)】に移行。",
+      "【テクニカル】日足RSI(14)が 15.2 と売られすぎ極限域に到達"
+    ],
+    "trade_plans": {
+      "recommended_limit_plan": {
+        "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+        "direction": "買い (LONG)",
+        "entry_target": 66.228,
+        "entry_range": "66.228 付近",
+        "stop_loss": 65.722,
+        "take_profit": 70.0,
+        "risk_reward_ratio": 7.45,
+        "risk_distance": 0.506,
+        "reward_distance": 3.772,
+        "strategy_memo": "【Zero-Gamma (66.011)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.45 の損小利大を強制執行。"
+      },
+      "market_plan": {
+        "name": "⚡ 成行・即時追随プラン",
+        "direction": "買い (LONG)",
+        "entry_target": 66.925,
+        "entry_range": "66.925 付近成行",
+        "stop_loss": 65.578,
+        "take_profit": 70.0,
+        "risk_reward_ratio": 2.28,
+        "risk_distance": 1.347,
+        "reward_distance": 3.075,
+        "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
+      }
+    },
+    "trade_plan": {
+      "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+      "direction": "買い (LONG)",
+      "entry_target": 66.228,
+      "entry_range": "66.228 付近",
+      "stop_loss": 65.722,
+      "take_profit": 70.0,
+      "risk_reward_ratio": 7.45,
+      "risk_distance": 0.506,
+      "reward_distance": 3.772,
+      "strategy_memo": "【Zero-Gamma (66.011)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.45 の損小利大を強制執行。"
+    }
+  },
+  "LE": {
+    "symbol": "LE",
+    "name": "生牛 (LE)",
+    "category": "畜産",
+    "unit": "USc/lb",
+    "rakuten_name": "生牛CFD",
+    "active_contract": "LEZ26 (12月限)",
+    "spread_monitor": {
+      "current_contract": "12月限",
+      "next_contract": "2月限",
+      "spread_dynamics": "全米牛飼育頭数の歴史的低水準とパッカーマージン。"
+    },
+    "action": "BUY_PULLBACK",
+    "action_label": "🟢 押し目買い検討ゾーン",
+    "badge_color": "#44c265",
+    "score": 3.0,
+    "spot_price": 228.35,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 98.0,
+      "managed_money_index": 24.3,
+      "commercial_net": -19565,
+      "managed_money_net": 48218,
+      "commercial_weekly_chg": 3336,
+      "managed_money_weekly_chg": -2477,
+      "bias": "EXTREME_LONG_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+      "is_positive": true,
+      "zero_gamma": 224.742,
+      "put_wall": 220.0,
+      "call_wall": 228.0,
+      "put_wall_inverted": false,
+      "effective_floor": 220.0,
+      "floor_label": "Put Wall (220.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(228.35)はPut Wall(220.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 228.35,
+      "ema20": 222.2474,
+      "ema50": 223.2841,
+      "atr14": 2.423,
+      "rsi14": 81.0
+    },
+    "signals": [
+      "【COT極限】商業筋COT指数 98.0%(極限買い) ＆ ファンド指数 24.3%(歴史的ショート積層)",
+      "【スマートマネー先回り】商業筋今週+3,336枚買い増し / ファンド売り",
+      "【季節性サイクル】秋の需要安定期。高値圏維持による商業筋の買い支え（底堅い）",
+      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put Wall (220.0)による下値支持が強固）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(228.35)はPut Wall(220.0)の上にあり、強固な機関買い支え床として機能。",
+      "【テクニカル】日足RSI(14)が 81.0 と買われすぎ域に到達"
+    ],
+    "trade_plans": {
+      "recommended_limit_plan": {
+        "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+        "direction": "買い (LONG)",
+        "entry_target": 220.363,
+        "entry_range": "220.363 付近",
+        "stop_loss": 219.515,
+        "take_profit": 228.0,
+        "risk_reward_ratio": 9.01,
+        "risk_distance": 0.848,
+        "reward_distance": 7.637,
+        "strategy_memo": "【Put Wall (220.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:9.01 の損小利大を強制執行。"
+      },
+      "market_plan": {
+        "name": "⚡ 成行・即時追随プラン",
+        "direction": "買い (LONG)",
+        "entry_target": 228.35,
+        "entry_range": "228.35 付近成行",
+        "stop_loss": 219.273,
+        "take_profit": 246.504,
+        "risk_reward_ratio": 2.0,
+        "risk_distance": 9.077,
+        "reward_distance": 18.154,
+        "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
+      }
+    },
+    "trade_plan": {
+      "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+      "direction": "買い (LONG)",
+      "entry_target": 220.363,
+      "entry_range": "220.363 付近",
+      "stop_loss": 219.515,
+      "take_profit": 228.0,
+      "risk_reward_ratio": 9.01,
+      "risk_distance": 0.848,
+      "reward_distance": 7.637,
+      "strategy_memo": "【Put Wall (220.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:9.01 の損小利大を強制執行。"
+    }
+  },
+  "DXY": {
+    "symbol": "DXY",
+    "name": "ドルインデックス (DXY)",
+    "category": "通貨・マクロ",
+    "unit": "pt",
+    "rakuten_name": "米ドル指数",
+    "active_contract": "DXZ26 (12月限)",
+    "spread_monitor": {
+      "current_contract": "12月限",
+      "next_contract": "3月限",
+      "spread_dynamics": "米FRB金融政策と日欧金利差を反映した通貨バスケット構造。"
+    },
+    "action": "NEUTRAL",
+    "action_label": "様子見 / 監視継続",
+    "badge_color": "#8e918f",
+    "score": 0,
+    "spot_price": 100.71,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 24.2,
+      "managed_money_index": 75.3,
+      "commercial_net": -14828,
+      "managed_money_net": 12919,
+      "commercial_weekly_chg": -557,
+      "managed_money_weekly_chg": 908,
+      "bias": "NEUTRAL"
+    },
+    "gex_summary": {
+      "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
+      "is_positive": true,
+      "zero_gamma": 99.401,
+      "put_wall": 98.0,
+      "call_wall": 103.0,
+      "put_wall_inverted": false,
+      "effective_floor": 98.0,
+      "floor_label": "Put Wall (98.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(100.71)はPut Wall(98.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 101.84,
+      "ema20": 101.6354,
+      "ema50": 100.8802,
+      "atr14": 0.563,
+      "rsi14": 57.8
+    },
+    "signals": [
+      "【季節性サイクル】秋の米金利見通し修正によるレンジ展開",
+      "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put Wall (98.0)による下値支持が強固）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(100.71)はPut Wall(98.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {},
+    "trade_plan": null
+  },
+  "ZN": {
+    "symbol": "ZN",
+    "name": "米10年債 (ZN)",
+    "category": "債券・金利",
+    "unit": "pt",
+    "rakuten_name": "米国10年国債",
+    "active_contract": "ZNZ26 (12月限)",
+    "spread_monitor": {
+      "current_contract": "12月限",
+      "next_contract": "3月限",
+      "spread_dynamics": "国債入札動向とインフレ期待。質への逃避（Flight to Quality）買い。"
+    },
+    "action": "STRONG_BUY_SETUP",
+    "action_label": "🔥 高確度ロング・スクイーズ警戒",
+    "badge_color": "#00e676",
+    "score": 6.0,
+    "spot_price": 105.5,
+    "cot_summary": {
+      "date": "2026-10-13",
+      "commercial_index": 92.6,
+      "managed_money_index": 18.6,
+      "commercial_net": 942566,
+      "managed_money_net": -988102,
+      "commercial_weekly_chg": 72518,
+      "managed_money_weekly_chg": -91621,
+      "bias": "EXTREME_LONG_SETUP"
+    },
+    "gex_summary": {
+      "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+      "is_positive": false,
+      "zero_gamma": 105.564,
+      "put_wall": 105.0,
+      "call_wall": 106.0,
+      "put_wall_inverted": false,
+      "effective_floor": 105.0,
+      "floor_label": "Put Wall (105.0)",
+      "put_wall_status_desc": "🛡️ Put Wall支持中: 現在値(105.5)はPut Wall(105.0)の上にあり、強固な機関買い支え床として機能。"
+    },
+    "technicals": {
+      "close": 105.4531,
+      "ema20": 105.1604,
+      "ema50": 106.2745,
+      "atr14": 0.673,
+      "rsi14": 66.7
+    },
+    "signals": [
+      "【COT極限】商業筋COT指数 92.6%(極限買い) ＆ ファンド指数 18.6%(歴史的ショート積層)",
+      "【スマートマネー先回り】商業筋今週+72,518枚買い増し / ファンド売り",
+      "【季節性サイクル】市場波乱時の最強の安全資産逃避先（利回り低下＝債券価格急反発）",
+      "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
+      "【GEX防衛構造】🛡️ Put Wall支持中: 現在値(105.5)はPut Wall(105.0)の上にあり、強固な機関買い支え床として機能。"
+    ],
+    "trade_plans": {
+      "recommended_limit_plan": {
+        "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+        "direction": "買い (LONG)",
+        "entry_target": 105.101,
+        "entry_range": "105.101 付近",
+        "stop_loss": 104.865,
+        "take_profit": 106.0,
+        "risk_reward_ratio": 3.81,
+        "risk_distance": 0.236,
+        "reward_distance": 0.899,
+        "strategy_memo": "【Put Wall (105.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:3.81 の損小利大を強制執行。"
+      },
+      "market_plan": {
+        "name": "⚡ 成行・即時追随プラン",
+        "direction": "買い (LONG)",
+        "entry_target": 105.453,
+        "entry_range": "105.453 付近成行",
+        "stop_loss": 104.798,
+        "take_profit": 106.0,
+        "risk_reward_ratio": 0.84,
+        "risk_distance": 0.655,
+        "reward_distance": 0.547,
+        "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
+      }
+    },
+    "trade_plan": {
+      "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+      "direction": "買い (LONG)",
+      "entry_target": 105.101,
+      "entry_range": "105.101 付近",
+      "stop_loss": 104.865,
+      "take_profit": 106.0,
+      "risk_reward_ratio": 3.81,
+      "risk_distance": 0.236,
+      "reward_distance": 0.899,
+      "strategy_memo": "【Put Wall (105.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:3.81 の損小利大を強制執行。"
+    }
   }
 }

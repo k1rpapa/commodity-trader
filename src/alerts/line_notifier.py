@@ -1,5 +1,5 @@
 """
-LINE Notifier (Institutional Upgrade)
+LINE Notifier (19 Assets Institutional Grade)
 Sends structured, actionable trading signals and COT/GEX confluence alerts to LINE Messaging API.
 Emphasizes the Recommended Pullback Limit Plan (high RR) and Put Wall inversion alerts.
 """
@@ -26,15 +26,27 @@ def format_line_message(signals_data: dict) -> str:
         else:
             monitored.append(d)
 
+    # Sort active plans by score descending, then by RR ratio descending
+    active_plans.sort(
+        key=lambda x: (
+            x.get("score", 0),
+            x.get("trade_plans", {}).get("recommended_limit_plan", {}).get("risk_reward_ratio", 0)
+        ),
+        reverse=True
+    )
+
     lines = []
     lines.append("🔔【クオンツ・コモディティ戦略: トレード指示】")
+    lines.append(f"（対象: 全19銘柄監視 | エントリー条件合致: {len(active_plans)}銘柄）")
     lines.append("━━━━━━━━━━━━━━━━━━━━")
 
     if not active_plans:
         lines.append("本日は新規エントリー条件を満たす銘柄はありません。")
         lines.append("全銘柄ともに監視・引き付けフェーズです。")
     else:
-        for p in active_plans:
+        # Show top high-conviction plans in detail
+        top_plans = active_plans[:5]
+        for p in top_plans:
             tp_rec = p["trade_plans"]["recommended_limit_plan"]
             cot = p["cot_summary"]
             gex = p["gex_summary"]
@@ -49,17 +61,29 @@ def format_line_message(signals_data: dict) -> str:
             lines.append(f"・リスクリワード: 1 : {tp_rec['risk_reward_ratio']} (神RR仕様)")
             if gex.get("put_wall_inverted"):
                 lines.append(f"・⚠️ 注意: Put Wall割れ中。実質防衛床は{gex.get('floor_label')}")
-            lines.append(f"・【根拠】COT商業筋: {cot['commercial_index']}% / ファンド: {cot['managed_money_index']}%")
+            lines.append(f"・【根拠】商業筋COT: {cot['commercial_index']}% / ファンド: {cot['managed_money_index']}%")
+            lines.append("────────────────────")
+
+        if len(active_plans) > 5:
+            remaining_actives = active_plans[5:]
+            lines.append("【その他 注文合致銘柄】")
+            for r in remaining_actives:
+                rec = r['trade_plans']['recommended_limit_plan']
+                lines.append(f"・{r['name']}: {r['action_label']} | 指値: {rec['entry_range']} (RR 1:{rec['risk_reward_ratio']})")
             lines.append("────────────────────")
 
     if monitored:
-        lines.append("【監視継続】")
+        lines.append("【レンジ中央 / 監視継続】")
+        sector_groups = {}
         for m in monitored:
-            contract = m.get("active_contract", "")
-            lines.append(f"・{m['name']} [{contract}]: {m['action_label']} (Spot: {m['spot_price']})")
+            cat = m.get("category", "その他")
+            sector_groups.setdefault(cat, []).append(m.get("symbol", m.get("name", "")))
+        
+        for cat, syms in sector_groups.items():
+            lines.append(f"・{cat}: {', '.join(syms)}")
         lines.append("━━━━━━━━━━━━━━━━━━━━")
 
-    lines.append(f"📊 詳細チャート・COT＆GEXダッシュボード:")
+    lines.append("📊 詳細チャート・全19銘柄COT＆GEXダッシュボード:")
     lines.append(DASHBOARD_URL)
     lines.append("※成行ではなく「引きつけ指値」で注文を装填してください。")
 

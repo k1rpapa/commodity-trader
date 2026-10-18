@@ -1,6 +1,6 @@
 """
-Price & Technical Indicator Fetcher
-Downloads daily price history from Yahoo Finance for Silver, Natural Gas, Corn, and Lean Hogs.
+Price & Technical Indicator Fetcher (19 Assets)
+Downloads daily price history from Yahoo Finance for all 19 assets (commodities & macro).
 Calculates 20/50 EMA, ATR(14), RSI(14), 20-day Donchian High/Low, and 5-Year Seasonal Average.
 """
 
@@ -12,17 +12,46 @@ import yfinance as yf
 from datetime import datetime
 
 COMMODITY_TICKERS = {
+    # 株式指数
+    "ES": "ES=F",
+    "NQ": "NQ=F",
+    
+    # 貴金属
+    "GC": "GC=F",
     "SI": "SI=F",
+    "PL": "PL=F",
+    
+    # エネルギー
+    "CL": "CL=F",
     "NG": "NG=F",
+    
+    # 工業用金属
+    "HG": "HG=F",
+    
+    # 穀物・農産物
+    "ZS": "ZS=F",
     "ZC": "ZC=F",
-    "HE": "HE=F"
+    "ZW": "ZW=F",
+    
+    # ソフトコモディティ
+    "SB": "SB=F",
+    "CT": "CT=F",
+    "CC": "CC=F",
+    "KC": "KC=F",
+    
+    # 畜産
+    "HE": "HE=F",
+    "LE": "LE=F",
+    
+    # 通貨・マクロ・債券
+    "DXY": "DX-Y.NYB",
+    "ZN": "ZN=F"
 }
 
 PRICE_CACHE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "price_history.json")
 
 
 def calculate_atr(df: pd.DataFrame, period: int = 14) -> pd.Series:
-    """Calculate Average True Range (ATR)."""
     high = df["High"]
     low = df["Low"]
     close = df["Close"]
@@ -36,7 +65,6 @@ def calculate_atr(df: pd.DataFrame, period: int = 14) -> pd.Series:
 
 
 def calculate_rsi(df: pd.DataFrame, period: int = 14) -> pd.Series:
-    """Calculate Relative Strength Index (RSI)."""
     delta = df["Close"].diff()
     gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
     loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
@@ -45,27 +73,22 @@ def calculate_rsi(df: pd.DataFrame, period: int = 14) -> pd.Series:
 
 
 def fetch_and_calculate_prices():
-    """Fetch 3-year price history and compute technical & seasonal indicators."""
     results = {}
-    print("[Info] Fetching price history from Yahoo Finance...")
+    print(f"[Info] Fetching 3-year price history for {len(COMMODITY_TICKERS)} assets from Yahoo Finance...")
 
     for sym, ticker in COMMODITY_TICKERS.items():
         try:
-            print(f"  Downloading {sym} ({ticker})...")
-            # Fetch 3 years of daily data
             df = yf.download(ticker, period="3y", interval="1d", progress=False)
             if df.empty:
                 print(f"[Warning] No data received for {ticker}")
                 continue
 
-            # Flatten MultiIndex columns if present
             if isinstance(df.columns, pd.MultiIndex):
                 df.columns = [col[0] for col in df.columns]
 
             df = df.dropna(subset=["Close"]).copy()
             df["Date"] = df.index.strftime("%Y-%m-%d")
 
-            # Technical Indicators
             df["EMA20"] = df["Close"].ewm(span=20, adjust=False).mean()
             df["EMA50"] = df["Close"].ewm(span=50, adjust=False).mean()
             df["ATR14"] = calculate_atr(df, period=14)
@@ -73,7 +96,6 @@ def fetch_and_calculate_prices():
             df["Donchian_High20"] = df["High"].rolling(window=20).max()
             df["Donchian_Low20"] = df["Low"].rolling(window=20).min()
 
-            # Seasonal Profile (day of year average pattern over 3 years)
             df["DayOfYear"] = df.index.dayofyear
             seasonal_map = df.groupby("DayOfYear")["Close"].mean().to_dict()
 
@@ -106,12 +128,11 @@ def fetch_and_calculate_prices():
                 "latest": records[-1] if records else None,
                 "history": records
             }
-            print(f"[Success] Processed {len(records)} bars for {sym}. Latest Close: {records[-1]['close']}")
+            print(f"  [OK] {sym:4s} ({ticker}): {len(records)} bars. Latest Close: {records[-1]['close']}")
 
         except Exception as e:
-            print(f"[Error] Failed to process prices for {sym}: {e}")
+            print(f"  [Error] {sym}: {e}")
 
-    # Cache
     os.makedirs(os.path.dirname(PRICE_CACHE_PATH), exist_ok=True)
     with open(PRICE_CACHE_PATH, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
@@ -120,7 +141,4 @@ def fetch_and_calculate_prices():
 
 
 if __name__ == "__main__":
-    res = fetch_and_calculate_prices()
-    for sym, d in res.items():
-        if d["latest"]:
-            print(f"{sym}: Close={d['latest']['close']}, EMA20={d['latest']['ema20']}, ATR14={d['latest']['atr14']}, RSI={d['latest']['rsi14']}")
+    fetch_and_calculate_prices()

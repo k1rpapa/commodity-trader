@@ -1,13 +1,8 @@
 """
-Signal Engine (Advanced Institutional Grade)
-Combines:
-1. COT Extremes & 3-Day Lag Mid-Week Volume/Price Action Heuristics
-2. 5-Year Seasonal Bias & Larry Williams Commodity Cycles
-3. Options GEX Walls, Zero-Gamma, and Dynamic Put Wall Inversion Detection
-4. Dual Trade Plans:
-   - Plan A: 【推奨】引きつけ指値プラン (High Risk/Reward RR 1:3 ~ 1:6+)
-   - Plan B: 成行・ブレイクアウトプラン (Immediate Momentum)
-5. Contract Month & Calendar Spread Monitor
+Signal Engine (19 Assets Institutional Grade)
+Evaluates COT Extremes, 5-Year Seasonal Bias, Options GEX Walls, and ATR Risk Management
+for all 19 assets (Commodities, Equities, Macro).
+Generates Dual Trade Plans (Recommended Pullback Limit vs Market).
 """
 
 import os
@@ -20,75 +15,135 @@ GEX_PATH = os.path.join(DATA_DIR, "gex_latest.json")
 PRICE_PATH = os.path.join(DATA_DIR, "price_history.json")
 SIGNALS_OUTPUT_PATH = os.path.join(DATA_DIR, "signals_latest.json")
 
-# Commodity Metadata, Active Contracts, Seasonal Cycles, and Calendar Spread Dynamics
-COMMODITY_PROFILES = {
-    "HE": {
-        "name": "Lean Hogs (豚肉先物 / CME)",
-        "unit": "USセント / lb",
-        "rakuten_name": "豚肉先物CFD",
-        "active_contract": "HEZ26 (2026年12月限)",
-        "spread_monitor": {
-            "current_contract": "12月限 (HEZ26)",
-            "next_contract": "2月限 (HEG27)",
-            "spread_dynamics": "秋の過剰出荷ピーク（12月限ディスカウント）から、年明け〜春先（2月限・4月限）の需要回復に向けたスプレッド拡大アノマリー。期近ロングのロールオーバー優位。"
-        },
-        "pullback_target": {"price": 66.30, "sl": 65.70, "tp": 70.00, "range": "66.20〜66.40"},
-        "seasonal_bias": {
-            "10": "秋の出荷ピークが一巡し、全米スーパーでの特売拡大と年末ハム実需による年中最深大底（ラリー原本p.90: 年末〜春へ向けた+72%上昇波レール合致）",
-            "11": "年末実需買いによる底堅い上昇期（強気）",
-            "12": "実需納品ピーク（中立）"
-        }
+ASSET_PROFILES = {
+    # --- 株式指数 ---
+    "ES": {
+        "name": "S&P 500 (ES)", "category": "株式指数", "unit": "pt", "rakuten_name": "米国S&P500 CFD",
+        "active_contract": "ESZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "翌年3月限", "spread_dynamics": "配当落ちと短期金利を織り込んだ順ざや（コンタンゴ）構造。"},
+        "seasonal_bias": {"10": "10月後半は歴史的年末ラリー（Year-End Rally）の起点となる季節的底入れ期", "11": "年間最高勝率の強気トレンド期", "12": "サンタクロース・ラリー"}
     },
-    "NG": {
-        "name": "Natural Gas (天然ガス先物 / NYMEX)",
-        "unit": "USD / MMBtu",
-        "rakuten_name": "天然ガスCFD",
-        "active_contract": "NGX26/NGZ26 (2026年11/12月限)",
-        "spread_monitor": {
-            "current_contract": "11月限 (NGX26)",
-            "next_contract": "12月限 (NGZ26)",
-            "spread_dynamics": "秋の端境期から厳冬期（12月・1月限）に向けた冬期暖房プレミアム拡大期。在庫引き出し期への転換による期先主導の跳ね上がりに注目。"
-        },
-        "pullback_target": {"price": 3.04, "sl": 2.94, "tp": 3.40, "range": "3.02〜3.05"},
-        "seasonal_bias": {
-            "10": "秋の在庫注入完了期。暖冬予報で一時軟調も、初冬の寒波プレミアムとエルニーニョ蛇行で年内最大の踏み上げ波へ（ラリー原本p.86: +63%〜+72%上昇波）",
-            "11": "暖房需要期（引き出し期）突入。寒波到来による年内最大の急騰アノマリー（超強気）",
-            "12": "厳冬期需要ピーク（高ボラティリティ強気）"
-        }
+    "NQ": {
+        "name": "NASDAQ 100 (NQ)", "category": "株式指数", "unit": "pt", "rakuten_name": "米国NASDAQ100 CFD",
+        "active_contract": "NQZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "翌年3月限", "spread_dynamics": "大型ハイテク企業の決算期を跨ぐボラティリティプレミアム。"},
+        "seasonal_bias": {"10": "秋の調整一巡後の年末モメンタム加速期", "11": "感謝祭・ブラックフライデー売上期待の強気波", "12": "年末ラリー"}
+    },
+    
+    # --- 貴金属 ---
+    "GC": {
+        "name": "ゴールド (GC)", "category": "貴金属", "unit": "USD/oz", "rakuten_name": "金（ゴールド）CFD",
+        "active_contract": "GCZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "2月限", "spread_dynamics": "実質金利低下と各国中銀の現物買いによる低コスト保有構造。"},
+        "seasonal_bias": {"10": "秋の保ち合いから年末〜1月のアノマリー（インド婚礼・中国春節需要）へ", "11": "現物需要立ち上がり（強気）", "12": "年間高値トライ"}
     },
     "SI": {
-        "name": "Silver (銀先物 / CME)",
-        "unit": "USD / oz",
-        "rakuten_name": "シルバーCFD",
-        "active_contract": "SIZ26 (2026年12月限)",
-        "spread_monitor": {
-            "current_contract": "12月限 (SIZ26)",
-            "next_contract": "3月限 (SIH27)",
-            "spread_dynamics": "米金利低下（キャリーコスト激減）とインフレヘッジ実弾買い。年末の受渡・現物需要に向けた安定的コンタンゴ構造。"
-        },
-        "pullback_target": {"price": 56.00, "sl": 54.50, "tp": 60.00, "range": "55.80〜56.20"},
-        "seasonal_bias": {
-            "10": "流動性ショックの換金売り一巡。10月中旬に年中最深の最終ボトムをつけ年末年始ラリーへ発進（ラリー原本p.78: +59%上昇波ターゲット65ドル）",
-            "11": "年末買い需要の初動期（強気）",
-            "12": "年間高値トライ・季節的強気アノマリー（強気）"
-        }
+        "name": "シルバー (SI)", "category": "貴金属", "unit": "USD/oz", "rakuten_name": "銀（シルバー）CFD",
+        "active_contract": "SIZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "3月限", "spread_dynamics": "米金利低下とインフレヘッジ実需。受渡期に向けた安定コンタンゴ。"},
+        "seasonal_bias": {"10": "10月中旬に最終ボトムをつけ年末年始+59%上昇波（ラリー原本p.78）", "11": "年末買い需要の初動期（強気）", "12": "年間高値トライ"}
+    },
+    "PL": {
+        "name": "プラチナ (PL)", "category": "貴金属", "unit": "USD/oz", "rakuten_name": "プラチナCFD",
+        "active_contract": "PLF27 (1月限)",
+        "spread_monitor": {"current_contract": "1月限", "next_contract": "4月限", "spread_dynamics": "自動車触媒・水素産業需要。ゴールドに対する割安是正スプレッド。"},
+        "seasonal_bias": {"10": "秋の底固め期", "11": "産業用需要の引き取り期（やや強気）", "12": "年明けラリー準備期"}
+    },
+
+    # --- エネルギー ---
+    "CL": {
+        "name": "原油 WTI (CL)", "category": "エネルギー", "unit": "USD/bbl", "rakuten_name": "WTI原油CFD",
+        "active_contract": "CLX26 (11月限)",
+        "spread_monitor": {"current_contract": "11月限", "next_contract": "12月限", "spread_dynamics": "地政学プレミアムとOPEC+減産政策。期近プレミアム（バックワーデーション）監視。"},
+        "seasonal_bias": {"10": "秋の製油所定期修理（メンテナンス）による需要減退から冬期暖房油需要への転換", "11": "冬期暖房需要プレミアム", "12": "年末ポジション調整"}
+    },
+    "NG": {
+        "name": "天然ガス (NG)", "category": "エネルギー", "unit": "USD/MMBtu", "rakuten_name": "天然ガスCFD",
+        "active_contract": "NGX26/NGZ26 (11/12月限)",
+        "spread_monitor": {"current_contract": "11月限", "next_contract": "12月限", "spread_dynamics": "在庫注入期から引き出し期への冬期暖房プレミアム拡大。"},
+        "seasonal_bias": {"10": "初冬の寒波プレミアムとエルニーニョ蛇行による年内最大の踏み上げ波（ラリー原本p.86）", "11": "暖房需要期（超強気）", "12": "厳冬期需要ピーク"}
+    },
+
+    # --- 工業用金属 ---
+    "HG": {
+        "name": "銅 (HG)", "category": "工業用金属", "unit": "USD/lb", "rakuten_name": "銅CFD",
+        "active_contract": "HGZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "3月限", "spread_dynamics": "世界電化・AIデータセンター送電網需要。LME・COMEX在庫逼迫度。"},
+        "seasonal_bias": {"10": "世界景況感と中国政策期待の綱引き（レンジ）", "11": "年末実需引き取り（やや強気）", "12": "新年度設備投資アノマリー"}
+    },
+
+    # --- 穀物・農産物 ---
+    "ZS": {
+        "name": "大豆 (ZS)", "category": "穀物・農産物", "unit": "USc/bu", "rakuten_name": "大豆CFD",
+        "active_contract": "ZSX26 (11月限)",
+        "spread_monitor": {"current_contract": "11月限", "next_contract": "1月限", "spread_dynamics": "全米収穫進行（期近売り圧力）と南米（ブラジル）作付け天候相場。"},
+        "seasonal_bias": {"10": "収穫圧力ピークによる年間最安値形成期", "11": "収穫完了による自律反発ゾーン", "12": "南米天候相場"}
     },
     "ZC": {
-        "name": "Corn (トウモロコシ先物 / CBOT)",
-        "unit": "USセント / bu",
-        "rakuten_name": "コーンCFD",
-        "active_contract": "ZCZ26 (2026年12月限)",
-        "spread_monitor": {
-            "current_contract": "12月限 (ZCZ26)",
-            "next_contract": "3月限 (ZCH27)",
-            "spread_dynamics": "全米収穫圧力（新穀現物売り）に伴う期近ディスカウント。ファンドのロング整理完了を待つ期先保ち合い局面。"
-        },
-        "pullback_target": {"price": 470.0, "sl": 462.0, "tp": 490.0, "range": "468〜472"},
-        "seasonal_bias": {
-            "10": "全米収穫圧力（Harvest Pressure）の最終局面。農家のヘッジ売り残存のため、200日線岩盤での底固めを確認するまで慎重な見極めが必須",
-            "11": "収穫完了による売り圧力の一巡・自律反発ゾーン（中立〜強気反発）",
-            "12": "冬期の南米天候相場（レンジ〜やや強気）"
-        }
+        "name": "トウモロコシ (ZC)", "category": "穀物・農産物", "unit": "USc/bu", "rakuten_name": "コーンCFD",
+        "active_contract": "ZCZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "3月限", "spread_dynamics": "新穀収穫加速に伴う現物売り圧力。200日線岩盤での底固め。"},
+        "seasonal_bias": {"10": "全米収穫圧力（Harvest Pressure）の最終局面。農家のヘッジ売り一巡待ち", "11": "自律反発期", "12": "レンジ保ち合い"}
+    },
+    "ZW": {
+        "name": "小麦 (ZW)", "category": "穀物・農産物", "unit": "USc/bu", "rakuten_name": "小麦CFD",
+        "active_contract": "ZWZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "3月限", "spread_dynamics": "黒海・豪州生産動向と北半球冬小麦の作付け天候。"},
+        "seasonal_bias": {"10": "冬小麦作付け進捗と秋の安値圏（底堅い）", "11": "天候プレミアム（やや強気）", "12": "越冬期保ち合い"}
+    },
+
+    # --- ソフトコモディティ ---
+    "SB": {
+        "name": "砂糖 (SB)", "category": "ソフトコモディティ", "unit": "USc/lb", "rakuten_name": "砂糖CFD",
+        "active_contract": "SBH27 (3月限)",
+        "spread_monitor": {"current_contract": "3月限", "next_contract": "5月限", "spread_dynamics": "ブラジル・インドのサトウキビ圧搾期終了に伴う端境期供給。"},
+        "seasonal_bias": {"10": "ブラジル製糖終盤による秋の保ち合い", "11": "インド減産懸念・エタノール需要（やや強気）", "12": "供給逼迫期"}
+    },
+    "CT": {
+        "name": "コットン (CT)", "category": "ソフトコモディティ", "unit": "USc/lb", "rakuten_name": "綿花CFD",
+        "active_contract": "CTZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "3月限", "spread_dynamics": "米南部・テキサス収穫進捗と世界アパレル需要。"},
+        "seasonal_bias": {"10": "収穫期による上値の重い保ち合い", "11": "収穫完了による下げ止まり", "12": "年末需要回復"}
+    },
+    "CC": {
+        "name": "ココア (CC)", "category": "ソフトコモディティ", "unit": "USD/MT", "rakuten_name": "ココアCFD",
+        "active_contract": "CCZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "3月限", "spread_dynamics": "西アフリカ（コートジボワール・ガーナ）のメインクロップ収穫状況。"},
+        "seasonal_bias": {"10": "秋のメインクロップ初動。歴史的減産懸念からの底値買い需要（強気）", "11": "収穫ピーク判明期", "12": "クリスマス菓子需要"}
+    },
+    "KC": {
+        "name": "コーヒー (KC)", "category": "ソフトコモディティ", "unit": "USc/lb", "rakuten_name": "コーヒーCFD",
+        "active_contract": "KCZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "3月限", "spread_dynamics": "ブラジルの開花期降雨量と認証在庫の低水準維持。"},
+        "seasonal_bias": {"10": "開花期天候不順リスクを織り込む反発期（強気）", "11": "結実期天候チェック", "12": "欧米冬期消費ピーク"}
+    },
+
+    # --- 畜産 ---
+    "HE": {
+        "name": "豚肉 (HE)", "category": "畜産", "unit": "USc/lb", "rakuten_name": "豚肉先物CFD",
+        "active_contract": "HEZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "2月限", "spread_dynamics": "秋の出荷ピークから年末ハム・春先需要回復へのスプレッド拡大アノマリー。"},
+        "seasonal_bias": {"10": "全米スーパー特売拡大と年末ハム実需による年中最深大底（ラリー原本p.90: +72%上昇波）", "11": "年末実需買い（強気）", "12": "実需納品ピーク"}
+    },
+    "LE": {
+        "name": "生牛 (LE)", "category": "畜産", "unit": "USc/lb", "rakuten_name": "生牛CFD",
+        "active_contract": "LEZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "2月限", "spread_dynamics": "全米牛飼育頭数の歴史的低水準とパッカーマージン。"},
+        "seasonal_bias": {"10": "秋の需要安定期。高値圏維持による商業筋の買い支え（底堅い）", "11": "感謝祭・冬期ステーキ需要", "12": "年末高アノマリー"}
+    },
+
+    # --- 通貨・マクロ・債券 ---
+    "DXY": {
+        "name": "ドルインデックス (DXY)", "category": "通貨・マクロ", "unit": "pt", "rakuten_name": "米ドル指数",
+        "active_contract": "DXZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "3月限", "spread_dynamics": "米FRB金融政策と日欧金利差を反映した通貨バスケット構造。"},
+        "seasonal_bias": {"10": "秋の米金利見通し修正によるレンジ展開", "11": "年末リパトリエーション（ややドル買い）", "12": "年末ドル需要一巡"}
+    },
+    "ZN": {
+        "name": "米10年債 (ZN)", "category": "債券・金利", "unit": "pt", "rakuten_name": "米国10年国債",
+        "active_contract": "ZNZ26 (12月限)",
+        "spread_monitor": {"current_contract": "12月限", "next_contract": "3月限", "spread_dynamics": "国債入札動向とインフレ期待。質への逃避（Flight to Quality）買い。"},
+        "seasonal_bias": {"10": "市場波乱時の最強の安全資産逃避先（利回り低下＝債券価格急反発）", "11": "利下げ織り込み進行", "12": "年末ポートフォリオ調整"}
     }
 }
 
@@ -108,7 +163,7 @@ def load_datasets():
 
 
 def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -> dict:
-    profile = COMMODITY_PROFILES[sym]
+    profile = ASSET_PROFILES[sym]
     curr_month = str(datetime.now().month)
     seasonal_desc = profile["seasonal_bias"].get(curr_month, "中立的な季節サイクル")
 
@@ -137,69 +192,48 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
     atr14 = latest_price.get("atr14") or (close * 0.02)
     rsi14 = latest_price.get("rsi14", 50.0)
 
-    # Price History & Mid-Week Volume Heuristics (Tuesday -> Friday 3-Day Lag check)
-    p_hist = price_info.get("history", []) if price_info else []
-    cot_lag_note = "通常推移"
-    if len(p_hist) >= 4:
-        # Check price movement over last 3-4 days
-        last_close = p_hist[-1]["close"]
-        prev_3_close = p_hist[-4]["close"]
-        vol_avg = sum(p["volume"] for p in p_hist[-5:]) / 5.0 if p_hist[-1].get("volume") else 0
-        latest_vol = p_hist[-1].get("volume", 0)
-
-        if sym == "HE":
-            cot_lag_note = "火曜COT集計後の水〜金でファンドの売り叩きが過熱したものの、出来高急増とともに下ヒゲを形成。ファンドの投げ売りクライマックス（ストップ狩り完了・売り燃料枯渇）の兆候濃厚。"
-        elif sym == "SI":
-            cot_lag_note = "週末にかけて暗号資産・テック株急落に伴う換金売りで一時軟調も、米10年債利回りの急低下（5.06%へ）を受け金利ヘッジ実弾買いが流入中。"
-        elif sym == "NG":
-            cot_lag_note = "週末の北米フリーズウォッチ（寒波警報）とEIA在庫の鈍化を反映し、3.0ドルPut Wall近傍で実需の強力な買い支えを確認。"
-        elif sym == "ZC":
-            cot_lag_note = "USDAの需給上方修正と天候好転による収穫加速で上値重く、ファンドのロング投げが週後半も継続中。"
-
-    # --- 2. PUT WALL INVERSION & DYNAMIC DEFENSE FLOOR DETECTION ---
+    # Put Wall Inversion Check
     put_wall_inverted = False
     effective_floor = put_wall
     floor_label = f"Put Wall ({put_wall})"
 
     if put_wall and spot < put_wall:
         put_wall_inverted = True
-        # If spot is below Put Wall, Put Wall becomes temporary resistance!
-        # The true defense floor shifts to Zero-Gamma or next lower level
         effective_floor = zg if (zg and zg < spot) else round(put_wall - 1.5 * atr14, 3)
         floor_label = f"Zero-Gamma ({zg})" if (zg and zg < spot) else f"第2防衛床 ({effective_floor})"
         put_wall_status_desc = f"⚠️ Put Wall割れ（一時的レジスタンス化）: 現在値({spot})はPW({put_wall})の下方にあり、{put_wall}は戻りを叩く上値抵抗として意識。実質防衛床は【{floor_label}】に移行。"
     else:
         put_wall_status_desc = f"🛡️ Put Wall支持中: 現在値({spot})はPut Wall({put_wall})の上にあり、強固な機関買い支え床として機能。"
 
-    # --- SCORING & SETUP DETECTION ---
+    # Scoring
     score = 0
     signals = []
 
     # 1. COT Evaluation
     cot_bias = "NEUTRAL"
     if c_idx >= 80 and m_idx <= 25:
-        score += 3
+        score += 3.5
         cot_bias = "EXTREME_LONG_SETUP"
         signals.append(f"【COT極限】商業筋COT指数 {c_idx}%(極限買い) ＆ ファンド指数 {m_idx}%(歴史的ショート積層)")
-    elif c_idx >= 70:
-        score += 1.5
+    elif c_idx >= 75:
+        score += 2.0
         cot_bias = "LONG_BIAS"
         signals.append(f"【COT追い風】商業筋COT指数 {c_idx}% 買い越し基調")
     elif c_idx <= 20 and m_idx >= 75:
-        score -= 3
+        score -= 3.0
         cot_bias = "EXTREME_SHORT_SETUP"
         signals.append(f"【COT過熱売り】商業筋COT指数 {c_idx}% ＆ ファンドロング過多 {m_idx}%")
 
     if c_chg > 0 and m_chg < 0:
-        score += 1
+        score += 1.0
         signals.append(f"【スマートマネー先回り】商業筋今週+{c_chg:,}枚買い増し / ファンド売り")
 
     # 2. Seasonality Evaluation
     signals.append(f"【季節性サイクル】{seasonal_desc}")
-    if any(k in seasonal_desc for k in ["強気", "底入れ", "反発", "最深"]):
+    if any(k in seasonal_desc for k in ["強気", "底入れ", "反発", "最深", "上昇波"]):
         score += 1.5
 
-    # 3. GEX Evaluation & Floor Inversion Alert
+    # 3. GEX Evaluation
     if is_pos_gamma:
         signals.append(f"【GEXレジーム】Positive Gamma（ボラティリティ安定、{floor_label}による下値支持が強固）")
     else:
@@ -207,7 +241,7 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
 
     signals.append(f"【GEX防衛構造】{put_wall_status_desc}")
 
-    # 4. Technical / RSI Oversold
+    # 4. Technical / RSI
     if rsi14 and rsi14 <= 30:
         score += 1.5
         signals.append(f"【テクニカル】日足RSI(14)が {rsi14} と売られすぎ極限域に到達")
@@ -215,7 +249,7 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
         score -= 1.5
         signals.append(f"【テクニカル】日足RSI(14)が {rsi14} と買われすぎ域に到達")
 
-    # --- ACTION CLASSIFICATION ---
+    # Classification
     action = "NEUTRAL"
     action_label = "様子見 / 監視継続"
     badge_color = "#8e918f"
@@ -233,40 +267,41 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
         action_label = "🔴 戻り売り警戒ゾーン"
         badge_color = "#ff5252"
 
-    # --- DUAL TRADE PLANS: PLAN A (PULLBACK LIMIT) & PLAN B (MARKET) ---
+    # Dual Trade Plans
     trade_plans = {}
     if action in ["STRONG_BUY_SETUP", "BUY_PULLBACK"]:
-        # Target specs from profile
-        pb = profile.get("pullback_target", {})
-        limit_entry = pb.get("price", round(effective_floor + 0.1 * atr14, 3))
-        limit_sl = pb.get("sl", round(effective_floor - 0.2 * atr14, 3))
-        limit_tp = pb.get("tp", call_wall or round(limit_entry + 2.0 * atr14, 3))
-        limit_range = pb.get("range", f"{limit_entry}")
+        # Pullback Limit Plan
+        if effective_floor and effective_floor < spot:
+            limit_entry = round(effective_floor + 0.15 * atr14, 3)
+            limit_sl = round(effective_floor - 0.2 * atr14, 3)
+        else:
+            limit_entry = round(spot - 0.5 * atr14, 3)
+            limit_sl = round(spot - 1.8 * atr14, 3)
 
+        limit_tp = round(call_wall if (call_wall and call_wall > limit_entry) else limit_entry + 2.5 * atr14, 3)
         limit_risk = max(0.001, limit_entry - limit_sl)
-        limit_reward = limit_tp - limit_entry
+        limit_reward = max(0.001, limit_tp - limit_entry)
         limit_rr = round(limit_reward / limit_risk, 2)
 
-        # Plan A: Recommended Pullback Limit Plan
         trade_plans["recommended_limit_plan"] = {
             "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
             "direction": "買い (LONG)",
             "entry_target": limit_entry,
-            "entry_range": limit_range,
+            "entry_range": f"{limit_entry} 付近",
             "stop_loss": limit_sl,
             "take_profit": limit_tp,
             "risk_reward_ratio": limit_rr,
             "risk_distance": round(limit_risk, 3),
             "reward_distance": round(limit_reward, 3),
-            "strategy_memo": f"【{floor_label}】への押し目をミリ単位で引きつける指値注文。SLを直下にタイト配置することでリスク幅を極小化し、圧倒的な損小利大（RR 1:{limit_rr}）を実現。"
+            "strategy_memo": f"【{floor_label}】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:{limit_rr} の損小利大を強制執行。"
         }
 
-        # Plan B: Market / Breakout Plan
+        # Market Plan
         mkt_entry = round(close, 3)
-        mkt_sl = round(effective_floor - 0.3 * atr14 if effective_floor else mkt_entry - 2.0 * atr14, 3)
-        mkt_tp = round(call_wall if call_wall else mkt_entry + 2.0 * (mkt_entry - mkt_sl), 3)
+        mkt_sl = round(effective_floor - 0.3 * atr14 if (effective_floor and effective_floor < mkt_entry) else mkt_entry - 2.0 * atr14, 3)
+        mkt_tp = round(call_wall if (call_wall and call_wall > mkt_entry) else mkt_entry + 2.0 * (mkt_entry - mkt_sl), 3)
         mkt_risk = max(0.001, mkt_entry - mkt_sl)
-        mkt_reward = mkt_tp - mkt_entry
+        mkt_reward = max(0.001, mkt_tp - mkt_entry)
         mkt_rr = round(mkt_reward / mkt_risk, 2)
 
         trade_plans["market_plan"] = {
@@ -279,12 +314,13 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
             "risk_reward_ratio": mkt_rr,
             "risk_distance": round(mkt_risk, 3),
             "reward_distance": round(mkt_reward, 3),
-            "strategy_memo": "急反発に乗り遅れないための成行エントリー。ただしSL幅が広がるためロット数を半分以下に落とすことが必須。"
+            "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
         }
 
     return {
         "symbol": sym,
         "name": profile["name"],
+        "category": profile.get("category", "コモディティ"),
         "unit": profile["unit"],
         "rakuten_name": profile["rakuten_name"],
         "active_contract": profile.get("active_contract", ""),
@@ -302,8 +338,7 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
             "managed_money_net": m_net,
             "commercial_weekly_chg": c_chg,
             "managed_money_weekly_chg": m_chg,
-            "bias": cot_bias,
-            "cot_lag_note": cot_lag_note
+            "bias": cot_bias
         },
         "gex_summary": {
             "regime": regime,
@@ -325,7 +360,6 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
         },
         "signals": signals,
         "trade_plans": trade_plans,
-        # Keep trade_plan for backwards compatibility
         "trade_plan": trade_plans.get("recommended_limit_plan")
     }
 
@@ -334,7 +368,7 @@ def generate_all_signals():
     cot_data, gex_data, price_data = load_datasets()
     results = {}
 
-    for sym in COMMODITY_PROFILES:
+    for sym in ASSET_PROFILES:
         cot_rows = cot_data.get(sym, [])
         gex_info = gex_data.get(sym, {})
         price_info = price_data.get(sym, {})
@@ -345,16 +379,9 @@ def generate_all_signals():
     with open(SIGNALS_OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
 
-    print(f"[Success] Generated updated advanced signals for {len(results)} commodities.")
+    print(f"[Success] Generated signals for all {len(results)} assets.")
     return results
 
 
 if __name__ == "__main__":
-    sigs = generate_all_signals()
-    for sym, res in sigs.items():
-        print(f"\n=== {sym}: {res['name']} ({res['active_contract']}) ===")
-        print(f"Status: {res['action_label']} (Score: {res['score']})")
-        print(f"Floor status: {res['gex_summary']['floor_label']} | Inverted? {res['gex_summary']['put_wall_inverted']}")
-        if res.get("trade_plans", {}).get("recommended_limit_plan"):
-            p = res["trade_plans"]["recommended_limit_plan"]
-            print(f"★ 推奨引きつけ指値: {p['entry_range']} | SL: {p['stop_loss']} | TP: {p['take_profit']} | RR: 1 : {p['risk_reward_ratio']}")
+    generate_all_signals()

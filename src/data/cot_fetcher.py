@@ -1,8 +1,7 @@
 """
-COT Data Fetcher
-Downloads CFTC Disaggregated Futures COT reports (both current week and historical years)
-Extracts positions for Silver, Natural Gas, Corn, and Lean Hogs.
-Calculates Commercial / Managed Money Net Positions and 3-Year COT Index.
+COT Data Fetcher (19 Assets: Commodities, Equities, Rates, Currencies)
+Downloads CFTC Disaggregated & Legacy COT reports (Current week & Historical 3-Year archives).
+Calculates Commercial / Non-Commercial / Managed Money Net Positions and 3-Year COT Index.
 """
 
 import os
@@ -12,216 +11,232 @@ import json
 import zipfile
 import requests
 import certifi
-import pandas as pd
 from datetime import datetime
 
-TARGET_COMMODITIES = {
-    "SI": {
-        "name": "Silver (銀)",
-        "code": "084691",
-        "exchange": "COMMODITY EXCHANGE INC.",
-        "yfinance_symbol": "SI=F"
-    },
-    "NG": {
-        "name": "Natural Gas (天然ガス)",
-        "code": "023651",
-        "exchange": "NEW YORK MERCANTILE EXCHANGE",
-        "yfinance_symbol": "NG=F"
-    },
-    "ZC": {
-        "name": "Corn (トウモロコシ)",
-        "code": "002602",
-        "exchange": "CHICAGO BOARD OF TRADE",
-        "yfinance_symbol": "ZC=F"
-    },
-    "HE": {
-        "name": "Lean Hogs (豚肉)",
-        "code": "054642",
-        "exchange": "CHICAGO MERCANTILE EXCHANGE",
-        "yfinance_symbol": "HE=F"
-    }
+TARGET_ASSETS = {
+    # 株式指数
+    "ES": {"name": "S&P 500 (ES)", "code": "13874A", "source": "dea", "category": "株式指数", "yfinance": "ES=F", "unit": "pt"},
+    "NQ": {"name": "NASDAQ 100 (NQ)", "code": "209742", "source": "dea", "category": "株式指数", "yfinance": "NQ=F", "unit": "pt"},
+    
+    # 貴金属
+    "GC": {"name": "ゴールド (GC)", "code": "088691", "source": "disagg", "category": "貴金属", "yfinance": "GC=F", "unit": "USD/oz"},
+    "SI": {"name": "シルバー (SI)", "code": "084691", "source": "disagg", "category": "貴金属", "yfinance": "SI=F", "unit": "USD/oz"},
+    "PL": {"name": "プラチナ (PL)", "code": "076651", "source": "disagg", "category": "貴金属", "yfinance": "PL=F", "unit": "USD/oz"},
+    
+    # エネルギー
+    "CL": {"name": "原油 WTI (CL)", "code": "067651", "source": "disagg", "category": "エネルギー", "yfinance": "CL=F", "unit": "USD/bbl"},
+    "NG": {"name": "天然ガス (NG)", "code": "023651", "source": "disagg", "category": "エネルギー", "yfinance": "NG=F", "unit": "USD/MMBtu"},
+    
+    # 工業用金属
+    "HG": {"name": "銅 (HG)", "code": "085692", "source": "disagg", "category": "工業用金属", "yfinance": "HG=F", "unit": "USD/lb"},
+    
+    # 穀物・農産物
+    "ZS": {"name": "大豆 (ZS)", "code": "005602", "source": "disagg", "category": "穀物・農産物", "yfinance": "ZS=F", "unit": "USc/bu"},
+    "ZC": {"name": "トウモロコシ (ZC)", "code": "002602", "source": "disagg", "category": "穀物・農産物", "yfinance": "ZC=F", "unit": "USc/bu"},
+    "ZW": {"name": "小麦 (ZW)", "code": "001602", "source": "disagg", "category": "穀物・農産物", "yfinance": "ZW=F", "unit": "USc/bu"},
+    
+    # ソフトコモディティ
+    "SB": {"name": "砂糖 (SB)", "code": "080732", "source": "disagg", "category": "ソフトコモディティ", "yfinance": "SB=F", "unit": "USc/lb"},
+    "CT": {"name": "コットン (CT)", "code": "033661", "source": "disagg", "category": "ソフトコモディティ", "yfinance": "CT=F", "unit": "USc/lb"},
+    "CC": {"name": "ココア (CC)", "code": "073732", "source": "disagg", "category": "ソフトコモディティ", "yfinance": "CC=F", "unit": "USD/MT"},
+    "KC": {"name": "コーヒー (KC)", "code": "083731", "source": "disagg", "category": "ソフトコモディティ", "yfinance": "KC=F", "unit": "USc/lb"},
+    
+    # 畜産
+    "HE": {"name": "豚肉 (HE)", "code": "054642", "source": "disagg", "category": "畜産", "yfinance": "HE=F", "unit": "USc/lb"},
+    "LE": {"name": "生牛 (LE)", "code": "057642", "source": "disagg", "category": "畜産", "yfinance": "LE=F", "unit": "USc/lb"},
+    
+    # 通貨・マクロ・債券
+    "DXY": {"name": "ドルインデックス (DXY)", "code": "098662", "source": "dea", "category": "通貨・マクロ", "yfinance": "DX-Y.NYB", "unit": "pt"},
+    "ZN": {"name": "米10年債 (ZN)", "code": "043602", "source": "dea", "category": "債券・金利", "yfinance": "ZN=F", "unit": "pt"}
 }
 
-CURRENT_WEEK_URL = "https://www.cftc.gov/dea/newcot/f_disagg.txt"
-HISTORICAL_ZIP_TEMPLATE = "https://www.cftc.gov/files/dea/history/fut_disagg_txt_{year}.zip"
+CURRENT_DISAGG_URL = "https://www.cftc.gov/dea/newcot/f_disagg.txt"
+CURRENT_DEA_URL = "https://www.cftc.gov/dea/newcot/deafut.txt"
+
+HISTORICAL_DISAGG_ZIP = "https://www.cftc.gov/files/dea/history/fut_disagg_txt_{year}.zip"
+HISTORICAL_DEA_ZIP = "https://www.cftc.gov/files/dea/history/deacot{year}.zip"
+
 DATA_CACHE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "cot_history.json")
 
 
-def fetch_current_week():
-    """Fetch current week's disaggregated COT data."""
+def fetch_url(url: str, timeout: int = 35):
     headers = {"User-Agent": "Mozilla/5.0"}
     try:
-        resp = requests.get(CURRENT_WEEK_URL, headers=headers, verify=certifi.where(), timeout=25)
-        resp.raise_for_status()
-        return resp.text
+        r = requests.get(url, headers=headers, verify=certifi.where(), timeout=timeout)
+        if r.status_code == 200:
+            return r.content
     except Exception as e:
-        print(f"[Warning] Failed to fetch current week COT: {e}")
-        return None
+        print(f"[Warning] Failed to fetch {url}: {e}")
+    return None
 
 
-def fetch_historical_year(year: int):
-    """Fetch annual historical zip file from CFTC and return CSV text."""
-    url = HISTORICAL_ZIP_TEMPLATE.format(year=year)
-    headers = {"User-Agent": "Mozilla/5.0"}
-    try:
-        resp = requests.get(url, headers=headers, verify=certifi.where(), timeout=35)
-        if resp.status_code != 200:
-            return None
-        z = zipfile.ZipFile(io.BytesIO(resp.content))
-        first_file = z.namelist()[0]
-        with z.open(first_file) as f:
-            return f.read().decode("utf-8", errors="ignore")
-    except Exception as e:
-        print(f"[Warning] Failed to fetch historical COT for {year}: {e}")
-        return None
-
-
-def parse_cot_csv(csv_text: str):
-    """Parse CFTC disaggregated CSV text and filter for target commodities."""
-    records = {sym: [] for sym in TARGET_COMMODITIES}
-    target_codes = {info["code"]: sym for sym, info in TARGET_COMMODITIES.items()}
-
+def parse_disagg_csv(csv_text: str, target_codes: dict):
+    # target_codes: {code: sym}
+    records = {sym: [] for sym in target_codes.values()}
     reader = csv.reader(io.StringIO(csv_text))
-    header = None
-
     for row in reader:
-        if not row:
-            continue
-        if header is None and ("Market_and_Exchange_Names" in row[0] or "Market" in row[0]):
-            header = [h.strip() for h in row]
-            continue
-        
-        # Check market code (usually column 3)
-        if len(row) > 3:
+        if len(row) > 22:
             code = row[3].strip()
             if code in target_codes:
                 sym = target_codes[code]
                 try:
-                    date_str = row[2].strip()  # YYYY-MM-DD
-                    open_interest = int(row[7].strip() or 0)
-                    
-                    prod_long = int(row[8].strip() or 0)
-                    prod_short = int(row[9].strip() or 0)
-                    swap_long = int(row[10].strip() or 0)
-                    swap_short = int(row[11].strip() or 0)
-                    
-                    mm_long = int(row[13].strip() or 0)
-                    mm_short = int(row[14].strip() or 0)
-                    mm_spread = int(row[15].strip() or 0)
-                    
-                    other_long = int(row[16].strip() or 0)
-                    other_short = int(row[17].strip() or 0)
-                    
-                    nonrept_long = int(row[21].strip() or 0)
-                    nonrept_short = int(row[22].strip() or 0)
+                    date_str = row[2].strip()
+                    oi = int(row[7].strip() or 0)
+                    prod_l = int(row[8].strip() or 0)
+                    prod_s = int(row[9].strip() or 0)
+                    swap_l = int(row[10].strip() or 0)
+                    swap_s = int(row[11].strip() or 0)
+                    mm_l = int(row[13].strip() or 0)
+                    mm_s = int(row[14].strip() or 0)
+                    other_l = int(row[16].strip() or 0)
+                    other_s = int(row[17].strip() or 0)
 
-                    # Changes
-                    chg_oi = int(row[55].strip() or 0) if len(row) > 55 else 0
-                    chg_prod_long = int(row[56].strip() or 0) if len(row) > 56 else 0
-                    chg_prod_short = int(row[57].strip() or 0) if len(row) > 57 else 0
-                    chg_swap_long = int(row[58].strip() or 0) if len(row) > 58 else 0
-                    chg_swap_short = int(row[59].strip() or 0) if len(row) > 59 else 0
-                    chg_mm_long = int(row[61].strip() or 0) if len(row) > 61 else 0
-                    chg_mm_short = int(row[62].strip() or 0) if len(row) > 62 else 0
+                    comm_l = prod_l + swap_l
+                    comm_s = prod_s + swap_s
+                    comm_net = comm_l - comm_s
 
-                    comm_long = prod_long + swap_long
-                    comm_short = prod_short + swap_short
-                    comm_net = comm_long - comm_short
+                    noncomm_l = mm_l + other_l
+                    noncomm_s = mm_s + other_s
+                    noncomm_net = noncomm_l - noncomm_s
 
-                    noncomm_long = mm_long + other_long
-                    noncomm_short = mm_short + other_short
-                    noncomm_net = noncomm_long - noncomm_short
-
-                    mm_net = mm_long - mm_short
+                    mm_net = mm_l - mm_s
 
                     records[sym].append({
                         "date": date_str,
-                        "open_interest": open_interest,
-                        "producers": {"long": prod_long, "short": prod_short, "chg_long": chg_prod_long, "chg_short": chg_prod_short},
-                        "swap_dealers": {"long": swap_long, "short": swap_short, "chg_long": chg_swap_long, "chg_short": chg_swap_short},
-                        "commercials": {"long": comm_long, "short": comm_short, "net": comm_net},
-                        "managed_money": {"long": mm_long, "short": mm_short, "spread": mm_spread, "net": mm_net, "chg_long": chg_mm_long, "chg_short": chg_mm_short},
-                        "non_commercials": {"long": noncomm_long, "short": noncomm_short, "net": noncomm_net},
-                        "other_reportables": {"long": other_long, "short": other_short},
-                        "non_reportable": {"long": nonrept_long, "short": nonrept_short}
+                        "open_interest": oi,
+                        "commercials": {"long": comm_l, "short": comm_s, "net": comm_net},
+                        "managed_money": {"long": mm_l, "short": mm_s, "net": mm_net},
+                        "non_commercials": {"long": noncomm_l, "short": noncomm_s, "net": noncomm_net}
                     })
-                except Exception as ex:
-                    # Ignore malformed row
+                except Exception:
                     continue
+    return records
 
+
+def parse_dea_csv(csv_text: str, target_codes: dict):
+    # target_codes: {code: sym}
+    records = {sym: [] for sym in target_codes.values()}
+    reader = csv.reader(io.StringIO(csv_text))
+    for row in reader:
+        if len(row) > 16:
+            code = row[3].strip()
+            if code in target_codes:
+                sym = target_codes[code]
+                try:
+                    date_str = row[2].strip()
+                    oi = int(row[7].strip() or 0)
+                    noncomm_l = int(row[8].strip() or 0)
+                    noncomm_s = int(row[9].strip() or 0)
+                    comm_l = int(row[11].strip() or 0)
+                    comm_s = int(row[12].strip() or 0)
+
+                    comm_net = comm_l - comm_s
+                    noncomm_net = noncomm_l - noncomm_s
+
+                    records[sym].append({
+                        "date": date_str,
+                        "open_interest": oi,
+                        "commercials": {"long": comm_l, "short": comm_s, "net": comm_net},
+                        "managed_money": {"long": noncomm_l, "short": noncomm_s, "net": noncomm_net},
+                        "non_commercials": {"long": noncomm_l, "short": noncomm_s, "net": noncomm_net}
+                    })
+                except Exception:
+                    continue
     return records
 
 
 def update_and_calculate_indices(force_refresh_history: bool = False):
-    """
-    Fetch historical and latest COT data, merge, sort, compute 3-Year COT Index,
-    and save to DATA_CACHE_PATH.
-    """
-    all_data = {sym: [] for sym in TARGET_COMMODITIES}
-    
-    # Check if cache exists
+    all_data = {sym: [] for sym in TARGET_ASSETS}
+
     if os.path.exists(DATA_CACHE_PATH) and not force_refresh_history:
         try:
             with open(DATA_CACHE_PATH, "r", encoding="utf-8") as f:
-                all_data = json.load(f)
+                cached = json.load(f)
+                for s in TARGET_ASSETS:
+                    if s in cached:
+                        all_data[s] = cached[s]
             print("[Info] Loaded existing COT history from cache.")
         except Exception:
-            all_data = {sym: [] for sym in TARGET_COMMODITIES}
+            all_data = {sym: [] for sym in TARGET_ASSETS}
 
-    # If cache has less than 50 rows per symbol, backfill history (last 3-4 years)
-    need_history = any(len(all_data[s]) < 50 for s in TARGET_COMMODITIES) or force_refresh_history
+    disagg_codes = {info["code"]: sym for sym, info in TARGET_ASSETS.items() if info["source"] == "disagg"}
+    dea_codes = {info["code"]: sym for sym, info in TARGET_ASSETS.items() if info["source"] == "dea"}
+
+    need_history = any(len(all_data[s]) < 50 for s in TARGET_ASSETS) or force_refresh_history
     if need_history:
-        print("[Info] Downloading 3-year historical COT datasets from CFTC...")
+        print("[Info] Downloading 3-year historical COT datasets (Disaggregated + Legacy)...")
         current_year = datetime.now().year
-        # CFTC history covers e.g. 2023, 2024, 2025, 2026
         years = [current_year - i for i in range(3, -1, -1)]
-        for yr in years:
-            print(f"  Fetching year {yr}...")
-            yr_txt = fetch_historical_year(yr)
-            if yr_txt:
-                parsed = parse_cot_csv(yr_txt)
-                for sym, rows in parsed.items():
-                    all_data[sym].extend(rows)
 
-    # Fetch latest week
-    print("[Info] Fetching current week COT data...")
-    curr_txt = fetch_current_week()
-    if curr_txt:
-        curr_parsed = parse_cot_csv(curr_txt)
-        for sym, rows in curr_parsed.items():
+        for yr in years:
+            print(f"  Fetching history for {yr}...")
+            # 1. Disaggregated History
+            disagg_content = fetch_url(HISTORICAL_DISAGG_ZIP.format(year=yr))
+            if disagg_content:
+                try:
+                    z = zipfile.ZipFile(io.BytesIO(disagg_content))
+                    txt = z.open(z.namelist()[0]).read().decode("utf-8", errors="ignore")
+                    parsed_dis = parse_disagg_csv(txt, disagg_codes)
+                    for sym, rows in parsed_dis.items():
+                        all_data[sym].extend(rows)
+                except Exception as e:
+                    print(f"    [Error] Disagg zip {yr}: {e}")
+
+            # 2. Legacy History (for Financials: ES, NQ, DXY, ZN)
+            dea_content = fetch_url(HISTORICAL_DEA_ZIP.format(year=yr))
+            if dea_content:
+                try:
+                    z = zipfile.ZipFile(io.BytesIO(dea_content))
+                    txt = z.open(z.namelist()[0]).read().decode("utf-8", errors="ignore")
+                    parsed_dea = parse_dea_csv(txt, dea_codes)
+                    for sym, rows in parsed_dea.items():
+                        all_data[sym].extend(rows)
+                except Exception as e:
+                    print(f"    [Error] Dea zip {yr}: {e}")
+
+    # Fetch current week
+    print("[Info] Fetching latest week COT data...")
+    curr_disagg = fetch_url(CURRENT_DISAGG_URL)
+    if curr_disagg:
+        p_dis = parse_disagg_csv(curr_disagg.decode("utf-8", errors="ignore"), disagg_codes)
+        for sym, rows in p_dis.items():
             all_data[sym].extend(rows)
 
-    # Deduplicate and sort by date
+    curr_dea = fetch_url(CURRENT_DEA_URL)
+    if curr_dea:
+        p_dea = parse_dea_csv(curr_dea.decode("utf-8", errors="ignore"), dea_codes)
+        for sym, rows in p_dea.items():
+            all_data[sym].extend(rows)
+
+    # Deduplicate & Compute 3-Year Rolling COT Index
     results = {}
-    for sym in TARGET_COMMODITIES:
+    for sym in TARGET_ASSETS:
         dedup = {}
         for r in all_data[sym]:
             dedup[r["date"]] = r
         sorted_rows = sorted(dedup.values(), key=lambda x: x["date"])
-        
-        # Calculate Rolling 3-Year COT Index (156 weeks)
+
         for i in range(len(sorted_rows)):
             start_idx = max(0, i - 156)
             window = sorted_rows[start_idx : i + 1]
-            
+
             comm_nets = [w["commercials"]["net"] for w in window]
             mm_nets = [w["managed_money"]["net"] for w in window]
-            
+
             c_min, c_max = min(comm_nets), max(comm_nets)
             m_min, m_max = min(mm_nets), max(mm_nets)
-            
+
             c_curr = sorted_rows[i]["commercials"]["net"]
             m_curr = sorted_rows[i]["managed_money"]["net"]
-            
+
             c_index = round(((c_curr - c_min) / (c_max - c_min) * 100), 1) if c_max > c_min else 50.0
             m_index = round(((m_curr - m_min) / (m_max - m_min) * 100), 1) if m_max > m_min else 50.0
-            
+
             sorted_rows[i]["cot_index"] = {
                 "commercials": c_index,
                 "managed_money": m_index
             }
-            
-            # Weekly net change
+
             if i > 0:
                 prev_c = sorted_rows[i-1]["commercials"]["net"]
                 prev_m = sorted_rows[i-1]["managed_money"]["net"]
@@ -230,18 +245,15 @@ def update_and_calculate_indices(force_refresh_history: bool = False):
                     "managed_money": m_curr - prev_m
                 }
             else:
-                sorted_rows[i]["weekly_net_change"] = {
-                    "commercials": 0,
-                    "managed_money": 0
-                }
+                sorted_rows[i]["weekly_net_change"] = {"commercials": 0, "managed_money": 0}
 
         results[sym] = sorted_rows
 
-    # Save to cache
     os.makedirs(os.path.dirname(DATA_CACHE_PATH), exist_ok=True)
     with open(DATA_CACHE_PATH, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
-    print(f"[Success] Updated COT data saved to {DATA_CACHE_PATH}")
+
+    print(f"[Success] Updated COT data for all 19 assets saved to {DATA_CACHE_PATH}")
     return results
 
 
@@ -250,8 +262,4 @@ if __name__ == "__main__":
     for sym, rows in data.items():
         if rows:
             latest = rows[-1]
-            print(f"--- {sym}: {TARGET_COMMODITIES[sym]['name']} ---")
-            print(f"Latest Date: {latest['date']}")
-            print(f"Commercials Net: {latest['commercials']['net']:,} (COT Index: {latest['cot_index']['commercials']}%)")
-            print(f"Managed Money Net: {latest['managed_money']['net']:,} (COT Index: {latest['cot_index']['managed_money']}%)")
-            print(f"Weekly Net Chg: Comm: {latest['weekly_net_change']['commercials']:+,} | MM: {latest['weekly_net_change']['managed_money']:+,}")
+            print(f"{sym:4s} ({latest['date']}): CommNet={latest['commercials']['net']:+,} (Idx: {latest['cot_index']['commercials']}%) | MMNet={latest['managed_money']['net']:+,} (Idx: {latest['cot_index']['managed_money']}%)")
