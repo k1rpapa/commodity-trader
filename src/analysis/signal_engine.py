@@ -7,7 +7,7 @@ Generates Dual Trade Plans (Recommended Pullback Limit vs Market).
 
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data")
 COT_PATH = os.path.join(DATA_DIR, "cot_history.json")
@@ -164,7 +164,8 @@ def load_datasets():
 
 def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -> dict:
     profile = ASSET_PROFILES[sym]
-    curr_month = str(datetime.now().month)
+    jst = timezone(timedelta(hours=9))
+    curr_month = str(datetime.now(jst).month)
     seasonal_desc = profile["seasonal_bias"].get(curr_month, "中立的な季節サイクル")
 
     latest_cot = cot_rows[-1] if cot_rows else {}

@@ -14,7 +14,7 @@ Builds the advanced responsive HTML dashboard in docs/index.html with:
 
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 DATA_DIR = os.path.join(ROOT_DIR, "data")
@@ -81,7 +81,8 @@ def load_all_data():
 
 def generate_dashboard():
     cot_data, gex_data, price_data, signals_data = load_all_data()
-    now_str = datetime.now().strftime("%Y-%m-%d %H:%M JST")
+    jst = timezone(timedelta(hours=9))
+    now_str = datetime.now(jst).strftime("%Y-%m-%d %H:%M JST")
 
     frontend_data = {}
     for sym in SYMBOLS_ORDER:
