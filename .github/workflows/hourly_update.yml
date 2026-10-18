@@ -1,0 +1,82 @@
+name: Hourly Commodity Dashboard & Signal Update
+
+on:
+  schedule:
+    # Runs at minute 15 of every hour (24/7)
+    # Using minute 15 avoids the common GitHub Actions queue delays at minute 0
+    - cron: '15 * * * *'
+  workflow_dispatch:
+    inputs:
+      send_line:
+        description: 'Send LINE notification (true/false)'
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  update-dashboard-and-signals:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check Notification Schedule
+        id: notify_check
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            if [ "${{ github.event.inputs.send_line }}" = "false" ]; then
+              echo "SEND_LINE=false" >> $GITHUB_OUTPUT
+            else
+              echo "SEND_LINE=true" >> $GITHUB_OUTPUT
+            fi
+          else
+            # Scheduled hourly run:
+            # Protect LINE Messaging API monthly quota (200 free messages/mo)
+            # 22 UTC = 07:15 JST (Morning briefing)
+            # 12 UTC = 21:15 JST (Evening / NY pit briefing)
+            # 01 UTC Sat = 10:15 JST Sat (Weekly CFTC COT release)
+            HOUR_UTC=$(date -u +%H)
+            DOW_UTC=$(date -u +%u)
+            if [ "$HOUR_UTC" = "22" ] || [ "$HOUR_UTC" = "12" ] || ([ "$DOW_UTC" = "6" ] && [ "$HOUR_UTC" = "01" ]); then
+              echo "SEND_LINE=true" >> $GITHUB_OUTPUT
+            else
+              echo "SEND_LINE=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Run Pipeline (Data Fetch -> Signal -> Build Docs)
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: |
+          if [ "${{ steps.notify_check.outputs.SEND_LINE }}" = "true" ]; then
+            python main.py
+          else
+            python main.py --no-notify
+          fi
+
+      - name: Commit and Push Updated Data & Dashboard
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add data/ docs/
+          if git diff --staged --quiet; then
+            echo "No changes to commit (prices and signals unchanged)."
+          else
+            git commit -m "Auto-update hourly prices, signals, and dashboard [skip ci]"
+            git push
+          fi
