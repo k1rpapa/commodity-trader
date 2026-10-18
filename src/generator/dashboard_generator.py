@@ -1,7 +1,12 @@
 """
-Dashboard Generator
-Generates an interactive, responsive HTML dashboard in docs/ for GitHub Pages.
-Features Dark Mode, Plotly.js charts, COT Net Position + Index, GEX Walls, and Rakuten CFD Trade Plans.
+Dashboard Generator (Institutional Upgrade)
+Builds the advanced responsive HTML dashboard in docs/index.html with:
+1. Dual Trade Plan Display:
+   - Plan A: 🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様 RR 1:3 ~ 1:6)
+   - Plan B: ⚡ 成行・即時追随プラン
+2. Put Wall Inversion & Dynamic Defense Floor Warnings
+3. COT 3-Day Lag Mid-Week Volume & Price Action Heuristics
+4. Active Contract Month & Calendar Spread Dynamics Monitor
 """
 
 import os
@@ -34,11 +39,9 @@ def generate_dashboard():
     cot_data, gex_data, price_data, signals_data = load_all_data()
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M JST")
 
-    # Order of tabs: HE, NG, SI, ZC, SUMMARY
     symbols = ["HE", "NG", "SI", "ZC"]
     sym_icons = {"HE": "🐷", "NG": "🔥", "SI": "🥈", "ZC": "🌽"}
 
-    # Prepare datasets for frontend embed
     frontend_data = {}
     for sym in symbols:
         c_rows = cot_data.get(sym, [])
@@ -46,16 +49,16 @@ def generate_dashboard():
         sig = signals_data.get(sym, {})
         gex_info = gex_data.get(sym, {})
 
-        # Downsample price if too large (keep weekly or daily last 3 years)
-        # c_rows are weekly dates
         frontend_data[sym] = {
             "name": sig.get("name", sym),
             "rakuten_name": sig.get("rakuten_name", ""),
             "unit": sig.get("unit", ""),
+            "active_contract": sig.get("active_contract", ""),
+            "spread_monitor": sig.get("spread_monitor", {}),
             "signal": sig,
             "gex": gex_info,
             "cot": c_rows,
-            "price": p_hist[-300:] if len(p_hist) > 300 else p_hist # Last ~300 trading days
+            "price": p_hist[-300:] if len(p_hist) > 300 else p_hist
         }
 
     html_content = f"""<!DOCTYPE html>
@@ -63,15 +66,15 @@ def generate_dashboard():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quant Commodity Radar & CFD Trader (COT × 季節性 × GEX)</title>
+    <title>クオンツ・コモディティ戦略レーダー (COT × 季節性 × GEX × スプレッド)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
     <style>
         * {{ box-sizing: border-box; }}
         body {{
-            background-color: #101218;
+            background-color: #0d1017;
             color: #ffffff;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
@@ -79,7 +82,7 @@ def generate_dashboard():
             line-height: 1.5;
         }}
         .nav-tabs {{
-            background: #161922;
+            background: #151822;
             padding: 10px 20px;
             display: flex;
             flex-wrap: wrap;
@@ -100,7 +103,7 @@ def generate_dashboard():
             margin-right: 15px;
         }}
         .tab-btn {{
-            background: #1f2330;
+            background: #1c202d;
             color: #c4c7c5;
             border: 1px solid #2b3040;
             padding: 8px 16px;
@@ -114,7 +117,7 @@ def generate_dashboard():
             transition: all 0.2s ease;
         }}
         .tab-btn:hover {{ background: #282e40; color: #fff; }}
-        .tab-btn.active {{ background: #0b57d0; color: #fff; border-color: #3b82f6; }}
+        .tab-btn.active {{ background: #0b57d0; color: #fff; border-color: #3b82f6; box-shadow: 0 0 12px rgba(11,87,208,0.4); }}
         .header-meta {{
             margin-left: auto;
             font-size: 12px;
@@ -122,7 +125,7 @@ def generate_dashboard():
             font-family: 'JetBrains Mono', monospace;
         }}
         .container {{
-            max-width: 1650px;
+            max-width: 1700px;
             margin: 0 auto;
             padding: 24px 20px;
             display: flex;
@@ -132,18 +135,17 @@ def generate_dashboard():
         .tab-pane {{ display: none; }}
         .tab-pane.active {{ display: flex; flex-direction: column; gap: 24px; }}
         
-        /* Grid Layout */
         .top-row-grid {{
             display: grid;
             grid-template-columns: 1fr;
             gap: 20px;
         }}
-        @media (min-width: 1024px) {{
-            .top-row-grid {{ grid-template-columns: 1.15fr 0.85fr; }}
+        @media (min-width: 1100px) {{
+            .top-row-grid {{ grid-template-columns: 1.25fr 0.75fr; }}
         }}
 
         .card {{
-            background: #141720;
+            background: #141721;
             border: 1px solid #232734;
             border-radius: 12px;
             padding: 20px;
@@ -169,50 +171,85 @@ def generate_dashboard():
             font-size: 13px;
             font-weight: 700;
         }}
-        
-        /* Trade Plan Box */
-        .trade-plan-box {{
-            background: rgba(11, 87, 208, 0.1);
-            border: 1px solid #0b57d0;
+
+        /* Dual Trade Plan Styling */
+        .plans-container {{
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 14px;
+        }}
+        .plan-card-recommended {{
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(11, 87, 208, 0.15) 100%);
+            border: 1.5px solid #10b981;
             border-radius: 10px;
             padding: 18px;
-            margin-top: 12px;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
+        }}
+        .plan-card-market {{
+            background: #1a1e2b;
+            border: 1px solid #2e3549;
+            border-radius: 10px;
+            padding: 14px 18px;
+        }}
+        .plan-header {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }}
+        .plan-title-rec {{
+            font-size: 16px;
+            font-weight: 800;
+            color: #34d399;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }}
+        .plan-title-mkt {{
+            font-size: 14px;
+            font-weight: 700;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }}
         .plan-grid {{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 12px;
-            margin-top: 12px;
+            gap: 10px;
+            margin-top: 10px;
         }}
         .plan-item {{
-            background: #1a1e2b;
-            padding: 10px 14px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 12px;
             border-radius: 6px;
-            border: 1px solid #282f42;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }}
-        .plan-item .label {{ font-size: 12px; color: #8e918f; margin-bottom: 4px; }}
-        .plan-item .val {{ font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }}
+        .plan-item .label {{ font-size: 11px; color: #9ca3af; margin-bottom: 2px; }}
+        .plan-item .val {{ font-size: 17px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }}
 
         /* Metrics Strip */
         .metrics-strip {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px;
         }}
         .metric-card {{
-            background: #181c26;
+            background: #191d29;
             border: 1px solid #232734;
             border-radius: 8px;
-            padding: 14px 16px;
+            padding: 12px 14px;
         }}
-        .metric-label {{ font-size: 12px; color: #8e918f; font-weight: 600; text-transform: uppercase; }}
-        .metric-value {{ font-size: 22px; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-top: 4px; }}
-        .metric-sub {{ font-size: 12px; color: #c4c7c5; margin-top: 2px; }}
+        .metric-label {{ font-size: 11px; color: #8e918f; font-weight: 600; text-transform: uppercase; }}
+        .metric-value {{ font-size: 20px; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-top: 4px; }}
+        .metric-sub {{ font-size: 11px; color: #c4c7c5; margin-top: 2px; }}
 
         /* GEX Level Matrix */
         .gex-matrix {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 12px;
             background: #181c26;
             padding: 16px;
@@ -227,25 +264,46 @@ def generate_dashboard():
         .gex-node.put {{ border-left-color: #c598ff; }}
         .gex-node.call {{ border-left-color: #06bbdf; }}
         .gex-node.zg {{ border-left-color: #ff5252; }}
+        .gex-node.floor {{ border-left-color: #10b981; }}
+
+        .wall-alert-box {{
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }}
+        .wall-alert-box.inverted {{
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid #f59e0b;
+            color: #fbbf24;
+        }}
+        .wall-alert-box.solid {{
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid #10b981;
+            color: #34d399;
+        }}
 
         .bullet-list {{
             margin: 10px 0 0 0;
             padding-left: 20px;
-            font-size: 14px;
+            font-size: 13.5px;
             color: #d1d5db;
         }}
         .bullet-list li {{ margin-bottom: 6px; }}
 
-        /* Summary Table */
         .table-responsive {{ overflow-x: auto; }}
         table.matrix-table {{
             width: 100%;
             border-collapse: collapse;
-            font-size: 14px;
+            font-size: 13.5px;
             text-align: left;
         }}
         table.matrix-table th, table.matrix-table td {{
-            padding: 14px 16px;
+            padding: 12px 14px;
             border-bottom: 1px solid #232734;
         }}
         table.matrix-table th {{ background: #161922; color: #8e918f; font-weight: 600; }}
@@ -277,48 +335,71 @@ def generate_dashboard():
     <div class="container">
 """
 
-    # --- Render Individual Tabs for each Commodity ---
     for sym in symbols:
         data = frontend_data[sym]
         sig = data["signal"]
         gex_info = data["gex"]
-        tp = sig.get("trade_plan")
+        gex_summary = sig.get("gex_summary", {})
+        trade_plans = sig.get("trade_plans", {})
+        plan_rec = trade_plans.get("recommended_limit_plan")
+        plan_mkt = trade_plans.get("market_plan")
 
         badge_bg = sig.get("badge_color", "#8e918f")
         action_text = sig.get("action_label", "監視中")
 
-        trade_plan_html = ""
-        if tp:
-            trade_plan_html = f"""
-            <div class="trade-plan-box">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div style="font-weight: 700; font-size: 16px; color: #60a5fa;">🎯 楽天CFD 実践トレード指示プラン</div>
-                    <span class="badge" style="background:#0b57d0; color:#fff;">{tp['direction']}</span>
+        # Plan cards HTML
+        trade_plans_html = ""
+        if plan_rec:
+            trade_plans_html = f"""
+            <div class="plans-container">
+                <!-- Recommended Pullback Limit Plan -->
+                <div class="plan-card-recommended">
+                    <div class="plan-header">
+                        <div class="plan-title-rec">{plan_rec['name']}</div>
+                        <span class="badge" style="background:#10b981; color:#000;">{plan_rec['direction']}</span>
+                    </div>
+                    <div class="plan-grid">
+                        <div class="plan-item">
+                            <div class="label">引きつけ指値目安</div>
+                            <div class="val" style="color: #34d399;">{plan_rec['entry_range']}</div>
+                        </div>
+                        <div class="plan-item">
+                            <div class="label">タイト損切り (SL)</div>
+                            <div class="val" style="color: #f87171;">{plan_rec['stop_loss']}</div>
+                        </div>
+                        <div class="plan-item">
+                            <div class="label">利確目標 (TP: Call壁)</div>
+                            <div class="val" style="color: #38bdf8;">{plan_rec['take_profit']}</div>
+                        </div>
+                        <div class="plan-item">
+                            <div class="label">リスクリワード比 (RR)</div>
+                            <div class="val" style="color: #f59e0b; font-size: 19px;">1 : {plan_rec['risk_reward_ratio']}</div>
+                        </div>
+                        <div class="plan-item">
+                            <div class="label">リスク幅 / リワード幅</div>
+                            <div class="val" style="font-size: 14px;">{plan_rec['risk_distance']} / {plan_rec['reward_distance']}</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 12.5px; color: #d1d5db; margin-top: 10px;">
+                        💡 <strong>戦略設計メモ:</strong> {plan_rec['strategy_memo']}
+                    </div>
                 </div>
-                <div class="plan-grid">
-                    <div class="plan-item">
-                        <div class="label">エントリー目安</div>
-                        <div class="val" style="color: #60a5fa;">{tp['entry_price']}</div>
+
+                <!-- Market Plan (Secondary) -->
+                <div class="plan-card-market">
+                    <div class="plan-header">
+                        <div class="plan-title-mkt">{plan_mkt['name']}</div>
+                        <span style="font-size: 12px; color: #94a3b8;">RR: 1 : {plan_mkt['risk_reward_ratio']}</span>
                     </div>
-                    <div class="plan-item">
-                        <div class="label">損切り (SL: 防衛壁下)</div>
-                        <div class="val" style="color: #f87171;">{tp['stop_loss']}</div>
+                    <div style="display: flex; gap: 20px; font-size: 13px; font-family: monospace; color: #cbd5e1;">
+                        <span>エントリー: {plan_mkt['entry_target']}</span>
+                        <span>SL: {plan_mkt['stop_loss']}</span>
+                        <span>TP: {plan_mkt['take_profit']}</span>
+                        <span style="color: #f59e0b;">(リスク幅: {plan_mkt['risk_distance']})</span>
                     </div>
-                    <div class="plan-item">
-                        <div class="label">利確目標 (TP: 抵抗手前)</div>
-                        <div class="val" style="color: #34d399;">{tp['take_profit']}</div>
+                    <div style="font-size: 12px; color: #94a3b8; margin-top: 4px;">
+                        ⚠️ {plan_mkt['strategy_memo']}
                     </div>
-                    <div class="plan-item">
-                        <div class="label">リスクリワード比 (RR)</div>
-                        <div class="val" style="color: #fbbf24;">1 : {tp['risk_reward_ratio']}</div>
-                    </div>
-                    <div class="plan-item">
-                        <div class="label">日足 ATR (14)</div>
-                        <div class="val">{tp['atr_14']}</div>
-                    </div>
-                </div>
-                <div style="font-size: 13px; color: #c4c7c5; margin-top: 10px;">
-                    💡 <strong>執行メモ:</strong> {tp['notes']}
                 </div>
             </div>
             """
@@ -331,6 +412,11 @@ def generate_dashboard():
         m_net = sig["cot_summary"]["managed_money_net"]
         c_chg = sig["cot_summary"]["commercial_weekly_chg"]
         m_chg = sig["cot_summary"]["managed_money_weekly_chg"]
+        cot_lag = sig["cot_summary"].get("cot_lag_note", "通常推移")
+
+        # Inversion Alert Styling
+        is_inverted = gex_summary.get("put_wall_inverted", False)
+        wall_alert_class = "inverted" if is_inverted else "solid"
 
         active_class = "active" if sym == "HE" else ""
 
@@ -338,14 +424,15 @@ def generate_dashboard():
         <!-- TAB: {sym} -->
         <div id="tab-{sym}" class="tab-pane {active_class}">
             
-            <!-- Top Row: Overview & Trade Plan -->
+            <!-- Top Row: Overview, Dual Plans, GEX Matrix -->
             <div class="top-row-grid">
-                <!-- Left: Signals & Analysis -->
+                <!-- Left: Signals & Dual Plans -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
                             {sym_icons[sym]} {sig['name']}
-                            <span style="font-size: 13px; color: #8e918f; font-weight: normal;">({sig['rakuten_name']})</span>
+                            <span style="font-size: 13px; color: #38bdf8; font-weight: 600;">[{sig.get('active_contract', '')}]</span>
+                            <span style="font-size: 12px; color: #8e918f; font-weight: normal;">({sig['rakuten_name']})</span>
                         </div>
                         <span class="badge" style="background: {badge_bg}; color: #000;">{action_text}</span>
                     </div>
@@ -367,55 +454,71 @@ def generate_dashboard():
                             <div class="metric-sub">{m_net:+,} 枚 (週変: {m_chg:+,})</div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-label">GEX レジーム</div>
-                            <div class="metric-value" style="font-size: 15px; color: {'#34d399' if gex_info.get('is_positive_gamma') else '#f87171'};">
-                                {'Positive Gamma' if gex_info.get('is_positive_gamma') else 'Negative Gamma'}
+                            <div class="metric-label">実質防衛床 (Floor)</div>
+                            <div class="metric-value" style="font-size: 16px; color: #34d399;">
+                                {gex_summary.get('floor_label', 'Put Wall')}
                             </div>
                             <div class="metric-sub">Zero-Gamma: {gex_info.get('zero_gamma')}</div>
                         </div>
                     </div>
 
-                    {trade_plan_html}
+                    <!-- Put Wall Inversion Alert -->
+                    <div class="wall-alert-box {wall_alert_class}">
+                        <div style="font-size: 18px;">{'⚠️' if is_inverted else '🛡️'}</div>
+                        <div>{gex_summary.get('put_wall_status_desc', '')}</div>
+                    </div>
 
-                    <div style="margin-top: 18px;">
-                        <div style="font-size: 14px; font-weight: 700; color: #e5e7eb;">📊 4層定性・定量コンフルエンス根拠:</div>
+                    {trade_plans_html}
+
+                    <div style="margin-top: 16px;">
+                        <div style="font-size: 14px; font-weight: 700; color: #e5e7eb;">📊 4層コンフルエンス根拠:</div>
                         <ul class="bullet-list">
                             {signals_bullets_html}
                         </ul>
                     </div>
                 </div>
 
-                <!-- Right: Options GEX Cross-Matrix -->
+                <!-- Right: Options GEX Cross-Matrix & Calendar Spread Monitor -->
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">🛡️ GEXオプション重力場 ＆ 防衛壁</div>
+                        <div class="card-title">🛡️ GEX重力場 ＆ スプレッド監視</div>
                         <a href="{gex_info.get('url', '#')}" target="_blank" class="btn-link">GEXレーダー詳細 ↗</a>
                     </div>
                     <div class="gex-matrix">
                         <div class="gex-node put">
-                            <div style="font-size: 12px; color: #c598ff; font-weight: bold;">Put Wall (機関支持線)</div>
-                            <div style="font-size: 20px; font-weight: 700; font-family: monospace;">{gex_info.get('put_wall') or 'N/A'}</div>
-                            <div style="font-size: 11px; color: #8e918f;">損切りの安全な背</div>
+                            <div style="font-size: 11px; color: #c598ff; font-weight: bold;">Put Wall Strike</div>
+                            <div style="font-size: 19px; font-weight: 700; font-family: monospace;">{gex_info.get('put_wall') or 'N/A'}</div>
+                            <div style="font-size: 10px; color: #8e918f;">{'※割れ・抵抗反転中' if is_inverted else '機関支持線'}</div>
                         </div>
                         <div class="gex-node zg">
-                            <div style="font-size: 12px; color: #ff5252; font-weight: bold;">Zero-Gamma (転換線)</div>
-                            <div style="font-size: 20px; font-weight: 700; font-family: monospace;">{gex_info.get('zero_gamma') or 'N/A'}</div>
-                            <div style="font-size: 11px; color: #8e918f;">レジーム境界ピボット</div>
+                            <div style="font-size: 11px; color: #ff5252; font-weight: bold;">Zero-Gamma (ZG)</div>
+                            <div style="font-size: 19px; font-weight: 700; font-family: monospace;">{gex_info.get('zero_gamma') or 'N/A'}</div>
+                            <div style="font-size: 10px; color: #8e918f;">レジーム境界ピボット</div>
                         </div>
                         <div class="gex-node call">
-                            <div style="font-size: 12px; color: #06bbdf; font-weight: bold;">Call Wall (機関抵抗線)</div>
-                            <div style="font-size: 20px; font-weight: 700; font-family: monospace;">{gex_info.get('call_wall') or 'N/A'}</div>
-                            <div style="font-size: 11px; color: #8e918f;">利確目標の天井</div>
+                            <div style="font-size: 11px; color: #06bbdf; font-weight: bold;">Call Wall Strike</div>
+                            <div style="font-size: 19px; font-weight: 700; font-family: monospace;">{gex_info.get('call_wall') or 'N/A'}</div>
+                            <div style="font-size: 10px; color: #8e918f;">利確目標の天井</div>
                         </div>
                     </div>
 
-                    <div style="margin-top: 16px; background: #161922; padding: 14px; border-radius: 8px; border-left: 4px solid #f9ab00;">
-                        <div style="font-size: 13px; font-weight: bold; color: #f9ab00;">💡 GEXレーダー速報アラート</div>
-                        <div style="font-size: 13px; color: #d1d5db; margin-top: 4px;">{gex_info.get('alert_text') or '安定推移中'}</div>
+                    <!-- COT 3-Day Lag Heuristics Box -->
+                    <div style="margin-top: 14px; background: #171b26; padding: 14px; border-radius: 8px; border-left: 4px solid #38bdf8;">
+                        <div style="font-size: 13px; font-weight: bold; color: #38bdf8;">🕒 COT集計タイムラグ（火曜➔金曜）手口補正</div>
+                        <div style="font-size: 12.5px; color: #cbd5e1; margin-top: 4px; line-height: 1.5;">{cot_lag}</div>
                     </div>
 
-                    <div style="margin-top: 14px; background: #161922; padding: 14px; border-radius: 8px; font-size: 13px; color: #9ca3af;">
-                        <div style="font-weight: bold; color: #e5e7eb; margin-bottom: 4px;">🤖 GEX AIインサイト抜粋:</div>
+                    <!-- Calendar Spread Monitor Box -->
+                    <div style="margin-top: 12px; background: #171b26; padding: 14px; border-radius: 8px; border-left: 4px solid #f9ab00;">
+                        <div style="font-size: 13px; font-weight: bold; color: #f9ab00;">📅 限月 ＆ カレンダースプレッド動向</div>
+                        <div style="font-size: 12.5px; color: #cbd5e1; margin-top: 4px; line-height: 1.5;">
+                            <strong>期近/期先:</strong> {data['spread_monitor'].get('current_contract', '')} ➔ {data['spread_monitor'].get('next_contract', '')}<br>
+                            <strong>サヤ力学:</strong> {data['spread_monitor'].get('spread_dynamics', '')}
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 12px; background: #171b26; padding: 12px; border-radius: 8px; font-size: 12.5px; color: #9ca3af;">
+                        <div style="font-weight: bold; color: #e5e7eb; margin-bottom: 3px;">🤖 GEX AIインサイト要約:</div>
                         {gex_info.get('ai_summary', '')}
                     </div>
                 </div>
@@ -427,7 +530,7 @@ def generate_dashboard():
                     <div class="card-title">📈 価格推移 ＆ 大口投機筋 vs 商業筋 ネットポジション（過去3年）</div>
                     <span style="font-size: 12px; color: #8e918f;">CFTC Disaggregated Futures & Options Weekly Data</span>
                 </div>
-                <div id="chart-cot-{sym}" style="height: 480px; width: 100%;"></div>
+                <div id="chart-cot-{sym}" style="height: 460px; width: 100%;"></div>
             </div>
 
             <!-- Chart Panel 2: 3-Year COT Index (Oscillator) & Net Weekly Change -->
@@ -436,7 +539,7 @@ def generate_dashboard():
                     <div class="card-title">⚡ 3年 COT Index（0〜100%過熱度オシレーター）＆ ネットポジション週次増減</div>
                     <span style="font-size: 12px; color: #8e918f;">Larry Williams Style Quant Metric</span>
                 </div>
-                <div id="chart-osc-{sym}" style="height: 380px; width: 100%;"></div>
+                <div id="chart-osc-{sym}" style="height: 360px; width: 100%;"></div>
             </div>
 
         </div>
@@ -455,15 +558,15 @@ def generate_dashboard():
                     <table class="matrix-table">
                         <thead>
                             <tr>
-                                <th>銘柄</th>
-                                <th>現在値 (Spot)</th>
-                                <th>総合シグナル判定</th>
-                                <th>商業筋COT指数</th>
-                                <th>ファンドCOT指数</th>
+                                <th>銘柄 / 対象限月</th>
+                                <th>Spot</th>
+                                <th>総合シグナル</th>
+                                <th>商業筋COT</th>
+                                <th>ファンドCOT</th>
                                 <th>GEXレジーム</th>
-                                <th>Put Wall (防衛線)</th>
-                                <th>Call Wall (利確線)</th>
-                                <th>トレード方針</th>
+                                <th>実質防衛床 (Floor)</th>
+                                <th>Call Wall (天井)</th>
+                                <th>【推奨】引きつけ指値プラン (RR)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -471,22 +574,27 @@ def generate_dashboard():
     for sym in symbols:
         sig = signals_data[sym]
         gex_info = gex_data[sym]
-        tp = sig.get("trade_plan")
-        tp_desc = f"{tp['direction']} (SL: {tp['stop_loss']} / TP: {tp['take_profit']})" if tp else "レンジ監視 / 静観"
+        gex_summary = sig.get("gex_summary", {})
+        plan_rec = sig.get("trade_plans", {}).get("recommended_limit_plan")
         c_idx = sig["cot_summary"]["commercial_index"]
         m_idx = sig["cot_summary"]["managed_money_index"]
 
+        plan_desc = f"指値: {plan_rec['entry_range']} (SL: {plan_rec['stop_loss']} / TP: {plan_rec['take_profit']}) <span style='color:#f59e0b; font-weight:bold;'>[RR 1:{plan_rec['risk_reward_ratio']}]</span>" if plan_rec else "レンジ監視 / 条件待ち"
+
         html_content += f"""
                             <tr>
-                                <td style="font-weight: 700;">{sym_icons[sym]} {sig['name']}</td>
+                                <td style="font-weight: 700;">
+                                    {sym_icons[sym]} {sig['name']}<br>
+                                    <span style="font-size: 11px; color: #38bdf8;">{sig.get('active_contract', '')}</span>
+                                </td>
                                 <td style="font-family: monospace; font-weight: bold;">{sig['spot_price']}</td>
                                 <td><span class="badge" style="background:{sig['badge_color']}; color:#000;">{sig['action_label']}</span></td>
                                 <td style="font-family: monospace; font-weight: bold; color: {'#34d399' if c_idx >= 80 else '#fff'};">{c_idx}%</td>
                                 <td style="font-family: monospace; font-weight: bold; color: {'#f87171' if m_idx <= 20 else '#fff'};">{m_idx}%</td>
-                                <td style="font-size: 13px;">{'🟢 Positive' if gex_info.get('is_positive_gamma') else '🔴 Negative'}</td>
-                                <td style="font-family: monospace; color: #c598ff;">{gex_info.get('put_wall') or '-'}</td>
-                                <td style="font-family: monospace; color: #06bbdf;">{gex_info.get('call_wall') or '-'}</td>
-                                <td style="font-size: 13px; color: #60a5fa;">{tp_desc}</td>
+                                <td style="font-size: 12px;">{'🟢 Positive' if gex_info.get('is_positive_gamma') else '🔴 Negative'}</td>
+                                <td style="font-family: monospace; color: #34d399; font-weight: bold;">{gex_summary.get('floor_label', '-')}</td>
+                                <td style="font-family: monospace; color: #06bbdf; font-weight: bold;">{gex_info.get('call_wall') or '-'}</td>
+                                <td style="font-size: 12.5px;">{plan_desc}</td>
                             </tr>
         """
 
@@ -499,15 +607,15 @@ def generate_dashboard():
             <!-- Strategy Guide Card -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">📖 戦略運用ルール ＆ 楽天CFDでの発注手順</div>
+                    <div class="card-title">📖 戦略運用ルール ＆ 実戦ピット迎撃手順</div>
                 </div>
                 <div style="font-size: 14px; line-height: 1.7; color: #d1d5db;">
-                    <p><strong>■ 4層融合戦略の基本思想:</strong></p>
+                    <p><strong>■ プロ仕様の4層融合クオンツ設計:</strong></p>
                     <ol>
-                        <li><strong>COTレポート（爆薬の充填度）:</strong> 商業筋COT指数が80%以上、ファンド指数が20%以下の局面は「ショートスクイーズ（踏み上げ急騰）」のエネルギーが極限まで溜まった状態です。</li>
-                        <li><strong>季節性（風向き）:</strong> アノマリーが買い有利な月のみロングを検討し、特異年や逆風期での無謀なエントリーを遮断します。</li>
-                        <li><strong>GEX壁（機関の防衛線）:</strong> 損切り（SL）は「Put Wall」の少し下に、利確目標（TP）は「Call Wall」の手前に配置し、機関投資家の実弾ヘッジを盾にします。</li>
-                        <li><strong>資金管理（ATR）:</strong> 口座資金の1.0%〜2.0%以上の損失を出さないよう、損切り幅から逆算して楽天CFDの発注ロット数を決定します。</li>
+                        <li><strong>COTレポート（爆薬の充填度）:</strong> 商業筋COT指数 80%以上 ＆ ファンド指数 20%以下はショートスクイーズの爆薬満タン。さらに週半ばの日次出来高・取組高で投げ売り完了を確認。</li>
+                        <li><strong>GEX壁の動的判定（物理的防衛線）:</strong> SpotがPut Wallを下回った場合は一時的なレジスタンス反転を警戒し、防衛床を「Zero-Gamma」へ自動スイッチ。</li>
+                        <li><strong>引きつけ指値アルゴリズム（神リスクリワード）:</strong> 成行で飛びつかず、Zero-Gammaや防衛床への押し目をミリ単位で引きつける指値を投入。SLを直下にタイト配置することで【RR 1:3〜1:6】の損小利大を強制執行。</li>
+                        <li><strong>限月＆カレンダースプレッド:</strong> 期近のディスカウントから期先への需要回復期スプレッドを監視し、ロールオーバー時のコスト負けを排除。</li>
                     </ol>
                 </div>
             </div>
@@ -528,11 +636,9 @@ def generate_dashboard():
             const btn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.textContent.includes(sym) || (sym === 'SUMMARY' && b.textContent.includes('マトリクス')));
             if (btn) btn.classList.add('active');
 
-            // Trigger window resize to ensure plotly renders correctly
             window.dispatchEvent(new Event('resize'));
         }
 
-        // Render Plotly Charts for all symbols
         document.addEventListener('DOMContentLoaded', () => {
             const symbols = ['HE', 'NG', 'SI', 'ZC'];
             
@@ -548,11 +654,9 @@ def generate_dashboard():
                 const mmIdx = cotRows.map(r => r.cot_index.managed_money);
                 const commChg = cotRows.map(r => r.weekly_net_change.commercials);
 
-                // Price history
                 const priceRows = item.price;
                 const pDates = priceRows.map(r => r.date);
                 const pCloses = priceRows.map(r => r.close);
-                const pSeasonal = priceRows.map(r => r.seasonal_avg);
 
                 // 1. Price + COT Net Position Chart
                 const tracePrice = {
@@ -584,8 +688,8 @@ def generate_dashboard():
                 };
 
                 const layoutCot = {
-                    paper_bgcolor: '#141720',
-                    plot_bgcolor: '#141720',
+                    paper_bgcolor: '#141721',
+                    plot_bgcolor: '#141721',
                     margin: { l: 60, r: 60, t: 30, b: 40 },
                     legend: { orientation: 'h', y: 1.12, font: { color: '#c4c7c5' } },
                     xaxis: { gridcolor: '#232734', color: '#8e918f' },
@@ -632,8 +736,8 @@ def generate_dashboard():
                 };
 
                 const layoutOsc = {
-                    paper_bgcolor: '#141720',
-                    plot_bgcolor: '#141720',
+                    paper_bgcolor: '#141721',
+                    plot_bgcolor: '#141721',
                     margin: { l: 60, r: 60, t: 30, b: 40 },
                     legend: { orientation: 'h', y: 1.14, font: { color: '#c4c7c5' } },
                     xaxis: { gridcolor: '#232734', color: '#8e918f' },
@@ -668,7 +772,7 @@ def generate_dashboard():
     with open(index_file, "w", encoding="utf-8") as f:
         f.write(html_content)
 
-    print(f"[Success] Interactive dashboard built at {index_file}")
+    print(f"[Success] Upgraded dashboard generated at {index_file}")
     return index_file
 
 

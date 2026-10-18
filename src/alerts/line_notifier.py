@@ -1,7 +1,7 @@
 """
-LINE Notifier
+LINE Notifier (Institutional Upgrade)
 Sends structured, actionable trading signals and COT/GEX confluence alerts to LINE Messaging API.
-Includes dry-run/preview mode when LINE tokens are not yet configured.
+Emphasizes the Recommended Pullback Limit Plan (high RR) and Put Wall inversion alerts.
 """
 
 import os
@@ -21,7 +21,7 @@ def format_line_message(signals_data: dict) -> str:
     monitored = []
 
     for sym, d in signals_data.items():
-        if d.get("trade_plan"):
+        if d.get("trade_plans", {}).get("recommended_limit_plan"):
             active_plans.append(d)
         else:
             monitored.append(d)
@@ -35,31 +35,33 @@ def format_line_message(signals_data: dict) -> str:
         lines.append("全銘柄ともに監視・引き付けフェーズです。")
     else:
         for p in active_plans:
-            tp = p["trade_plan"]
+            tp_rec = p["trade_plans"]["recommended_limit_plan"]
             cot = p["cot_summary"]
             gex = p["gex_summary"]
+            contract = p.get("active_contract", "")
             
-            lines.append(f"■ {p['name']}")
+            lines.append(f"■ {p['name']} [{contract}]")
             lines.append(f"・判定: {p['action_label']}")
-            lines.append(f"・売買: {tp['direction']}")
-            lines.append(f"・エントリー目安: {tp['entry_price']} ({p['unit']})")
-            lines.append(f"・損切り (SL): {tp['stop_loss']} (Put防衛壁下)")
-            lines.append(f"・利確目標 (TP): {tp['take_profit']} (Call壁手前)")
-            lines.append(f"・リスクリワード: 1 : {tp['risk_reward_ratio']}")
-            lines.append(f"・【根拠】")
-            lines.append(f"  COT商業筋: {cot['commercial_index']}% / ファンド: {cot['managed_money_index']}%")
-            lines.append(f"  GEX: {gex['regime']}")
+            lines.append(f"・売買: {tp_rec['direction']}")
+            lines.append(f"・🌟【推奨】指値目安: {tp_rec['entry_range']} ({p['unit']})")
+            lines.append(f"・タイト損切り (SL): {tp_rec['stop_loss']} ({gex.get('floor_label', '防衛線')}直下)")
+            lines.append(f"・利確目標 (TP): {tp_rec['take_profit']} (Call壁手前)")
+            lines.append(f"・リスクリワード: 1 : {tp_rec['risk_reward_ratio']} (神RR仕様)")
+            if gex.get("put_wall_inverted"):
+                lines.append(f"・⚠️ 注意: Put Wall割れ中。実質防衛床は{gex.get('floor_label')}")
+            lines.append(f"・【根拠】COT商業筋: {cot['commercial_index']}% / ファンド: {cot['managed_money_index']}%")
             lines.append("────────────────────")
 
     if monitored:
         lines.append("【監視継続】")
         for m in monitored:
-            lines.append(f"・{m['name']}: {m['action_label']} (Spot: {m['spot_price']})")
+            contract = m.get("active_contract", "")
+            lines.append(f"・{m['name']} [{contract}]: {m['action_label']} (Spot: {m['spot_price']})")
         lines.append("━━━━━━━━━━━━━━━━━━━━")
 
-    lines.append(f"📊 詳細チャート・COT推移はこちら:")
+    lines.append(f"📊 詳細チャート・COT＆GEXダッシュボード:")
     lines.append(DASHBOARD_URL)
-    lines.append("※楽天CFDの発注画面で上記SL/TPをご指定ください。")
+    lines.append("※成行ではなく「引きつけ指値」で注文を装填してください。")
 
     return "\n".join(lines)
 
