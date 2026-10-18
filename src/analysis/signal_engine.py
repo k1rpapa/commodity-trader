@@ -201,9 +201,9 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
         put_wall_inverted = True
         effective_floor = zg if (zg and zg < spot) else round(put_wall - 1.5 * atr14, 3)
         floor_label = f"Zero-Gamma ({zg})" if (zg and zg < spot) else f"第2防衛床 ({effective_floor})"
-        put_wall_status_desc = f"⚠️ Put Wall割れ（一時的レジスタンス化）: 現在値({spot})はPW({put_wall})の下方にあり、{put_wall}は戻りを叩く上値抵抗として意識。実質防衛床は【{floor_label}】に移行。"
+        put_wall_status_desc = f"Put Wall割れ（一時的レジスタンス化）: 現在値({spot})はPW({put_wall})の下方にあり、{put_wall}は戻りを叩く上値抵抗として意識。実質防衛床は【{floor_label}】に移行。"
     else:
-        put_wall_status_desc = f"🛡️ Put Wall支持中: 現在値({spot})はPut Wall({put_wall})の上にあり、強固な機関買い支え床として機能。"
+        put_wall_status_desc = f"Put Wall支持中: 現在値({spot})はPut Wall({put_wall})の上にあり、強固な機関買い支え床として機能。"
 
     # Scoring
     score = 0

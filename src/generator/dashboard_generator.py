@@ -233,13 +233,6 @@ def generate_dashboard():
             font-weight: 700;
             box-shadow: 0 0 10px rgba(11, 87, 208, 0.4);
         }}
-        .asset-tab-btn .asset-ticker {{
-            color: #38bdf8;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            font-weight: 700;
-        }}
-        .asset-tab-btn.active .asset-ticker {{ color: #ffffff; }}
 
         /* Main Container */
         .container {{
@@ -548,13 +541,10 @@ def generate_dashboard():
     for sym in SYMBOLS_ORDER:
         d = frontend_data[sym]
         icon = SYM_ICONS.get(sym, "📦")
-        sig = d["signal"]
-        badge_dot = "🟢" if "ロング" in sig.get("action_label", "") else ("🔴" if "売り" in sig.get("action_label", "") else "⚪")
         html_content += f"""
             <button class="asset-tab-btn" id="btn-{sym}" onclick="switchTab('{sym}')">
                 <span>{icon}</span>
                 <span>{d['name']}</span>
-                <span class="asset-ticker">{sym}</span>
             </button>
         """
 
@@ -651,6 +641,8 @@ def generate_dashboard():
 
         is_inverted = gex_summary.get("put_wall_inverted", False)
         wall_alert_class = "inverted" if is_inverted else "solid"
+        raw_status_desc = gex_summary.get("put_wall_status_desc", "")
+        clean_status_desc = raw_status_desc.replace("⚠️ ", "").replace("🛡️ ", "").replace("⚠️", "").replace("🛡️", "")
 
         html_content += f"""
         <!-- TAB: {sym} -->
@@ -694,7 +686,7 @@ def generate_dashboard():
 
                     <div class="wall-alert-box {wall_alert_class}">
                         <div style="font-size: 18px;">{'⚠️' if is_inverted else '🛡️'}</div>
-                        <div>{gex_summary.get('put_wall_status_desc', '')}</div>
+                        <div>{clean_status_desc}</div>
                     </div>
 
                     {trade_plans_html}
