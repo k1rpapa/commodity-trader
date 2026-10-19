@@ -250,6 +250,31 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
         score -= 1.5
         signals.append(f"【テクニカル】日足RSI(14)が {rsi14} と買われすぎ域に到達")
 
+    # 5. Trend-Following Evaluation (EMA 20/50 & Donchian 20-Day Momentum)
+    donchian_high20 = latest_price.get("donchian_high20")
+    donchian_low20 = latest_price.get("donchian_low20")
+
+    if ema20 and ema50:
+        if spot > ema20 > ema50:
+            score += 1.5
+            signals.append(f"【トレンドフォロー】強気パーフェクトオーダー（現在値 {spot} > EMA20:{ema20} > EMA50:{ema50} 上昇トレンド継続）")
+        elif ema20 > ema50:
+            score += 1.0
+            signals.append(f"【トレンドフォロー】中期上昇トレンド維持（EMA20:{ema20} > EMA50:{ema50}）")
+        elif spot < ema20 < ema50:
+            score -= 1.0
+            signals.append(f"【トレンドフォロー】弱気パーフェクトオーダー（現在値 {spot} < EMA20:{ema20} < EMA50:{ema50} 下落トレンド継続）")
+        elif ema20 < ema50:
+            score -= 0.5
+            signals.append(f"【トレンドフォロー】中期下落トレンド（EMA20:{ema20} < EMA50:{ema50}）")
+
+    if donchian_high20 and spot >= donchian_high20 * 0.99:
+        score += 0.5
+        signals.append(f"【モメンタム追随】20日ドンチャン高値（{donchian_high20}）ブレイクアウト圏")
+    elif donchian_low20 and spot <= donchian_low20 * 1.01:
+        score -= 0.5
+        signals.append(f"【モメンタム追随】20日ドンチャン安値（{donchian_low20}）ブレイクダウン圏")
+
     # Classification
     action = "NEUTRAL"
     action_label = "様子見 / 監視継続"
@@ -259,11 +284,15 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
         action = "STRONG_BUY_SETUP"
         action_label = "🔥 高確度ロング・スクイーズ警戒"
         badge_color = "#00e676"
-    elif score >= 3.0:
+    elif score >= 2.5:
         action = "BUY_PULLBACK"
         action_label = "🟢 押し目買い検討ゾーン"
         badge_color = "#44c265"
-    elif score <= -3.0:
+    elif score <= -4.5:
+        action = "STRONG_SELL_SETUP"
+        action_label = "🔥 高確度ショート・天井警戒"
+        badge_color = "#ff1744"
+    elif score <= -2.5:
         action = "SELL_RALLY"
         action_label = "🔴 戻り売り警戒ゾーン"
         badge_color = "#ff5252"
@@ -316,6 +345,54 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
             "risk_distance": round(mkt_risk, 3),
             "reward_distance": round(mkt_reward, 3),
             "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
+        }
+
+    elif action in ["STRONG_SELL_SETUP", "SELL_RALLY"]:
+        # Pullback Limit Plan (Short)
+        if call_wall and call_wall > spot:
+            limit_entry = round(call_wall - 0.15 * atr14, 3)
+            limit_sl = round(call_wall + 0.2 * atr14, 3)
+        else:
+            limit_entry = round(spot + 0.5 * atr14, 3)
+            limit_sl = round(spot + 1.8 * atr14, 3)
+
+        limit_tp = round(effective_floor if (effective_floor and effective_floor < limit_entry) else limit_entry - 2.5 * atr14, 3)
+        limit_risk = max(0.001, limit_sl - limit_entry)
+        limit_reward = max(0.001, limit_entry - limit_tp)
+        limit_rr = round(limit_reward / limit_risk, 2)
+
+        trade_plans["recommended_limit_plan"] = {
+            "name": "🌟 【推奨】戻り売り指値プラン (神リスクリワード仕様)",
+            "direction": "売り (SHORT)",
+            "entry_target": limit_entry,
+            "entry_range": f"{limit_entry} 付近",
+            "stop_loss": limit_sl,
+            "take_profit": limit_tp,
+            "risk_reward_ratio": limit_rr,
+            "risk_distance": round(limit_risk, 3),
+            "reward_distance": round(limit_reward, 3),
+            "strategy_memo": f"Call壁手前への戻りをミリ単位で引きつける指値。直上にタイトSLを配置し、RR 1:{limit_rr} の損小利大ショートを執行。"
+        }
+
+        # Market Plan (Short)
+        mkt_entry = round(close, 3)
+        mkt_sl = round(call_wall + 0.3 * atr14 if (call_wall and call_wall > mkt_entry) else mkt_entry + 2.0 * atr14, 3)
+        mkt_tp = round(effective_floor if (effective_floor and effective_floor < mkt_entry) else mkt_entry - 2.0 * (mkt_sl - mkt_entry), 3)
+        mkt_risk = max(0.001, mkt_sl - mkt_entry)
+        mkt_reward = max(0.001, mkt_entry - mkt_tp)
+        mkt_rr = round(mkt_reward / mkt_risk, 2)
+
+        trade_plans["market_plan"] = {
+            "name": "⚡ 成行・戻り売り追随プラン",
+            "direction": "売り (SHORT)",
+            "entry_target": mkt_entry,
+            "entry_range": f"{mkt_entry} 付近成行",
+            "stop_loss": mkt_sl,
+            "take_profit": mkt_tp,
+            "risk_reward_ratio": mkt_rr,
+            "risk_distance": round(mkt_risk, 3),
+            "reward_distance": round(mkt_reward, 3),
+            "strategy_memo": "下落モメンタムに追随する成行ショート。SL幅が広がるためロット数を半分以下に落とすこと。"
         }
 
     return {

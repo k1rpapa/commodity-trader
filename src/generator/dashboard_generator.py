@@ -571,12 +571,13 @@ def generate_dashboard():
 
         trade_plans_html = ""
         if plan_rec:
+            badge_dir_bg = "#ef4444" if "売り" in plan_rec['direction'] else "#10b981"
             trade_plans_html = f"""
             <div class="plans-container">
                 <div class="plan-card-recommended">
                     <div class="plan-header">
                         <div class="plan-title-rec">{plan_rec['name']}</div>
-                        <span class="badge" style="background:#10b981; color:#000;">{plan_rec['direction']}</span>
+                        <span class="badge" style="background:{badge_dir_bg}; color:#000;">{plan_rec['direction']}</span>
                     </div>
                     <div class="plan-grid">
                         <div class="plan-item">
@@ -878,7 +879,7 @@ def generate_dashboard():
                         <p style="font-size: 14px; color: #cbd5e1; margin-top: 8px; line-height: 1.7;">
                             株式やFXと決定的に異なるのは、コモディティが<strong>「現実世界の実物（アトム：農地・油田・鉱山・天候・保管コスト）」</strong>に完全に支配されている点です。<br>
                             チャート上の単なるゴールデンクロスやオシレーターは、大口実需の買い集めやエルニーニョ寒波、巨大ファンドのロスカット（ショートスクイーズ）の前では無力です。<br>
-                            本ダッシュボードは、<strong>「大口の手口（COT）」「オプション市場の物理的な防衛壁（GEX）」「年間の季節性サイクル」「ミリ単位の引きつけ資金管理（ATR）」</strong>という4層の真実を統合し、個人投資家が機関投資家と同じ視線で<strong>「損小利大（リスクリワード 1:3〜1:10超）」</strong>を叩き出すためのコックピットです。
+                            本ダッシュボードは、<strong>「① 大口手口（COT需給）」「② 季節性アノマリー」「③ オプション重力場（GEX）」「④ トレンドフォロー（EMA/ドンチャン）」「⑤ ミリ単位の引きつけ資金管理（ATR）」</strong>という5層の真実を統合し、個人投資家が機関投資家と同じ視線で<strong>「損小利大（リスクリワード 1:3〜1:10超）」</strong>を叩き出すためのコックピットです。
                         </p>
                     </div>
 
@@ -944,9 +945,23 @@ def generate_dashboard():
                         </div>
                     </div>
 
-                    <!-- Section 3: Dual Trade Plans & RR 1:6 -->
+                    <!-- Section 3: Trend-Following & Momentum -->
                     <div class="guide-box">
-                        <div style="font-size: 17px; font-weight: 800; color: #34d399;">🎯 3. トレード指示プランの活用法（神リスクリワードの引きつけ指値）</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #38bdf8;">📈 3. トレードの王道「トレンドフォロー ＆ モメンタム」の数理的融合</div>
+                        <p style="font-size: 14px; color: #cbd5e1; margin-top: 8px; line-height: 1.7;">
+                            大口の手口（COT）や季節性サイクルがどんなに強気であっても、直近のプライスアクションが逆流していると含み損を抱えやすくなります。<br>
+                            本システムでは、タートルズ流の<strong>「20日ドンチャンブレイクアウト」</strong>および機関投資家標準の<strong>「EMA20 / EMA50 パーフェクトオーダー」</strong>を自動解析し、トレンドの方向性と勢いをシグナルに組み込んでいます：
+                        </p>
+                        <ul class="bullet-list" style="margin-bottom: 12px;">
+                            <li><strong>強気パーフェクトオーダー（現在値 > EMA20 > EMA50）:</strong> 最も力強い上昇トレンド継続。防衛床への押し目買いの勝率とリワードが極大化します（天然ガス等）。</li>
+                            <li><strong>弱気パーフェクトオーダー（現在値 < EMA20 < EMA50）:</strong> 完全な下落トレンド。大底シグナル点灯時は「反転初動のEMA20上抜け」を待つフィルターとして機能します。</li>
+                            <li><strong>20日ドンチャン高値ブレイク（Donchian High Breakout）:</strong> 過去20日間の最高値を上抜けた瞬間、トレンドフォロー勢の新規買いとストップが巻き込まれ、大相場の初動モメンタムが発生します。</li>
+                        </ul>
+                    </div>
+
+                    <!-- Section 4: Dual Trade Plans & RR 1:6 -->
+                    <div class="guide-box">
+                        <div style="font-size: 17px; font-weight: 800; color: #34d399;">🎯 4. トレード指示プランの活用法（神リスクリワードの引きつけ指値）</div>
                         <p style="font-size: 14px; color: #cbd5e1; margin-top: 8px; line-height: 1.7;">
                             どんなに優れた相場観でも、「成行で飛びつき買い」をするとストップ狩りの下ヒゲに刈られ、損切り幅が広がりリスクリワード比が1:1程度に沈んでしまいます。<br>
                             当レーダーでは**「2本立てプラン」**を提示しています：
@@ -963,9 +978,9 @@ def generate_dashboard():
                         </div>
                     </div>
 
-                    <!-- Section 4: All 19 Assets & Sectors -->
+                    <!-- Section 5: All 19 Assets & Sectors -->
                     <div class="guide-box">
-                        <div style="font-size: 17px; font-weight: 800; color: #f59e0b;">🌾 4. 全19銘柄のセクター特性 ＆ カレンダースプレッド（限月力学）</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #f59e0b;">🌾 5. 全19銘柄のセクター特性 ＆ カレンダースプレッド（限月力学）</div>
                         <div class="table-responsive" style="margin-top: 10px;">
                             <table class="matrix-table">
                                 <thead>
@@ -1024,9 +1039,9 @@ def generate_dashboard():
                         </div>
                     </div>
 
-                    <!-- Section 5: Risk Management -->
+                    <!-- Section 6: Risk Management -->
                     <div class="guide-box">
-                        <div style="font-size: 17px; font-weight: 800; color: #ef4444;">🛡️ 5. 楽天CFDでの発注・資金管理の絶対鉄則</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #ef4444;">🛡️ 6. 楽天CFDでの発注・資金管理の絶対鉄則</div>
                         <ul class="bullet-list" style="line-height: 1.8;">
                             <li><strong>1トレードの最大許容損失は口座資金の「1.0%〜2.0%以内」に固定:</strong><br>
                                 口座が100万円なら、1回の損切り額を最大1.5万円に制限します。ボラティリティ（ATR）が大きい天然ガスは自動でロットを小さく、コーンは適正ロットに配分されます。</li>
