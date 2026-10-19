@@ -9,6 +9,11 @@ import os
 import json
 from datetime import datetime, timezone, timedelta
 
+try:
+    from src.analysis.larry_forecast import evaluate_larry_forecast
+except ImportError:
+    from larry_forecast import evaluate_larry_forecast
+
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data")
 COT_PATH = os.path.join(DATA_DIR, "cot_history.json")
 GEX_PATH = os.path.join(DATA_DIR, "gex_latest.json")
@@ -229,10 +234,12 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
         score += 1.0
         signals.append(f"【スマートマネー先回り】商業筋今週+{c_chg:,}枚買い増し / ファンド売り")
 
-    # 2. Seasonality Evaluation
-    signals.append(f"【季節性サイクル】{seasonal_desc}")
-    if any(k in seasonal_desc for k in ["強気", "底入れ", "反発", "最深", "上昇波"]):
-        score += 1.5
+    # 2. Larry Williams 2026 Mathematical Cycle & TDOW/TDOM Anomaly Engine
+    larry_eval = evaluate_larry_forecast(sym, datetime.now(jst))
+    larry_score = larry_eval.get("total_larry_score", 0.0)
+    score += larry_score
+    for lsig in larry_eval.get("larry_signals", []):
+        signals.append(lsig)
 
     # 3. GEX Evaluation
     if is_pos_gamma:
@@ -436,6 +443,7 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
             "atr14": round(atr14, 3),
             "rsi14": rsi14
         },
+        "larry_forecast": larry_eval,
         "signals": signals,
         "trade_plans": trade_plans,
         "trade_plan": trade_plans.get("recommended_limit_plan")

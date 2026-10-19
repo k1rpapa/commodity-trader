@@ -641,6 +641,25 @@ def generate_dashboard():
         m_chg = sig["cot_summary"]["managed_money_weekly_chg"]
         cot_lag = sig["cot_summary"].get("cot_lag_note", "通常推移")
 
+        larry_info = sig.get("larry_forecast", {})
+        chart_ref = larry_info.get("chart_ref", "")
+        theme = larry_info.get("theme", "")
+        cycle_phase = larry_info.get("cycle_phase", "")
+        cycle_direction = larry_info.get("cycle_direction", "UP")
+        cycle_bias_desc = larry_info.get("cycle_bias_desc", "")
+        total_larry_score = larry_info.get("total_larry_score", 0.0)
+        tdow_desc = larry_info.get("tdow_desc", "中立")
+        tdom_alert = larry_info.get("tdom_alert", "")
+        special_date_alert = larry_info.get("special_date_alert", "")
+
+        dir_icon_map = {
+            "UP": "🚀 上昇波動",
+            "DOWN": "📉 調整・下落波動",
+            "BOTTOM": "⚓ 大底・反転買いゾーン",
+            "PEAK": "⚠️ 天井警戒ゾーン"
+        }
+        dir_icon = dir_icon_map.get(cycle_direction, "🔄 サイクル推移")
+
         is_inverted = gex_summary.get("put_wall_inverted", False)
         wall_alert_class = "inverted" if is_inverted else "solid"
         raw_status_desc = gex_summary.get("put_wall_status_desc", "")
@@ -694,7 +713,7 @@ def generate_dashboard():
                     {trade_plans_html}
 
                     <div style="margin-top: 16px;">
-                        <div style="font-size: 14px; font-weight: 700; color: #e5e7eb;">📊 4層コンフルエンス根拠:</div>
+                        <div style="font-size: 14px; font-weight: 700; color: #e5e7eb;">📊 5層コンフルエンス根拠 (COT × 2026サイクル × GEX × トレンド × 日柄):</div>
                         <ul class="bullet-list">
                             {signals_bullets_html}
                         </ul>
@@ -724,7 +743,26 @@ def generate_dashboard():
                         </div>
                     </div>
 
-                    <div style="margin-top: 14px; background: #171b26; padding: 14px; border-radius: 8px; border-left: 4px solid #38bdf8;">
+                    <!-- 🌟 Larry Williams 2026 Cycle & Anomaly Box -->
+                    <div style="margin-top: 14px; background: #171b26; padding: 14px; border-radius: 8px; border-left: 4px solid #f59e0b; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+                            <span style="font-size: 13.5px; font-weight: 700; color: #f59e0b;">🌟 ラリー・ウィリアムズ 2026予測 ({chart_ref})</span>
+                            <span style="font-size: 11.5px; background: rgba(245, 158, 11, 0.2); color: #fbbf24; font-weight: 700; padding: 2px 8px; border-radius: 4px;">アノマリー加点: {total_larry_score:+}点</span>
+                        </div>
+                        <div style="font-size: 13px; color: #fef08a; margin-top: 6px; font-weight: 600;">
+                            {dir_icon} 【{cycle_phase}】 {cycle_bias_desc}
+                        </div>
+                        <div style="font-size: 12px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">
+                            📖 <strong>年間ロードマップ:</strong> {theme}
+                        </div>
+                        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #2b3040; font-size: 12px; color: #cbd5e1; display: flex; flex-direction: column; gap: 4px;">
+                            <div><strong>📅 曜日アノマリー (TDOW):</strong> {tdow_desc}</div>
+                            {f"<div><strong>🌟 日柄特異日 (TDOM):</strong> {tdom_alert}</div>" if tdom_alert else ""}
+                            {f"<div><strong>🔥 成田式カレンダー特異日:</strong> <span style='color: #f59e0b; font-weight: bold;'>{special_date_alert}</span></div>" if special_date_alert else ""}
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 12px; background: #171b26; padding: 14px; border-radius: 8px; border-left: 4px solid #38bdf8;">
                         <div style="font-size: 13px; font-weight: bold; color: #38bdf8;">🕒 COT集計タイムラグ（火曜➔金曜）手口補正</div>
                         <div style="font-size: 12.5px; color: #cbd5e1; margin-top: 4px; line-height: 1.5;">{cot_lag}</div>
                     </div>
@@ -800,6 +838,7 @@ def generate_dashboard():
                                 <th>総合シグナル</th>
                                 <th>商業筋COT</th>
                                 <th>ファンドCOT</th>
+                                <th>2026年サイクル (ラリー)</th>
                                 <th>GEXレジーム</th>
                                 <th>実質防衛床 (Floor)</th>
                                 <th>Call Wall (天井)</th>
@@ -836,6 +875,15 @@ def generate_dashboard():
         m_idx = sig["cot_summary"]["managed_money_index"]
         sector = d["category"]
 
+        larry_info = sig.get("larry_forecast", {})
+        chart_ref = larry_info.get("chart_ref", "")
+        cycle_phase = larry_info.get("cycle_phase", "")
+        cycle_dir = larry_info.get("cycle_direction", "UP")
+        total_l_score = larry_info.get("total_larry_score", 0.0)
+
+        phase_color = "#34d399" if cycle_dir == "UP" else ("#f87171" if cycle_dir == "DOWN" else "#f59e0b")
+        dir_symbol = "↗" if cycle_dir == "UP" else ("↘" if cycle_dir == "DOWN" else "⚓")
+
         plan_desc = f"指値: {plan_rec['entry_range']} (SL: {plan_rec['stop_loss']} / TP: {plan_rec['take_profit']}) <span style='color:#f59e0b; font-weight:bold;'>[RR 1:{plan_rec['risk_reward_ratio']}]</span>" if plan_rec else "<span style='color:#8e918f;'>レンジ中央 / 監視待機</span>"
 
         html_content += f"""
@@ -849,6 +897,10 @@ def generate_dashboard():
                                 <td><span class="badge" style="background:{sig['badge_color']}; color:#000;">{sig['action_label']}</span></td>
                                 <td style="font-family: monospace; font-weight: bold; color: {'#34d399' if c_idx >= 80 else '#fff'};">{c_idx}%</td>
                                 <td style="font-family: monospace; font-weight: bold; color: {'#f87171' if m_idx <= 20 else '#fff'};">{m_idx}%</td>
+                                <td style="font-size: 11.5px;">
+                                    <div style="font-weight: 700; color: {phase_color};">{dir_symbol} {cycle_phase}</div>
+                                    <div style="font-size: 10px; color: #8e918f;">{chart_ref} ({total_l_score:+0.1f})</div>
+                                </td>
                                 <td style="font-size: 12px;">{'🟢 Positive' if gex_info.get('is_positive_gamma') else '🔴 Negative'}</td>
                                 <td style="font-family: monospace; color: #34d399; font-weight: bold;">{gex_summary.get('floor_label', '-')}</td>
                                 <td style="font-family: monospace; color: #06bbdf; font-weight: bold;">{gex_info.get('call_wall') or '-'}</td>
@@ -1039,9 +1091,43 @@ def generate_dashboard():
                         </div>
                     </div>
 
-                    <!-- Section 6: Risk Management -->
+                    <!-- Section 6: Larry Williams 2026 Forecast & Anomaly Engine -->
                     <div class="guide-box">
-                        <div style="font-size: 17px; font-weight: 800; color: #ef4444;">🛡️ 6. 楽天CFDでの発注・資金管理の絶対鉄則</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #f59e0b;">🌟 6. ラリー・ウィリアムズ 2026年数理サイクル予測 ＆ アノマリー完全体系</div>
+                        <p style="font-size: 14px; color: #cbd5e1; margin-top: 8px; line-height: 1.7;">
+                            本システムには、ラリー・ウィリアムズの<strong>「2026年フォーキャスト（原本）」</strong>および成田博之氏による<strong>「カレンダー変換特異日」</strong>の数理データが完全組み込みされています。<br>
+                            単なるインジケーターではなく、<strong>「サイクル波形」「曜日優位性（TDOW）」「月内取引日（TDOM）」「カレンダー特異日」</strong>が合致した瞬間、歴史的勝率を誇る神エントリーが発生します。
+                        </p>
+
+                        <div class="guide-h3">① 2026年 数理サイクル波形の重要ポイント（原本チャート連動）</div>
+                        <ul class="bullet-list" style="margin-bottom: 12px;">
+                            <li><strong>🇺🇸 米国株（ES / NQ - チャート4）:</strong> 4年周期の大底サイクル年。春季の調整を経て<strong>【6月16日前後】</strong>に歴史的大底を形成。その後夏から年末にかけて<strong>勝率90%の巨大上昇波</strong>へと突入します。</li>
+                            <li><strong>🐷 豚肉（HE - チャート103）:</strong> 10月下旬に年中最深の大底を形成。年末の感謝祭・クリスマスハム実需により、<strong>過去72%の確率で急騰する青色上昇波</strong>がスタート。</li>
+                            <li><strong>🔥 天然ガス（NG - チャート99）:</strong> 10月の底入れ完了から、厳冬期（12月〜1月）のフリーズウォッチ（寒波警報）にかけて<strong>+63%〜+72%の急騰波</strong>が点火。</li>
+                            <li><strong>🥈 シルバー（SI - チャート87）:</strong> 10月中旬に最終押し目を形成後、年末年始にかけて<strong>+59%の上昇波</strong>を描く青色サイクル。</li>
+                            <li><strong>🛢️ 原油（CL - チャート97）:</strong> 5月ボトムから夏秋の急騰を経て、10月製油所定期修理による一時的押し目から冬期暖房需要への切り替え。</li>
+                        </ul>
+
+                        <div class="guide-h3">② 曜日バイアス（TDOW: Trading Day of Week）</div>
+                        <div class="highlight-card">
+                            ・<strong>米国株（ES / NQ）:</strong> 月曜日が過去最強（実戦検証勝率81%の神曜日バイアス）。火曜日も買い優位。<br>
+                            ・<strong>ゴールド（GC）:</strong> 木曜日・金曜日が週内最強。火曜日の第6取引日買い（勝率77%）。<br>
+                            ・<strong>米国債（ZN）:</strong> 水曜日が最弱（売り警戒）、金曜日が最強（週末逃避買い）。
+                        </div>
+
+                        <div class="guide-h3">③ 月内取引日アノマリー（TDOM）＆ 成田式カレンダー特異日</div>
+                        <div class="formula-card">
+                            ・<strong>TDOM 1:</strong> 月初取引日の買いバイアス（資金流入アノマリー）<br>
+                            ・<strong>TDOM 6（火曜）:</strong> ゴールド・米国債の歴史的高勝率日（勝率77%）<br>
+                            ・<strong>TDOM 10 & 15（月曜）:</strong> S&P 500の最強エントリー日（勝率81%）<br>
+                            ・<strong>TDOM 21:</strong> 米国債の過去194回中・勝率77.8%の鉄板日柄<br>
+                            ・<strong>成田式ゴールド特異日:</strong> 10月23日〜28日（秋の押し目完了ポイント）など全25特異日を自動判定
+                        </div>
+                    </div>
+
+                    <!-- Section 7: Risk Management -->
+                    <div class="guide-box">
+                        <div style="font-size: 17px; font-weight: 800; color: #ef4444;">🛡️ 7. 楽天CFDでの発注・資金管理の絶対鉄則</div>
                         <ul class="bullet-list" style="line-height: 1.8;">
                             <li><strong>1トレードの最大許容損失は口座資金の「1.0%〜2.0%以内」に固定:</strong><br>
                                 口座が100万円なら、1回の損切り額を最大1.5万円に制限します。ボラティリティ（ATR）が大きい天然ガスは自動でロットを小さく、コーンは適正ロットに配分されます。</li>

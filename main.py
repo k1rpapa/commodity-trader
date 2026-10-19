@@ -10,7 +10,15 @@ Runs the end-to-end quant pipeline:
 """
 
 import sys
+import os
+import io
 import argparse
+
+# Ensure UTF-8 output on Windows CP932 consoles
+if sys.platform == "win32" and hasattr(sys.stdout, "buffer"):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
 from src.data.cot_fetcher import update_and_calculate_indices
 from src.data.gex_fetcher import fetch_gex_data
 from src.data.price_fetcher import fetch_and_calculate_prices
