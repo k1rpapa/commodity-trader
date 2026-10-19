@@ -768,7 +768,10 @@ def generate_dashboard():
         <div id="tab-SUMMARY" class="tab-pane active">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">📋 全19銘柄 総合クオンツ・マトリクス監視盤</div>
+                    <div class="card-title">
+                        📋 全19銘柄 総合クオンツ・マトリクス監視盤
+                        <span style="font-size: 12.5px; color: #f59e0b; font-weight: 600; margin-left: 6px;">[ 🔥 エントリー確度順 ]</span>
+                    </div>
                     <span style="font-size: 12px; color: #8e918f;">楽天CFD & グローバル先物 対象19銘柄</span>
                 </div>
 
@@ -804,7 +807,25 @@ def generate_dashboard():
                         </thead>
                         <tbody>
     """
-    for sym in SYMBOLS_ORDER:
+
+    def get_conviction_sort_key(s):
+        sig = frontend_data[s]["signal"]
+        lbl = sig.get("action_label", "")
+        plan = sig.get("trade_plans", {}).get("recommended_limit_plan")
+        rr = plan.get("risk_reward_ratio", 0) if plan else 0
+        if "高確度" in lbl:
+            tier = 3
+        elif "検討ゾーン" in lbl or "警戒" in lbl or plan is not None:
+            tier = 2
+        elif plan is not None:
+            tier = 1
+        else:
+            tier = 0
+        return (tier, rr, abs(sig.get("score", 0)))
+
+    sorted_summary_symbols = sorted(SYMBOLS_ORDER, key=get_conviction_sort_key, reverse=True)
+
+    for sym in sorted_summary_symbols:
         d = frontend_data[sym]
         sig = d["signal"]
         gex_info = d["gex"]
