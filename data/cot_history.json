@@ -5345,6 +5345,33 @@
         "commercials": -8398,
         "managed_money": 13075
       }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 1935470,
+      "commercials": {
+        "long": 1425586,
+        "short": 1391664,
+        "net": 33922
+      },
+      "managed_money": {
+        "long": 215885,
+        "short": 358556,
+        "net": -142671
+      },
+      "non_commercials": {
+        "long": 215885,
+        "short": 358556,
+        "net": -142671
+      },
+      "cot_index": {
+        "commercials": 67.6,
+        "managed_money": 27.5
+      },
+      "weekly_net_change": {
+        "commercials": -745,
+        "managed_money": -1676
+      }
     }
   ],
   "NQ": [
@@ -10692,6 +10719,33 @@
       "weekly_net_change": {
         "commercials": 8619,
         "managed_money": -9600
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 272462,
+      "commercials": {
+        "long": 136942,
+        "short": 200518,
+        "net": -63576
+      },
+      "managed_money": {
+        "long": 86099,
+        "short": 35373,
+        "net": 50726
+      },
+      "non_commercials": {
+        "long": 86099,
+        "short": 35373,
+        "net": 50726
+      },
+      "cot_index": {
+        "commercials": 5.7,
+        "managed_money": 92.4
+      },
+      "weekly_net_change": {
+        "commercials": -3749,
+        "managed_money": 2203
       }
     }
   ],
@@ -16041,6 +16095,33 @@
         "commercials": 1996,
         "managed_money": -3898
       }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 402279,
+      "commercials": {
+        "long": 37452,
+        "short": 273034,
+        "net": -235582
+      },
+      "managed_money": {
+        "long": 120970,
+        "short": 16764,
+        "net": 104206
+      },
+      "non_commercials": {
+        "long": 237142,
+        "short": 37277,
+        "net": 199865
+      },
+      "cot_index": {
+        "commercials": 55.8,
+        "managed_money": 37.9
+      },
+      "weekly_net_change": {
+        "commercials": 6949,
+        "managed_money": -2883
+      }
     }
   ],
   "SI": [
@@ -21388,6 +21469,33 @@
       "weekly_net_change": {
         "commercials": 2150,
         "managed_money": -1909
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 113992,
+      "commercials": {
+        "long": 30834,
+        "short": 68010,
+        "net": -37176
+      },
+      "managed_money": {
+        "long": 16180,
+        "short": 12675,
+        "net": 3505
+      },
+      "non_commercials": {
+        "long": 34575,
+        "short": 14780,
+        "net": 19795
+      },
+      "cot_index": {
+        "commercials": 86.7,
+        "managed_money": 21.4
+      },
+      "weekly_net_change": {
+        "commercials": 2266,
+        "managed_money": -2114
       }
     }
   ],
@@ -26737,6 +26845,33 @@
         "commercials": 1497,
         "managed_money": -1432
       }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 70511,
+      "commercials": {
+        "long": 20024,
+        "short": 35718,
+        "net": -15694
+      },
+      "managed_money": {
+        "long": 17969,
+        "short": 11380,
+        "net": 6589
+      },
+      "non_commercials": {
+        "long": 27162,
+        "short": 14000,
+        "net": 13162
+      },
+      "cot_index": {
+        "commercials": 65.9,
+        "managed_money": 54.4
+      },
+      "weekly_net_change": {
+        "commercials": 595,
+        "managed_money": -454
+      }
     }
   ],
   "CL": [
@@ -32084,6 +32219,33 @@
       "weekly_net_change": {
         "commercials": 1123,
         "managed_money": -13024
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 1835144,
+      "commercials": {
+        "long": 756619,
+        "short": 872777,
+        "net": -116158
+      },
+      "managed_money": {
+        "long": 163413,
+        "short": 127226,
+        "net": 36187
+      },
+      "non_commercials": {
+        "long": 335112,
+        "short": 245787,
+        "net": 89325
+      },
+      "cot_index": {
+        "commercials": 78.6,
+        "managed_money": 25.5
+      },
+      "weekly_net_change": {
+        "commercials": 9177,
+        "managed_money": -4387
       }
     }
   ],
@@ -37433,6 +37595,33 @@
         "commercials": -1009,
         "managed_money": 18056
       }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 1710685,
+      "commercials": {
+        "long": 500346,
+        "short": 277377,
+        "net": 222969
+      },
+      "managed_money": {
+        "long": 202570,
+        "short": 359979,
+        "net": -157409
+      },
+      "non_commercials": {
+        "long": 264475,
+        "short": 505747,
+        "net": -241272
+      },
+      "cot_index": {
+        "commercials": 100.0,
+        "managed_money": 1.2
+      },
+      "weekly_net_change": {
+        "commercials": 4131,
+        "managed_money": -30928
+      }
     }
   ],
   "HG": [
@@ -42780,6 +42969,33 @@
       "weekly_net_change": {
         "commercials": 1286,
         "managed_money": -76
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 327119,
+      "commercials": {
+        "long": 106201,
+        "short": 170497,
+        "net": -64296
+      },
+      "managed_money": {
+        "long": 67225,
+        "short": 19535,
+        "net": 47690
+      },
+      "non_commercials": {
+        "long": 98535,
+        "short": 41138,
+        "net": 57397
+      },
+      "cot_index": {
+        "commercials": 29.9,
+        "managed_money": 72.5
+      },
+      "weekly_net_change": {
+        "commercials": 12341,
+        "managed_money": -13368
       }
     }
   ],
@@ -48129,6 +48345,33 @@
         "commercials": 4258,
         "managed_money": -8259
       }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 1093612,
+      "commercials": {
+        "long": 454657,
+        "short": 676295,
+        "net": -221638
+      },
+      "managed_money": {
+        "long": 259970,
+        "short": 38645,
+        "net": 221325
+      },
+      "non_commercials": {
+        "long": 330528,
+        "short": 83932,
+        "net": 246596
+      },
+      "cot_index": {
+        "commercials": 7.7,
+        "managed_money": 90.2
+      },
+      "weekly_net_change": {
+        "commercials": 24101,
+        "managed_money": -28482
+      }
     }
   ],
   "ZC": [
@@ -53476,6 +53719,33 @@
       "weekly_net_change": {
         "commercials": 83994,
         "managed_money": -83414
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 1835658,
+      "commercials": {
+        "long": 707432,
+        "short": 968512,
+        "net": -261080
+      },
+      "managed_money": {
+        "long": 297797,
+        "short": 133374,
+        "net": 164423
+      },
+      "non_commercials": {
+        "long": 482955,
+        "short": 196266,
+        "net": 286689
+      },
+      "cot_index": {
+        "commercials": 28.4,
+        "managed_money": 67.6
+      },
+      "weekly_net_change": {
+        "commercials": 65878,
+        "managed_money": -82002
       }
     }
   ],
@@ -58825,6 +59095,33 @@
         "commercials": 1206,
         "managed_money": -3725
       }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 516379,
+      "commercials": {
+        "long": 158780,
+        "short": 128998,
+        "net": 29782
+      },
+      "managed_money": {
+        "long": 88258,
+        "short": 140263,
+        "net": -52005
+      },
+      "non_commercials": {
+        "long": 131534,
+        "short": 160804,
+        "net": -29270
+      },
+      "cot_index": {
+        "commercials": 39.3,
+        "managed_money": 51.9
+      },
+      "weekly_net_change": {
+        "commercials": 14906,
+        "managed_money": -19450
+      }
     }
   ],
   "SB": [
@@ -64172,6 +64469,33 @@
       "weekly_net_change": {
         "commercials": -9846,
         "managed_money": 7035
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 1210639,
+      "commercials": {
+        "long": 444118,
+        "short": 730682,
+        "net": -286564
+      },
+      "managed_money": {
+        "long": 355665,
+        "short": 91135,
+        "net": 264530
+      },
+      "non_commercials": {
+        "long": 422027,
+        "short": 193211,
+        "net": 228816
+      },
+      "cot_index": {
+        "commercials": 0.1,
+        "managed_money": 100.0
+      },
+      "weekly_net_change": {
+        "commercials": 626,
+        "managed_money": 4981
       }
     }
   ],
@@ -69521,6 +69845,33 @@
         "commercials": 2059,
         "managed_money": 907
       }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 401293,
+      "commercials": {
+        "long": 155008,
+        "short": 255845,
+        "net": -100837
+      },
+      "managed_money": {
+        "long": 75837,
+        "short": 15239,
+        "net": 60598
+      },
+      "non_commercials": {
+        "long": 126625,
+        "short": 32104,
+        "net": 94521
+      },
+      "cot_index": {
+        "commercials": 19.5,
+        "managed_money": 77.9
+      },
+      "weekly_net_change": {
+        "commercials": 609,
+        "managed_money": 2573
+      }
     }
   ],
   "CC": [
@@ -74868,6 +75219,33 @@
       "weekly_net_change": {
         "commercials": -2607,
         "managed_money": -869
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 178141,
+      "commercials": {
+        "long": 87508,
+        "short": 82145,
+        "net": 5363
+      },
+      "managed_money": {
+        "long": 18017,
+        "short": 26838,
+        "net": -8821
+      },
+      "non_commercials": {
+        "long": 30187,
+        "short": 37264,
+        "net": -7077
+      },
+      "cot_index": {
+        "commercials": 81.7,
+        "managed_money": 13.5
+      },
+      "weekly_net_change": {
+        "commercials": -1693,
+        "managed_money": 3100
       }
     }
   ],
@@ -80217,6 +80595,33 @@
         "commercials": 3260,
         "managed_money": -3766
       }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 170911,
+      "commercials": {
+        "long": 66971,
+        "short": 88734,
+        "net": -21763
+      },
+      "managed_money": {
+        "long": 38596,
+        "short": 16259,
+        "net": 22337
+      },
+      "non_commercials": {
+        "long": 48638,
+        "short": 28506,
+        "net": 20132
+      },
+      "cot_index": {
+        "commercials": 78.7,
+        "managed_money": 21.6
+      },
+      "weekly_net_change": {
+        "commercials": -7511,
+        "managed_money": 7067
+      }
     }
   ],
   "HE": [
@@ -85564,6 +85969,33 @@
       "weekly_net_change": {
         "commercials": 4889,
         "managed_money": -7113
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 291717,
+      "commercials": {
+        "long": 110556,
+        "short": 34543,
+        "net": 76013
+      },
+      "managed_money": {
+        "long": 67168,
+        "short": 113981,
+        "net": -46813
+      },
+      "non_commercials": {
+        "long": 79912,
+        "short": 156642,
+        "net": -76730
+      },
+      "cot_index": {
+        "commercials": 98.4,
+        "managed_money": 2.0
+      },
+      "weekly_net_change": {
+        "commercials": -2861,
+        "managed_money": 1804
       }
     }
   ],
@@ -90913,6 +91345,33 @@
         "commercials": 3336,
         "managed_money": -2477
       }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 289575,
+      "commercials": {
+        "long": 116189,
+        "short": 139184,
+        "net": -22995
+      },
+      "managed_money": {
+        "long": 74450,
+        "short": 23348,
+        "net": 51102
+      },
+      "non_commercials": {
+        "long": 85683,
+        "short": 54953,
+        "net": 30730
+      },
+      "cot_index": {
+        "commercials": 93.8,
+        "managed_money": 26.3
+      },
+      "weekly_net_change": {
+        "commercials": -3430,
+        "managed_money": 2884
+      }
     }
   ],
   "DXY": [
@@ -96261,6 +96720,33 @@
         "commercials": -557,
         "managed_money": 908
       }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 49382,
+      "commercials": {
+        "long": 11737,
+        "short": 28751,
+        "net": -17014
+      },
+      "managed_money": {
+        "long": 32422,
+        "short": 17378,
+        "net": 15044
+      },
+      "non_commercials": {
+        "long": 32422,
+        "short": 17378,
+        "net": 15044
+      },
+      "cot_index": {
+        "commercials": 18.8,
+        "managed_money": 80.8
+      },
+      "weekly_net_change": {
+        "commercials": -2186,
+        "managed_money": 2125
+      }
     }
   ],
   "ZN": [
@@ -101608,6 +102094,33 @@
       "weekly_net_change": {
         "commercials": 72518,
         "managed_money": -91621
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "open_interest": 5868295,
+      "commercials": {
+        "long": 4595856,
+        "short": 3665037,
+        "net": 930819
+      },
+      "managed_money": {
+        "long": 721537,
+        "short": 1685830,
+        "net": -964293
+      },
+      "non_commercials": {
+        "long": 721537,
+        "short": 1685830,
+        "net": -964293
+      },
+      "cot_index": {
+        "commercials": 91.0,
+        "managed_money": 21.5
+      },
+      "weekly_net_change": {
+        "commercials": -11747,
+        "managed_money": 23809
       }
     }
   ]
