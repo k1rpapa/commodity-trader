@@ -7,6 +7,8 @@ for all 19 assets (excluding JPY).
 import os
 import re
 import json
+import base64
+import struct
 import requests
 import certifi
 from bs4 import BeautifulSoup
@@ -51,6 +53,16 @@ COMMODITY_PAGES = {
 GEX_CACHE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "gex_latest.json")
 
 
+def decode_plotly_val(y):
+    """Decode Plotly trace y-array which may be a list of floats or base64 binary buffer."""
+    if isinstance(y, dict) and "bdata" in y:
+        raw = base64.b64decode(y["bdata"])
+        return struct.unpack("<" + "d" * (len(raw) // 8), raw)
+    elif isinstance(y, list):
+        return y
+    return []
+
+
 def fetch_gex_data():
     results = {}
     headers = {"User-Agent": "Mozilla/5.0"}
@@ -78,41 +90,76 @@ def fetch_gex_data():
             alert_content_el = soup.find("div", class_="zg-alert-content")
             alert_text = alert_content_el.text.strip().replace("\n", " ") if alert_content_el else ""
 
-            # 3. Spot & Zero Gamma
-            m_spot = re.search(r'Spot:\s*([0-9.]+)', html)
-            spot_price = float(m_spot.group(1)) if m_spot else None
-
-            m_zg = re.search(r'Zero-Gamma:\s*([0-9.]+)', html)
-            zero_gamma = float(m_zg.group(1)) if m_zg else None
-
-            # 4. AI summary content
+            # 3. Sub Info & AI Summary
+            sub_info = soup.find("div", class_="chart-sub-info")
+            as_of_info = sub_info.text.strip() if sub_info else ""
             ai_div = soup.find("div", class_="ai-content")
             ai_summary = ai_div.text.strip() if ai_div else ""
 
-            # 5. Robust Put Wall and Call Wall Extraction
+            # 4. Primary Extraction: Plotly Chart 1 (Historical Timeline with exact numerical walls)
+            spot_price = None
+            zero_gamma = None
             put_wall = None
             call_wall = None
+            minor_put_wall = None
+            minor_call_wall = None
 
-            m_put = re.search(r'Put Wall(?:\s*\(サポート\))?[^\d]{1,15}([0-9]+(?:\.[0-9]+)?)', ai_summary)
-            if m_put:
-                put_wall = float(m_put.group(1))
+            plots = re.findall(r"Plotly\.newPlot\([^,]+,\s*(\[.*?\])\s*,\s*(\{.*?\})\s*\)", html, re.DOTALL)
+            if len(plots) >= 2:
+                try:
+                    traces = json.loads(plots[1][0])
+                    for t in traces:
+                        name = t.get("name") or ""
+                        y_arr = decode_plotly_val(t.get("y"))
+                        if not y_arr:
+                            continue
+                        latest_val = y_arr[-1]
+                        if "Major Call Wall" in name:
+                            call_wall = round(float(latest_val), 4)
+                        elif "Major Put Wall" in name:
+                            put_wall = round(float(latest_val), 4)
+                        elif "Zero-Gamma" in name:
+                            zero_gamma = round(float(latest_val), 4)
+                        elif "Spot Price" in name:
+                            spot_price = round(float(latest_val), 4)
+                        elif "Minor Call Wall" in name:
+                            minor_call_wall = round(float(latest_val), 4)
+                        elif "Minor Put Wall" in name:
+                            minor_put_wall = round(float(latest_val), 4)
+                except Exception as e:
+                    print(f"[Warning] Error parsing Plotly chart for {sym}: {e}")
 
-            m_call = re.search(r'Call Wall(?:\s*\(レジスタンス\))?[^\d]{1,15}([0-9]+(?:\.[0-9]+)?)', ai_summary)
-            if m_call:
-                call_wall = float(m_call.group(1))
+            # 5. Secondary Extraction (Fallback for spot & ZG from header text)
+            if spot_price is None:
+                m_spot = re.search(r"Spot:\s*([0-9.]+)", html)
+                if m_spot:
+                    spot_price = float(m_spot.group(1))
 
-            if put_wall is None:
-                m_put_fallback = re.search(r'Put Wall[^\d]{1,15}([0-9]+(?:\.[0-9]+)?)', html)
-                if m_put_fallback:
-                    put_wall = float(m_put_fallback.group(1))
+            if zero_gamma is None:
+                m_zg = re.search(r"Zero-Gamma:\s*([0-9.]+)", html)
+                if m_zg:
+                    zero_gamma = float(m_zg.group(1))
 
-            if call_wall is None:
-                m_call_fallback = re.search(r'Call Wall[^\d]{1,15}([0-9]+(?:\.[0-9]+)?)', html)
-                if m_call_fallback:
-                    call_wall = float(m_call_fallback.group(1))
+            # 6. Secondary Extraction (Fallback for walls from AI summary text)
+            if (put_wall is None or call_wall is None) and ai_summary:
+                if put_wall is None:
+                    m_put = re.search(r"(?:Put Wall(?:\s*\(サポート\))?|プットウォール|下値支持[^\d]{1,15})\s*[:\s]*([0-9]+(?:\.[0-9]+)?)", ai_summary)
+                    if m_put:
+                        put_wall = float(m_put.group(1))
 
-            sub_info = soup.find("div", class_="chart-sub-info")
-            as_of_info = sub_info.text.strip() if sub_info else ""
+                if call_wall is None:
+                    m_call = re.search(r"(?:Call Wall(?:\s*\(レジスタンス\))?|コールウォール|上値抵抗[^\d]{1,15})\s*[:\s]*([0-9]+(?:\.[0-9]+)?)", ai_summary)
+                    if m_call:
+                        call_wall = float(m_call.group(1))
+
+            # 7. Safety Validation (Ensure walls are positive and within reasonable distance of spot)
+            if spot_price and spot_price > 0:
+                if put_wall and not (0.2 * spot_price <= put_wall <= 5.0 * spot_price):
+                    print(f"[Warning] Anomaly detected: put_wall={put_wall} discarded for {sym} (spot={spot_price})")
+                    put_wall = None
+                if call_wall and not (0.2 * spot_price <= call_wall <= 5.0 * spot_price):
+                    print(f"[Warning] Anomaly detected: call_wall={call_wall} discarded for {sym} (spot={spot_price})")
+                    call_wall = None
 
             results[sym] = {
                 "symbol": sym,
@@ -123,6 +170,8 @@ def fetch_gex_data():
                 "zero_gamma": zero_gamma,
                 "put_wall": put_wall,
                 "call_wall": call_wall,
+                "minor_put_wall": minor_put_wall,
+                "minor_call_wall": minor_call_wall,
                 "regime": regime_text,
                 "is_positive_gamma": is_positive,
                 "alert_title": alert_title,

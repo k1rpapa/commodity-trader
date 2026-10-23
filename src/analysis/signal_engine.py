@@ -198,18 +198,31 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
     atr14 = latest_price.get("atr14") or (close * 0.02)
     rsi14 = latest_price.get("rsi14", 50.0)
 
+    # Sanity validation on GEX walls against spot price
+    if spot and spot > 0:
+        if put_wall and not (0.25 * spot <= put_wall <= 4.0 * spot):
+            put_wall = None
+        if call_wall and not (0.25 * spot <= call_wall <= 4.0 * spot):
+            call_wall = None
+        if zg and not (0.25 * spot <= zg <= 4.0 * spot):
+            zg = None
+
     # Put Wall Inversion Check
     put_wall_inverted = False
-    effective_floor = put_wall
-    floor_label = f"Put Wall ({put_wall})"
-
-    if put_wall and spot < put_wall:
-        put_wall_inverted = True
-        effective_floor = zg if (zg and zg < spot) else round(put_wall - 1.5 * atr14, 3)
-        floor_label = f"Zero-Gamma ({zg})" if (zg and zg < spot) else f"第2防衛床 ({effective_floor})"
-        put_wall_status_desc = f"Put Wall割れ（一時的レジスタンス化）: 現在値({spot})はPW({put_wall})の下方にあり、{put_wall}は戻りを叩く上値抵抗として意識。実質防衛床は【{floor_label}】に移行。"
+    if put_wall:
+        if spot < put_wall:
+            put_wall_inverted = True
+            effective_floor = zg if (zg and zg < spot) else round(put_wall - 1.5 * atr14, 3)
+            floor_label = f"Zero-Gamma ({zg})" if (zg and zg < spot) else f"第2防衛床 ({effective_floor})"
+            put_wall_status_desc = f"Put Wall割れ（一時的レジスタンス化）: 現在値({spot})はPW({put_wall})の下方にあり、{put_wall}は戻りを叩く上値抵抗として意識。実質防衛床は【{floor_label}】に移行。"
+        else:
+            effective_floor = put_wall
+            floor_label = f"Put Wall ({put_wall})"
+            put_wall_status_desc = f"Put Wall支持中: 現在値({spot})はPut Wall({put_wall})の上にあり、強固な機関買い支え床として機能。"
     else:
-        put_wall_status_desc = f"Put Wall支持中: 現在値({spot})はPut Wall({put_wall})の上にあり、強固な機関買い支え床として機能。"
+        effective_floor = zg if (zg and zg < spot) else round(spot - 1.0 * atr14, 3)
+        floor_label = f"Zero-Gamma ({zg})" if (zg and zg < spot) else f"ATR支持帯 ({effective_floor})"
+        put_wall_status_desc = f"動的防衛床監視: 現在値({spot})に対し【{floor_label}】を下値支持目安として監視。"
 
     # Scoring
     score = 0
@@ -307,15 +320,21 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
     # Dual Trade Plans
     trade_plans = {}
     if action in ["STRONG_BUY_SETUP", "BUY_PULLBACK"]:
-        # Pullback Limit Plan
-        if effective_floor and effective_floor < spot:
+        # Pullback Limit Plan (Long)
+        # Entry: Pull back to effective floor, within reasonable ATR bounds
+        if effective_floor and (spot - 3.5 * atr14 <= effective_floor < spot):
             limit_entry = round(effective_floor + 0.15 * atr14, 3)
             limit_sl = round(effective_floor - 0.2 * atr14, 3)
         else:
             limit_entry = round(spot - 0.5 * atr14, 3)
             limit_sl = round(spot - 1.8 * atr14, 3)
 
-        limit_tp = round(call_wall if (call_wall and call_wall > limit_entry) else limit_entry + 2.5 * atr14, 3)
+        # TP: Call Wall if reasonably above entry, else standard ATR reward target
+        if call_wall and (limit_entry < call_wall <= limit_entry + 10.0 * atr14):
+            limit_tp = round(call_wall, 3)
+        else:
+            limit_tp = round(limit_entry + 2.5 * atr14, 3)
+
         limit_risk = max(0.001, limit_entry - limit_sl)
         limit_reward = max(0.001, limit_tp - limit_entry)
         limit_rr = round(limit_reward / limit_risk, 2)
@@ -333,10 +352,10 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
             "strategy_memo": f"【{floor_label}】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:{limit_rr} の損小利大を強制執行。"
         }
 
-        # Market Plan
+        # Market Plan (Long)
         mkt_entry = round(close, 3)
-        mkt_sl = round(effective_floor - 0.3 * atr14 if (effective_floor and effective_floor < mkt_entry) else mkt_entry - 2.0 * atr14, 3)
-        mkt_tp = round(call_wall if (call_wall and call_wall > mkt_entry) else mkt_entry + 2.0 * (mkt_entry - mkt_sl), 3)
+        mkt_sl = round(effective_floor - 0.3 * atr14 if (effective_floor and mkt_entry - 4.0 * atr14 <= effective_floor < mkt_entry) else mkt_entry - 2.0 * atr14, 3)
+        mkt_tp = round(call_wall if (call_wall and mkt_entry < call_wall <= mkt_entry + 10.0 * atr14) else mkt_entry + 2.0 * (mkt_entry - mkt_sl), 3)
         mkt_risk = max(0.001, mkt_entry - mkt_sl)
         mkt_reward = max(0.001, mkt_tp - mkt_entry)
         mkt_rr = round(mkt_reward / mkt_risk, 2)
@@ -356,14 +375,20 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
 
     elif action in ["STRONG_SELL_SETUP", "SELL_RALLY"]:
         # Pullback Limit Plan (Short)
-        if call_wall and call_wall > spot:
+        # Entry: Pull up to Call Wall, within reasonable ATR bounds
+        if call_wall and (spot < call_wall <= spot + 3.5 * atr14):
             limit_entry = round(call_wall - 0.15 * atr14, 3)
             limit_sl = round(call_wall + 0.2 * atr14, 3)
         else:
             limit_entry = round(spot + 0.5 * atr14, 3)
             limit_sl = round(spot + 1.8 * atr14, 3)
 
-        limit_tp = round(effective_floor if (effective_floor and effective_floor < limit_entry) else limit_entry - 2.5 * atr14, 3)
+        # TP: Effective Floor if reasonably below entry, else standard ATR reward target
+        if effective_floor and (limit_entry - 10.0 * atr14 <= effective_floor < limit_entry):
+            limit_tp = round(effective_floor, 3)
+        else:
+            limit_tp = round(limit_entry - 2.5 * atr14, 3)
+
         limit_risk = max(0.001, limit_sl - limit_entry)
         limit_reward = max(0.001, limit_entry - limit_tp)
         limit_rr = round(limit_reward / limit_risk, 2)
@@ -383,8 +408,8 @@ def evaluate_asset(sym: str, cot_rows: list, gex_info: dict, price_info: dict) -
 
         # Market Plan (Short)
         mkt_entry = round(close, 3)
-        mkt_sl = round(call_wall + 0.3 * atr14 if (call_wall and call_wall > mkt_entry) else mkt_entry + 2.0 * atr14, 3)
-        mkt_tp = round(effective_floor if (effective_floor and effective_floor < mkt_entry) else mkt_entry - 2.0 * (mkt_sl - mkt_entry), 3)
+        mkt_sl = round(call_wall + 0.3 * atr14 if (call_wall and mkt_entry < call_wall <= mkt_entry + 4.0 * atr14) else mkt_entry + 2.0 * atr14, 3)
+        mkt_tp = round(effective_floor if (effective_floor and mkt_entry - 10.0 * atr14 <= effective_floor < mkt_entry) else mkt_entry - 2.0 * (mkt_sl - mkt_entry), 3)
         mkt_risk = max(0.001, mkt_sl - mkt_entry)
         mkt_reward = max(0.001, mkt_entry - mkt_tp)
         mkt_rr = round(mkt_reward / mkt_risk, 2)

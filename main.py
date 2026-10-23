@@ -15,9 +15,9 @@ import io
 import argparse
 
 # Ensure UTF-8 output on Windows CP932 consoles
-if sys.platform == "win32" and hasattr(sys.stdout, "buffer"):
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+if sys.platform == "win32" and hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 from src.data.cot_fetcher import update_and_calculate_indices
 from src.data.gex_fetcher import fetch_gex_data
