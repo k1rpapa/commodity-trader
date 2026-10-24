@@ -1307,7 +1307,7 @@
       "close": 5560.0,
       "ema20": 5686.0847,
       "ema50": 5655.1782,
-      "atr14": 245.286,
+      "atr14": 244.786,
       "rsi14": 37.2
     },
     "larry_forecast": {
@@ -1343,24 +1343,24 @@
       "recommended_limit_plan": {
         "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
         "direction": "買い (LONG)",
-        "entry_target": 5536.793,
-        "entry_range": "5536.793 付近",
-        "stop_loss": 5450.943,
+        "entry_target": 5536.718,
+        "entry_range": "5536.718 付近",
+        "stop_loss": 5451.043,
         "take_profit": 6000.0,
-        "risk_reward_ratio": 5.4,
-        "risk_distance": 85.85,
-        "reward_distance": 463.207,
-        "strategy_memo": "【Put Wall (5500.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.4 の損小利大を強制執行。"
+        "risk_reward_ratio": 5.41,
+        "risk_distance": 85.675,
+        "reward_distance": 463.282,
+        "strategy_memo": "【Put Wall (5500.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.41 の損小利大を強制執行。"
       },
       "market_plan": {
         "name": "⚡ 成行・即時追随プラン",
         "direction": "買い (LONG)",
         "entry_target": 5560.0,
         "entry_range": "5560.0 付近成行",
-        "stop_loss": 5426.414,
+        "stop_loss": 5426.564,
         "take_profit": 6000.0,
-        "risk_reward_ratio": 3.29,
-        "risk_distance": 133.586,
+        "risk_reward_ratio": 3.3,
+        "risk_distance": 133.436,
         "reward_distance": 440.0,
         "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
       }
@@ -1368,14 +1368,14 @@
     "trade_plan": {
       "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
       "direction": "買い (LONG)",
-      "entry_target": 5536.793,
-      "entry_range": "5536.793 付近",
-      "stop_loss": 5450.943,
+      "entry_target": 5536.718,
+      "entry_range": "5536.718 付近",
+      "stop_loss": 5451.043,
       "take_profit": 6000.0,
-      "risk_reward_ratio": 5.4,
-      "risk_distance": 85.85,
-      "reward_distance": 463.207,
-      "strategy_memo": "【Put Wall (5500.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.4 の損小利大を強制執行。"
+      "risk_reward_ratio": 5.41,
+      "risk_distance": 85.675,
+      "reward_distance": 463.282,
+      "strategy_memo": "【Put Wall (5500.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.41 の損小利大を強制執行。"
     }
   },
   "KC": {
