@@ -38,11 +38,11 @@
       "put_wall_status_desc": "Put Wall支持中: 現在値(7703.25)はPut Wall(7700.0)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 7694.75,
-      "ema20": 7751.7694,
-      "ema50": 7719.5573,
-      "atr14": 78.411,
-      "rsi14": 34.3
+      "close": 7661.5,
+      "ema20": 7748.6027,
+      "ema50": 7718.2534,
+      "atr14": 78.75,
+      "rsi14": 30.2
     },
     "larry_forecast": {
       "symbol": "ES",
@@ -72,46 +72,46 @@
       "【曜日アノマリー（TDOW）】本日月曜買い（勝率81%最強バイアス）（勝率最高峰の追い風）",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
       "【GEX防衛構造】Put Wall支持中: 現在値(7703.25)はPut Wall(7700.0)の上にあり、強固な機関買い支え床として機能。",
-      "【トレンドフォロー】中期上昇トレンド維持（EMA20:7751.7694 > EMA50:7719.5573）",
+      "【トレンドフォロー】中期上昇トレンド維持（EMA20:7748.6027 > EMA50:7718.2534）",
       "【モメンタム追随】20日ドンチャン安値（7648.5）ブレイクダウン圏"
     ],
     "trade_plans": {
       "recommended_limit_plan": {
         "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
         "direction": "買い (LONG)",
-        "entry_target": 7711.762,
-        "entry_range": "7711.762 付近",
-        "stop_loss": 7684.318,
+        "entry_target": 7711.812,
+        "entry_range": "7711.812 付近",
+        "stop_loss": 7684.25,
         "take_profit": 8000.0,
-        "risk_reward_ratio": 10.5,
-        "risk_distance": 27.444,
-        "reward_distance": 288.238,
-        "strategy_memo": "【Put Wall (7700.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:10.5 の損小利大を強制執行。"
+        "risk_reward_ratio": 10.46,
+        "risk_distance": 27.562,
+        "reward_distance": 288.188,
+        "strategy_memo": "【Put Wall (7700.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:10.46 の損小利大を強制執行。"
       },
       "market_plan": {
         "name": "⚡ 成行・即時追随プラン",
         "direction": "買い (LONG)",
-        "entry_target": 7694.75,
-        "entry_range": "7694.75 付近成行",
-        "stop_loss": 7537.929,
+        "entry_target": 7661.5,
+        "entry_range": "7661.5 付近成行",
+        "stop_loss": 7504.0,
         "take_profit": 8000.0,
-        "risk_reward_ratio": 1.95,
-        "risk_distance": 156.821,
-        "reward_distance": 305.25,
+        "risk_reward_ratio": 2.15,
+        "risk_distance": 157.5,
+        "reward_distance": 338.5,
         "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
       }
     },
     "trade_plan": {
       "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
       "direction": "買い (LONG)",
-      "entry_target": 7711.762,
-      "entry_range": "7711.762 付近",
-      "stop_loss": 7684.318,
+      "entry_target": 7711.812,
+      "entry_range": "7711.812 付近",
+      "stop_loss": 7684.25,
       "take_profit": 8000.0,
-      "risk_reward_ratio": 10.5,
-      "risk_distance": 27.444,
-      "reward_distance": 288.238,
-      "strategy_memo": "【Put Wall (7700.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:10.5 の損小利大を強制執行。"
+      "risk_reward_ratio": 10.46,
+      "risk_distance": 27.562,
+      "reward_distance": 288.188,
+      "strategy_memo": "【Put Wall (7700.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:10.46 の損小利大を強制執行。"
     }
   },
   "NQ": {
@@ -153,11 +153,11 @@
       "put_wall_status_desc": "Put Wall支持中: 現在値(29147.75)はPut Wall(28000.0)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 29331.25,
-      "ema20": 30016.9299,
-      "ema50": 29962.2771,
-      "atr14": 551.107,
-      "rsi14": 24.3
+      "close": 29098.5,
+      "ema20": 29994.7633,
+      "ema50": 29953.1497,
+      "atr14": 555.786,
+      "rsi14": 20.1
     },
     "larry_forecast": {
       "symbol": "NQ",
@@ -188,8 +188,8 @@
       "【曜日アノマリー（TDOW）】本日月曜買い（週初買いバイアス）（上昇バイアス）",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
       "【GEX防衛構造】Put Wall支持中: 現在値(29147.75)はPut Wall(28000.0)の上にあり、強固な機関買い支え床として機能。",
-      "【テクニカル】日足RSI(14)が 24.3 と売られすぎ極限域に到達",
-      "【トレンドフォロー】中期上昇トレンド維持（EMA20:30016.9299 > EMA50:29962.2771）",
+      "【テクニカル】日足RSI(14)が 20.1 と売られすぎ極限域に到達",
+      "【トレンドフォロー】中期上昇トレンド維持（EMA20:29994.7633 > EMA50:29953.1497）",
       "【モメンタム追随】20日ドンチャン安値（28987.0）ブレイクダウン圏"
     ],
     "trade_plans": {},
@@ -234,11 +234,11 @@
       "put_wall_status_desc": "Put Wall支持中: 現在値(4319.0)はPut Wall(4300.0)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 4016.5,
-      "ema20": 4156.5254,
-      "ema50": 4244.3427,
-      "atr14": 66.943,
-      "rsi14": 32.9
+      "close": 3999.5,
+      "ema20": 4154.9064,
+      "ema50": 4243.676,
+      "atr14": 67.536,
+      "rsi14": 31.2
     },
     "larry_forecast": {
       "symbol": "GC",
@@ -267,7 +267,7 @@
       "【2026年数理サイクル】チャート84 (p.76): 保ち合いから年末高値トライへ",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
       "【GEX防衛構造】Put Wall支持中: 現在値(4319.0)はPut Wall(4300.0)の上にあり、強固な機関買い支え床として機能。",
-      "【トレンドフォロー】中期下落トレンド（EMA20:4156.5254 < EMA50:4244.3427）",
+      "【トレンドフォロー】中期下落トレンド（EMA20:4154.9064 < EMA50:4243.676）",
       "【モメンタム追随】20日ドンチャン高値（4259.0）ブレイクアウト圏"
     ],
     "trade_plans": {},
@@ -312,11 +312,11 @@
       "put_wall_status_desc": "Put Wall支持中: 現在値(53.95)はPut Wall(45.0)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 54.315,
-      "ema20": 58.1757,
-      "ema50": 60.973,
-      "atr14": 1.24,
-      "rsi14": 28.1
+      "close": 53.925,
+      "ema20": 58.1386,
+      "ema50": 60.9577,
+      "atr14": 1.238,
+      "rsi14": 26.2
     },
     "larry_forecast": {
       "symbol": "SI",
@@ -346,47 +346,47 @@
       "【2026年数理サイクル】チャート87 (p.78): 【10月中旬大底】年末年始へ向けた【+59%青色上昇波】発進点",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
       "【GEX防衛構造】Put Wall支持中: 現在値(53.95)はPut Wall(45.0)の上にあり、強固な機関買い支え床として機能。",
-      "【テクニカル】日足RSI(14)が 28.1 と売られすぎ極限域に到達",
-      "【トレンドフォロー】弱気パーフェクトオーダー（現在値 53.95 < EMA20:58.1757 < EMA50:60.973 下落トレンド継続）",
+      "【テクニカル】日足RSI(14)が 26.2 と売られすぎ極限域に到達",
+      "【トレンドフォロー】弱気パーフェクトオーダー（現在値 53.95 < EMA20:58.1386 < EMA50:60.9577 下落トレンド継続）",
       "【モメンタム追随】20日ドンチャン安値（53.711）ブレイクダウン圏"
     ],
     "trade_plans": {
       "recommended_limit_plan": {
         "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
         "direction": "買い (LONG)",
-        "entry_target": 53.33,
-        "entry_range": "53.33 付近",
-        "stop_loss": 51.718,
+        "entry_target": 53.331,
+        "entry_range": "53.331 付近",
+        "stop_loss": 51.721,
         "take_profit": 65.0,
-        "risk_reward_ratio": 7.24,
-        "risk_distance": 1.612,
-        "reward_distance": 11.67,
-        "strategy_memo": "【Put Wall (45.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.24 の損小利大を強制執行。"
+        "risk_reward_ratio": 7.25,
+        "risk_distance": 1.61,
+        "reward_distance": 11.669,
+        "strategy_memo": "【Put Wall (45.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.25 の損小利大を強制執行。"
       },
       "market_plan": {
         "name": "⚡ 成行・即時追随プラン",
         "direction": "買い (LONG)",
-        "entry_target": 54.315,
-        "entry_range": "54.315 付近成行",
-        "stop_loss": 51.835,
+        "entry_target": 53.925,
+        "entry_range": "53.925 付近成行",
+        "stop_loss": 51.449,
         "take_profit": 65.0,
-        "risk_reward_ratio": 4.31,
-        "risk_distance": 2.48,
-        "reward_distance": 10.685,
+        "risk_reward_ratio": 4.47,
+        "risk_distance": 2.476,
+        "reward_distance": 11.075,
         "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
       }
     },
     "trade_plan": {
       "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
       "direction": "買い (LONG)",
-      "entry_target": 53.33,
-      "entry_range": "53.33 付近",
-      "stop_loss": 51.718,
+      "entry_target": 53.331,
+      "entry_range": "53.331 付近",
+      "stop_loss": 51.721,
       "take_profit": 65.0,
-      "risk_reward_ratio": 7.24,
-      "risk_distance": 1.612,
-      "reward_distance": 11.67,
-      "strategy_memo": "【Put Wall (45.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.24 の損小利大を強制執行。"
+      "risk_reward_ratio": 7.25,
+      "risk_distance": 1.61,
+      "reward_distance": 11.669,
+      "strategy_memo": "【Put Wall (45.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:7.25 の損小利大を強制執行。"
     }
   },
   "PL": {
@@ -401,10 +401,10 @@
       "next_contract": "4月限",
       "spread_dynamics": "自動車触媒・水素産業需要。ゴールドに対する割安是正スプレッド。"
     },
-    "action": "NEUTRAL",
-    "action_label": "様子見 / 監視継続",
-    "badge_color": "#8e918f",
-    "score": 2.0,
+    "action": "BUY_PULLBACK",
+    "action_label": "🟢 押し目買い検討ゾーン",
+    "badge_color": "#44c265",
+    "score": 3.5,
     "spot_price": 1759.7,
     "cot_summary": {
       "date": "2026-10-20",
@@ -428,11 +428,11 @@
       "put_wall_status_desc": "Put Wall割れ（一時的レジスタンス化）: 現在値(1759.7)はPW(1850.0)の下方にあり、1850.0は戻りを叩く上値抵抗として意識。実質防衛床は【Zero-Gamma (1756.3218)】に移行。"
     },
     "technicals": {
-      "close": 1566.7,
-      "ema20": 1643.5106,
-      "ema50": 1697.2075,
-      "atr14": 27.4,
-      "rsi14": 31.9
+      "close": 1551.5,
+      "ema20": 1642.063,
+      "ema50": 1696.6114,
+      "atr14": 27.671,
+      "rsi14": 29.2
     },
     "larry_forecast": {
       "symbol": "PL",
@@ -461,11 +461,48 @@
       "【2026年数理サイクル】チャート86 (p.77): 年末買い準備の底固め",
       "【GEXレジーム】Positive Gamma（ボラティリティ安定、Zero-Gamma (1756.3218)による下値支持が強固）",
       "【GEX防衛構造】Put Wall割れ（一時的レジスタンス化）: 現在値(1759.7)はPW(1850.0)の下方にあり、1850.0は戻りを叩く上値抵抗として意識。実質防衛床は【Zero-Gamma (1756.3218)】に移行。",
-      "【トレンドフォロー】中期下落トレンド（EMA20:1643.5106 < EMA50:1697.2075）",
+      "【テクニカル】日足RSI(14)が 29.2 と売られすぎ極限域に到達",
+      "【トレンドフォロー】中期下落トレンド（EMA20:1642.063 < EMA50:1696.6114）",
       "【モメンタム追随】20日ドンチャン高値（1744.5）ブレイクアウト圏"
     ],
-    "trade_plans": {},
-    "trade_plan": null
+    "trade_plans": {
+      "recommended_limit_plan": {
+        "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+        "direction": "買い (LONG)",
+        "entry_target": 1760.473,
+        "entry_range": "1760.473 付近",
+        "stop_loss": 1750.788,
+        "take_profit": 2000.0,
+        "risk_reward_ratio": 24.73,
+        "risk_distance": 9.685,
+        "reward_distance": 239.527,
+        "strategy_memo": "【Zero-Gamma (1756.3218)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:24.73 の損小利大を強制執行。"
+      },
+      "market_plan": {
+        "name": "⚡ 成行・即時追随プラン",
+        "direction": "買い (LONG)",
+        "entry_target": 1551.5,
+        "entry_range": "1551.5 付近成行",
+        "stop_loss": 1496.157,
+        "take_profit": 1662.186,
+        "risk_reward_ratio": 2.0,
+        "risk_distance": 55.343,
+        "reward_distance": 110.686,
+        "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
+      }
+    },
+    "trade_plan": {
+      "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+      "direction": "買い (LONG)",
+      "entry_target": 1760.473,
+      "entry_range": "1760.473 付近",
+      "stop_loss": 1750.788,
+      "take_profit": 2000.0,
+      "risk_reward_ratio": 24.73,
+      "risk_distance": 9.685,
+      "reward_distance": 239.527,
+      "strategy_memo": "【Zero-Gamma (1756.3218)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:24.73 の損小利大を強制執行。"
+    }
   },
   "CL": {
     "symbol": "CL",
@@ -479,10 +516,10 @@
       "next_contract": "12月限",
       "spread_dynamics": "地政学プレミアムとOPEC+減産政策。期近プレミアム（バックワーデーション）監視。"
     },
-    "action": "NEUTRAL",
-    "action_label": "様子見 / 監視継続",
-    "badge_color": "#8e918f",
-    "score": 2.0,
+    "action": "BUY_PULLBACK",
+    "action_label": "🟢 押し目買い検討ゾーン",
+    "badge_color": "#44c265",
+    "score": 3.5,
     "spot_price": 103.27,
     "cot_summary": {
       "date": "2026-10-20",
@@ -506,11 +543,11 @@
       "put_wall_status_desc": "Put Wall支持中: 現在値(103.27)はPut Wall(85.0)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 102.06,
-      "ema20": 97.2295,
-      "ema50": 93.468,
+      "close": 101.67,
+      "ema20": 97.1924,
+      "ema50": 93.4528,
       "atr14": 4.277,
-      "rsi14": 70.8
+      "rsi14": 69.9
     },
     "larry_forecast": {
       "symbol": "CL",
@@ -540,11 +577,46 @@
       "【2026年数理サイクル】チャート97 (p.85): 秋の製油所定期修理（メンテナンス）による需要減退",
       "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put Wall (85.0)による下値支持が強固）",
       "【GEX防衛構造】Put Wall支持中: 現在値(103.27)はPut Wall(85.0)の上にあり、強固な機関買い支え床として機能。",
-      "【テクニカル】日足RSI(14)が 70.8 と買われすぎ域に到達",
-      "【トレンドフォロー】強気パーフェクトオーダー（現在値 103.27 > EMA20:97.2295 > EMA50:93.468 上昇トレンド継続）"
+      "【トレンドフォロー】強気パーフェクトオーダー（現在値 103.27 > EMA20:97.1924 > EMA50:93.4528 上昇トレンド継続）"
     ],
-    "trade_plans": {},
-    "trade_plan": null
+    "trade_plans": {
+      "recommended_limit_plan": {
+        "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+        "direction": "買い (LONG)",
+        "entry_target": 101.131,
+        "entry_range": "101.131 付近",
+        "stop_loss": 95.571,
+        "take_profit": 111.824,
+        "risk_reward_ratio": 1.92,
+        "risk_distance": 5.56,
+        "reward_distance": 10.693,
+        "strategy_memo": "【Put Wall (85.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:1.92 の損小利大を強制執行。"
+      },
+      "market_plan": {
+        "name": "⚡ 成行・即時追随プラン",
+        "direction": "買い (LONG)",
+        "entry_target": 101.67,
+        "entry_range": "101.67 付近成行",
+        "stop_loss": 83.717,
+        "take_profit": 137.576,
+        "risk_reward_ratio": 2.0,
+        "risk_distance": 17.953,
+        "reward_distance": 35.906,
+        "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
+      }
+    },
+    "trade_plan": {
+      "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
+      "direction": "買い (LONG)",
+      "entry_target": 101.131,
+      "entry_range": "101.131 付近",
+      "stop_loss": 95.571,
+      "take_profit": 111.824,
+      "risk_reward_ratio": 1.92,
+      "risk_distance": 5.56,
+      "reward_distance": 10.693,
+      "strategy_memo": "【Put Wall (85.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:1.92 の損小利大を強制執行。"
+    }
   },
   "NG": {
     "symbol": "NG",
@@ -585,11 +657,11 @@
       "put_wall_status_desc": "Put Wall支持中: 現在値(3.051)はPut Wall(3.0)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 2.974,
-      "ema20": 2.9957,
-      "ema50": 2.9823,
+      "close": 2.981,
+      "ema20": 2.9964,
+      "ema50": 2.9826,
       "atr14": 0.175,
-      "rsi14": 45.0
+      "rsi14": 45.3
     },
     "larry_forecast": {
       "symbol": "NG",
@@ -621,7 +693,7 @@
       "【曜日アノマリー（TDOW）】本日月曜買い（上昇バイアス）",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
       "【GEX防衛構造】Put Wall支持中: 現在値(3.051)はPut Wall(3.0)の上にあり、強固な機関買い支え床として機能。",
-      "【トレンドフォロー】強気パーフェクトオーダー（現在値 3.051 > EMA20:2.9957 > EMA50:2.9823 上昇トレンド継続）"
+      "【トレンドフォロー】強気パーフェクトオーダー（現在値 3.051 > EMA20:2.9964 > EMA50:2.9826 上昇トレンド継続）"
     ],
     "trade_plans": {
       "recommended_limit_plan": {
@@ -639,13 +711,13 @@
       "market_plan": {
         "name": "⚡ 成行・即時追随プラン",
         "direction": "買い (LONG)",
-        "entry_target": 2.974,
-        "entry_range": "2.974 付近成行",
-        "stop_loss": 2.625,
+        "entry_target": 2.981,
+        "entry_range": "2.981 付近成行",
+        "stop_loss": 2.632,
         "take_profit": 3.8,
-        "risk_reward_ratio": 2.37,
+        "risk_reward_ratio": 2.35,
         "risk_distance": 0.349,
-        "reward_distance": 0.826,
+        "reward_distance": 0.819,
         "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
       }
     },
@@ -701,11 +773,11 @@
       "put_wall_status_desc": "Put Wall支持中: 現在値(6.5075)はPut Wall(6.0)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 6.506,
-      "ema20": 6.5441,
-      "ema50": 6.5361,
+      "close": 6.494,
+      "ema20": 6.543,
+      "ema50": 6.5357,
       "atr14": 0.086,
-      "rsi14": 44.8
+      "rsi14": 44.0
     },
     "larry_forecast": {
       "symbol": "HG",
@@ -736,7 +808,7 @@
       "【曜日アノマリー（TDOW）】本日月曜買い（上昇バイアス）",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
       "【GEX防衛構造】Put Wall支持中: 現在値(6.5075)はPut Wall(6.0)の上にあり、強固な機関買い支え床として機能。",
-      "【トレンドフォロー】中期上昇トレンド維持（EMA20:6.5441 > EMA50:6.5361）"
+      "【トレンドフォロー】中期上昇トレンド維持（EMA20:6.543 > EMA50:6.5357）"
     ],
     "trade_plans": {
       "recommended_limit_plan": {
@@ -754,13 +826,13 @@
       "market_plan": {
         "name": "⚡ 成行・即時追随プラン",
         "direction": "買い (LONG)",
-        "entry_target": 6.506,
-        "entry_range": "6.506 付近成行",
-        "stop_loss": 6.335,
+        "entry_target": 6.494,
+        "entry_range": "6.494 付近成行",
+        "stop_loss": 6.323,
         "take_profit": 7.0,
-        "risk_reward_ratio": 2.89,
+        "risk_reward_ratio": 2.96,
         "risk_distance": 0.171,
-        "reward_distance": 0.494,
+        "reward_distance": 0.506,
         "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
       }
     },
@@ -789,10 +861,10 @@
       "next_contract": "1月限",
       "spread_dynamics": "全米収穫進行（期近売り圧力）と南米（ブラジル）作付け天候相場。"
     },
-    "action": "SELL_RALLY",
-    "action_label": "🔴 戻り売り警戒ゾーン",
-    "badge_color": "#ff5252",
-    "score": -2.5,
+    "action": "NEUTRAL",
+    "action_label": "様子見 / 監視継続",
+    "badge_color": "#8e918f",
+    "score": -0.5,
     "spot_price": 1270.0,
     "cot_summary": {
       "date": "2026-10-20",
@@ -811,16 +883,16 @@
       "put_wall": 1280.0,
       "call_wall": 1300.0,
       "put_wall_inverted": true,
-      "effective_floor": 1253.938,
-      "floor_label": "第2防衛床 (1253.938)",
-      "put_wall_status_desc": "Put Wall割れ（一時的レジスタンス化）: 現在値(1270.0)はPW(1280.0)の下方にあり、1280.0は戻りを叩く上値抵抗として意識。実質防衛床は【第2防衛床 (1253.938)】に移行。"
+      "effective_floor": 1254.527,
+      "floor_label": "第2防衛床 (1254.527)",
+      "put_wall_status_desc": "Put Wall割れ（一時的レジスタンス化）: 現在値(1270.0)はPW(1280.0)の下方にあり、1280.0は戻りを叩く上値抵抗として意識。実質防衛床は【第2防衛床 (1254.527)】に移行。"
     },
     "technicals": {
-      "close": 1256.5,
-      "ema20": 1271.9203,
-      "ema50": 1264.6812,
-      "atr14": 17.375,
-      "rsi14": 37.9
+      "close": 1240.25,
+      "ema20": 1268.9041,
+      "ema50": 1263.7231,
+      "atr14": 16.982,
+      "rsi14": 16.7
     },
     "larry_forecast": {
       "symbol": "ZS",
@@ -849,47 +921,12 @@
       "【スマートマネー先回り】商業筋今週+24,101枚買い増し / ファンド売り",
       "【2026年数理サイクル】チャート106 (p.93): 【10月上旬ピークアウト】全米収穫圧力（Harvest Pressure）による下落波入り",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
-      "【GEX防衛構造】Put Wall割れ（一時的レジスタンス化）: 現在値(1270.0)はPW(1280.0)の下方にあり、1280.0は戻りを叩く上値抵抗として意識。実質防衛床は【第2防衛床 (1253.938)】に移行。",
-      "【トレンドフォロー】中期上昇トレンド維持（EMA20:1271.9203 > EMA50:1264.6812）"
+      "【GEX防衛構造】Put Wall割れ（一時的レジスタンス化）: 現在値(1270.0)はPW(1280.0)の下方にあり、1280.0は戻りを叩く上値抵抗として意識。実質防衛床は【第2防衛床 (1254.527)】に移行。",
+      "【テクニカル】日足RSI(14)が 16.7 と売られすぎ極限域に到達",
+      "【トレンドフォロー】強気パーフェクトオーダー（現在値 1270.0 > EMA20:1268.9041 > EMA50:1263.7231 上昇トレンド継続）"
     ],
-    "trade_plans": {
-      "recommended_limit_plan": {
-        "name": "🌟 【推奨】戻り売り指値プラン (神リスクリワード仕様)",
-        "direction": "売り (SHORT)",
-        "entry_target": 1297.394,
-        "entry_range": "1297.394 付近",
-        "stop_loss": 1303.475,
-        "take_profit": 1253.938,
-        "risk_reward_ratio": 7.15,
-        "risk_distance": 6.081,
-        "reward_distance": 43.456,
-        "strategy_memo": "Call壁手前への戻りをミリ単位で引きつける指値。直上にタイトSLを配置し、RR 1:7.15 の損小利大ショートを執行。"
-      },
-      "market_plan": {
-        "name": "⚡ 成行・戻り売り追随プラン",
-        "direction": "売り (SHORT)",
-        "entry_target": 1256.5,
-        "entry_range": "1256.5 付近成行",
-        "stop_loss": 1305.213,
-        "take_profit": 1253.938,
-        "risk_reward_ratio": 0.05,
-        "risk_distance": 48.713,
-        "reward_distance": 2.562,
-        "strategy_memo": "下落モメンタムに追随する成行ショート。SL幅が広がるためロット数を半分以下に落とすこと。"
-      }
-    },
-    "trade_plan": {
-      "name": "🌟 【推奨】戻り売り指値プラン (神リスクリワード仕様)",
-      "direction": "売り (SHORT)",
-      "entry_target": 1297.394,
-      "entry_range": "1297.394 付近",
-      "stop_loss": 1303.475,
-      "take_profit": 1253.938,
-      "risk_reward_ratio": 7.15,
-      "risk_distance": 6.081,
-      "reward_distance": 43.456,
-      "strategy_memo": "Call壁手前への戻りをミリ単位で引きつける指値。直上にタイトSLを配置し、RR 1:7.15 の損小利大ショートを執行。"
-    }
+    "trade_plans": {},
+    "trade_plan": null
   },
   "ZC": {
     "symbol": "ZC",
@@ -930,11 +967,11 @@
       "put_wall_status_desc": "Put Wall支持中: 現在値(455.0)はPut Wall(450.0)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 456.0,
-      "ema20": 482.5341,
-      "ema50": 487.5359,
-      "atr14": 10.143,
-      "rsi14": 21.3
+      "close": 451.5,
+      "ema20": 479.5785,
+      "ema50": 486.1227,
+      "atr14": 9.536,
+      "rsi14": 6.9
     },
     "larry_forecast": {
       "symbol": "ZC",
@@ -965,47 +1002,47 @@
       "【曜日アノマリー（TDOW）】本日月曜買い（上昇バイアス）",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
       "【GEX防衛構造】Put Wall支持中: 現在値(455.0)はPut Wall(450.0)の上にあり、強固な機関買い支え床として機能。",
-      "【テクニカル】日足RSI(14)が 21.3 と売られすぎ極限域に到達",
-      "【トレンドフォロー】弱気パーフェクトオーダー（現在値 455.0 < EMA20:482.5341 < EMA50:487.5359 下落トレンド継続）",
-      "【モメンタム追随】20日ドンチャン安値（453.5）ブレイクダウン圏"
+      "【テクニカル】日足RSI(14)が 6.9 と売られすぎ極限域に到達",
+      "【トレンドフォロー】弱気パーフェクトオーダー（現在値 455.0 < EMA20:479.5785 < EMA50:486.1227 下落トレンド継続）",
+      "【モメンタム追随】20日ドンチャン安値（451.5）ブレイクダウン圏"
     ],
     "trade_plans": {
       "recommended_limit_plan": {
         "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
         "direction": "買い (LONG)",
-        "entry_target": 451.521,
-        "entry_range": "451.521 付近",
-        "stop_loss": 447.971,
+        "entry_target": 451.43,
+        "entry_range": "451.43 付近",
+        "stop_loss": 448.093,
         "take_profit": 470.0,
-        "risk_reward_ratio": 5.21,
-        "risk_distance": 3.55,
-        "reward_distance": 18.479,
-        "strategy_memo": "【Put Wall (450.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.21 の損小利大を強制執行。"
+        "risk_reward_ratio": 5.56,
+        "risk_distance": 3.337,
+        "reward_distance": 18.57,
+        "strategy_memo": "【Put Wall (450.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.56 の損小利大を強制執行。"
       },
       "market_plan": {
         "name": "⚡ 成行・即時追随プラン",
         "direction": "買い (LONG)",
-        "entry_target": 456.0,
-        "entry_range": "456.0 付近成行",
-        "stop_loss": 446.957,
+        "entry_target": 451.5,
+        "entry_range": "451.5 付近成行",
+        "stop_loss": 447.139,
         "take_profit": 470.0,
-        "risk_reward_ratio": 1.55,
-        "risk_distance": 9.043,
-        "reward_distance": 14.0,
+        "risk_reward_ratio": 4.24,
+        "risk_distance": 4.361,
+        "reward_distance": 18.5,
         "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
       }
     },
     "trade_plan": {
       "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
       "direction": "買い (LONG)",
-      "entry_target": 451.521,
-      "entry_range": "451.521 付近",
-      "stop_loss": 447.971,
+      "entry_target": 451.43,
+      "entry_range": "451.43 付近",
+      "stop_loss": 448.093,
       "take_profit": 470.0,
-      "risk_reward_ratio": 5.21,
-      "risk_distance": 3.55,
-      "reward_distance": 18.479,
-      "strategy_memo": "【Put Wall (450.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.21 の損小利大を強制執行。"
+      "risk_reward_ratio": 5.56,
+      "risk_distance": 3.337,
+      "reward_distance": 18.57,
+      "strategy_memo": "【Put Wall (450.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.56 の損小利大を強制執行。"
     }
   },
   "ZW": {
@@ -1042,16 +1079,16 @@
       "put_wall": 650.0,
       "call_wall": 650.0,
       "put_wall_inverted": true,
-      "effective_floor": 627.071,
-      "floor_label": "第2防衛床 (627.071)",
-      "put_wall_status_desc": "Put Wall割れ（一時的レジスタンス化）: 現在値(625.0)はPW(650.0)の下方にあり、650.0は戻りを叩く上値抵抗として意識。実質防衛床は【第2防衛床 (627.071)】に移行。"
+      "effective_floor": 628.196,
+      "floor_label": "第2防衛床 (628.196)",
+      "put_wall_status_desc": "Put Wall割れ（一時的レジスタンス化）: 現在値(625.0)はPW(650.0)の下方にあり、650.0は戻りを叩く上値抵抗として意識。実質防衛床は【第2防衛床 (628.196)】に移行。"
     },
     "technicals": {
-      "close": 625.0,
-      "ema20": 664.9043,
-      "ema50": 676.8915,
-      "atr14": 15.286,
-      "rsi14": 17.1
+      "close": 622.75,
+      "ema20": 660.8896,
+      "ema50": 674.7683,
+      "atr14": 14.536,
+      "rsi14": 5.9
     },
     "larry_forecast": {
       "symbol": "ZW",
@@ -1083,48 +1120,48 @@
       "【曜日アノマリー（TDOW）】本日月曜買い（上昇バイアス）",
       "【日柄アノマリー（TDOM）】🌟 本日は月の第18取引日（TDOM 18：歴史的高勝率エントリー日）",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
-      "【GEX防衛構造】Put Wall割れ（一時的レジスタンス化）: 現在値(625.0)はPW(650.0)の下方にあり、650.0は戻りを叩く上値抵抗として意識。実質防衛床は【第2防衛床 (627.071)】に移行。",
-      "【テクニカル】日足RSI(14)が 17.1 と売られすぎ極限域に到達",
-      "【トレンドフォロー】弱気パーフェクトオーダー（現在値 625.0 < EMA20:664.9043 < EMA50:676.8915 下落トレンド継続）",
-      "【モメンタム追随】20日ドンチャン安値（621.0）ブレイクダウン圏"
+      "【GEX防衛構造】Put Wall割れ（一時的レジスタンス化）: 現在値(625.0)はPW(650.0)の下方にあり、650.0は戻りを叩く上値抵抗として意識。実質防衛床は【第2防衛床 (628.196)】に移行。",
+      "【テクニカル】日足RSI(14)が 5.9 と売られすぎ極限域に到達",
+      "【トレンドフォロー】弱気パーフェクトオーダー（現在値 625.0 < EMA20:660.8896 < EMA50:674.7683 下落トレンド継続）",
+      "【モメンタム追随】20日ドンチャン安値（620.5）ブレイクダウン圏"
     ],
     "trade_plans": {
       "recommended_limit_plan": {
         "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
         "direction": "買い (LONG)",
-        "entry_target": 617.357,
-        "entry_range": "617.357 付近",
-        "stop_loss": 597.486,
+        "entry_target": 617.732,
+        "entry_range": "617.732 付近",
+        "stop_loss": 598.836,
         "take_profit": 650.0,
-        "risk_reward_ratio": 1.64,
-        "risk_distance": 19.871,
-        "reward_distance": 32.643,
-        "strategy_memo": "【第2防衛床 (627.071)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:1.64 の損小利大を強制執行。"
+        "risk_reward_ratio": 1.71,
+        "risk_distance": 18.896,
+        "reward_distance": 32.268,
+        "strategy_memo": "【第2防衛床 (628.196)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:1.71 の損小利大を強制執行。"
       },
       "market_plan": {
         "name": "⚡ 成行・即時追随プラン",
         "direction": "買い (LONG)",
-        "entry_target": 625.0,
-        "entry_range": "625.0 付近成行",
-        "stop_loss": 594.429,
+        "entry_target": 622.75,
+        "entry_range": "622.75 付近成行",
+        "stop_loss": 593.679,
         "take_profit": 650.0,
-        "risk_reward_ratio": 0.82,
-        "risk_distance": 30.571,
-        "reward_distance": 25.0,
+        "risk_reward_ratio": 0.94,
+        "risk_distance": 29.071,
+        "reward_distance": 27.25,
         "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
       }
     },
     "trade_plan": {
       "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
       "direction": "買い (LONG)",
-      "entry_target": 617.357,
-      "entry_range": "617.357 付近",
-      "stop_loss": 597.486,
+      "entry_target": 617.732,
+      "entry_range": "617.732 付近",
+      "stop_loss": 598.836,
       "take_profit": 650.0,
-      "risk_reward_ratio": 1.64,
-      "risk_distance": 19.871,
-      "reward_distance": 32.643,
-      "strategy_memo": "【第2防衛床 (627.071)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:1.64 の損小利大を強制執行。"
+      "risk_reward_ratio": 1.71,
+      "risk_distance": 18.896,
+      "reward_distance": 32.268,
+      "strategy_memo": "【第2防衛床 (628.196)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:1.71 の損小利大を強制執行。"
     }
   },
   "SB": {
@@ -1360,7 +1397,7 @@
       "close": 5560.0,
       "ema20": 5686.0847,
       "ema50": 5655.1782,
-      "atr14": 244.786,
+      "atr14": 245.286,
       "rsi14": 37.2
     },
     "larry_forecast": {
@@ -1398,24 +1435,24 @@
       "recommended_limit_plan": {
         "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
         "direction": "買い (LONG)",
-        "entry_target": 5536.718,
-        "entry_range": "5536.718 付近",
-        "stop_loss": 5451.043,
+        "entry_target": 5536.793,
+        "entry_range": "5536.793 付近",
+        "stop_loss": 5450.943,
         "take_profit": 6000.0,
-        "risk_reward_ratio": 5.41,
-        "risk_distance": 85.675,
-        "reward_distance": 463.282,
-        "strategy_memo": "【Put Wall (5500.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.41 の損小利大を強制執行。"
+        "risk_reward_ratio": 5.4,
+        "risk_distance": 85.85,
+        "reward_distance": 463.207,
+        "strategy_memo": "【Put Wall (5500.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.4 の損小利大を強制執行。"
       },
       "market_plan": {
         "name": "⚡ 成行・即時追随プラン",
         "direction": "買い (LONG)",
         "entry_target": 5560.0,
         "entry_range": "5560.0 付近成行",
-        "stop_loss": 5426.564,
+        "stop_loss": 5426.414,
         "take_profit": 6000.0,
-        "risk_reward_ratio": 3.3,
-        "risk_distance": 133.436,
+        "risk_reward_ratio": 3.29,
+        "risk_distance": 133.586,
         "reward_distance": 440.0,
         "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
       }
@@ -1423,14 +1460,14 @@
     "trade_plan": {
       "name": "🌟 【推奨】引きつけ指値プラン (神リスクリワード仕様)",
       "direction": "買い (LONG)",
-      "entry_target": 5536.718,
-      "entry_range": "5536.718 付近",
-      "stop_loss": 5451.043,
+      "entry_target": 5536.793,
+      "entry_range": "5536.793 付近",
+      "stop_loss": 5450.943,
       "take_profit": 6000.0,
-      "risk_reward_ratio": 5.41,
-      "risk_distance": 85.675,
-      "reward_distance": 463.282,
-      "strategy_memo": "【Put Wall (5500.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.41 の損小利大を強制執行。"
+      "risk_reward_ratio": 5.4,
+      "risk_distance": 85.85,
+      "reward_distance": 463.207,
+      "strategy_memo": "【Put Wall (5500.0)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:5.4 の損小利大を強制執行。"
     }
   },
   "KC": {
@@ -1820,11 +1857,11 @@
       "put_wall_status_desc": "Put Wall支持中: 現在値(100.71)はPut Wall(98.0)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 101.81,
-      "ema20": 101.6898,
-      "ema50": 101.043,
-      "atr14": 0.487,
-      "rsi14": 45.0
+      "close": 101.693,
+      "ema20": 101.6901,
+      "ema50": 101.0685,
+      "atr14": 0.46,
+      "rsi14": 48.0
     },
     "larry_forecast": {
       "symbol": "DXY",
@@ -1853,46 +1890,46 @@
       "【2026年数理サイクル】チャート74 (p.69): 年末利下げ織り込みのドル安トレンド",
       "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put Wall (98.0)による下値支持が強固）",
       "【GEX防衛構造】Put Wall支持中: 現在値(100.71)はPut Wall(98.0)の上にあり、強固な機関買い支え床として機能。",
-      "【トレンドフォロー】中期上昇トレンド維持（EMA20:101.6898 > EMA50:101.043）",
-      "【モメンタム追随】20日ドンチャン安値（100.98）ブレイクダウン圏"
+      "【トレンドフォロー】中期上昇トレンド維持（EMA20:101.6901 > EMA50:101.0685）",
+      "【モメンタム追随】20日ドンチャン安値（101.03）ブレイクダウン圏"
     ],
     "trade_plans": {
       "recommended_limit_plan": {
         "name": "🌟 【推奨】戻り売り指値プラン (神リスクリワード仕様)",
         "direction": "売り (SHORT)",
-        "entry_target": 100.954,
-        "entry_range": "100.954 付近",
-        "stop_loss": 101.587,
+        "entry_target": 100.94,
+        "entry_range": "100.94 付近",
+        "stop_loss": 101.538,
         "take_profit": 98.0,
-        "risk_reward_ratio": 4.67,
-        "risk_distance": 0.633,
-        "reward_distance": 2.954,
-        "strategy_memo": "Call壁手前への戻りをミリ単位で引きつける指値。直上にタイトSLを配置し、RR 1:4.67 の損小利大ショートを執行。"
+        "risk_reward_ratio": 4.92,
+        "risk_distance": 0.598,
+        "reward_distance": 2.94,
+        "strategy_memo": "Call壁手前への戻りをミリ単位で引きつける指値。直上にタイトSLを配置し、RR 1:4.92 の損小利大ショートを執行。"
       },
       "market_plan": {
         "name": "⚡ 成行・戻り売り追随プラン",
         "direction": "売り (SHORT)",
-        "entry_target": 101.81,
-        "entry_range": "101.81 付近成行",
-        "stop_loss": 103.146,
+        "entry_target": 101.693,
+        "entry_range": "101.693 付近成行",
+        "stop_loss": 103.138,
         "take_profit": 98.0,
-        "risk_reward_ratio": 2.85,
-        "risk_distance": 1.336,
-        "reward_distance": 3.81,
+        "risk_reward_ratio": 2.56,
+        "risk_distance": 1.445,
+        "reward_distance": 3.693,
         "strategy_memo": "下落モメンタムに追随する成行ショート。SL幅が広がるためロット数を半分以下に落とすこと。"
       }
     },
     "trade_plan": {
       "name": "🌟 【推奨】戻り売り指値プラン (神リスクリワード仕様)",
       "direction": "売り (SHORT)",
-      "entry_target": 100.954,
-      "entry_range": "100.954 付近",
-      "stop_loss": 101.587,
+      "entry_target": 100.94,
+      "entry_range": "100.94 付近",
+      "stop_loss": 101.538,
       "take_profit": 98.0,
-      "risk_reward_ratio": 4.67,
-      "risk_distance": 0.633,
-      "reward_distance": 2.954,
-      "strategy_memo": "Call壁手前への戻りをミリ単位で引きつける指値。直上にタイトSLを配置し、RR 1:4.67 の損小利大ショートを執行。"
+      "risk_reward_ratio": 4.92,
+      "risk_distance": 0.598,
+      "reward_distance": 2.94,
+      "strategy_memo": "Call壁手前への戻りをミリ単位で引きつける指値。直上にタイトSLを配置し、RR 1:4.92 の損小利大ショートを執行。"
     }
   },
   "ZN": {
@@ -1934,11 +1971,11 @@
       "put_wall_status_desc": "Put Wall支持中: 現在値(105.5)はPut Wall(104.5)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 106.0781,
-      "ema20": 105.442,
-      "ema50": 106.1615,
-      "atr14": 0.625,
-      "rsi14": 72.2
+      "close": 106.1875,
+      "ema20": 105.4524,
+      "ema50": 106.1658,
+      "atr14": 0.628,
+      "rsi14": 74.1
     },
     "larry_forecast": {
       "symbol": "ZN",
@@ -1969,8 +2006,8 @@
       "【日柄アノマリー（TDOM）】🌟 本日は月の第18取引日（TDOM 18：歴史的高勝率エントリー日）",
       "【GEXレジーム】Negative Gamma（高ボラティリティ警戒、ストップ狩り・急変動警戒）",
       "【GEX防衛構造】Put Wall支持中: 現在値(105.5)はPut Wall(104.5)の上にあり、強固な機関買い支え床として機能。",
-      "【テクニカル】日足RSI(14)が 72.2 と買われすぎ域に到達",
-      "【トレンドフォロー】中期下落トレンド（EMA20:105.442 < EMA50:106.1615）",
+      "【テクニカル】日足RSI(14)が 74.1 と買われすぎ域に到達",
+      "【トレンドフォロー】中期下落トレンド（EMA20:105.4524 < EMA50:106.1658）",
       "【モメンタム追随】20日ドンチャン高値（106.5156）ブレイクアウト圏"
     ],
     "trade_plans": {
@@ -1979,23 +2016,23 @@
         "direction": "買い (LONG)",
         "entry_target": 104.594,
         "entry_range": "104.594 付近",
-        "stop_loss": 104.375,
+        "stop_loss": 104.374,
         "take_profit": 106.0,
-        "risk_reward_ratio": 6.42,
-        "risk_distance": 0.219,
+        "risk_reward_ratio": 6.39,
+        "risk_distance": 0.22,
         "reward_distance": 1.406,
-        "strategy_memo": "【Put Wall (104.5)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:6.42 の損小利大を強制執行。"
+        "strategy_memo": "【Put Wall (104.5)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:6.39 の損小利大を強制執行。"
       },
       "market_plan": {
         "name": "⚡ 成行・即時追随プラン",
         "direction": "買い (LONG)",
-        "entry_target": 106.078,
-        "entry_range": "106.078 付近成行",
+        "entry_target": 106.188,
+        "entry_range": "106.188 付近成行",
         "stop_loss": 104.312,
-        "take_profit": 109.61,
+        "take_profit": 109.94,
         "risk_reward_ratio": 2.0,
-        "risk_distance": 1.766,
-        "reward_distance": 3.532,
+        "risk_distance": 1.876,
+        "reward_distance": 3.752,
         "strategy_memo": "急反発に乗り遅れないための成行エントリー。SL幅が広がるためロット数を半分以下に落とすことが必須。"
       }
     },
@@ -2004,12 +2041,12 @@
       "direction": "買い (LONG)",
       "entry_target": 104.594,
       "entry_range": "104.594 付近",
-      "stop_loss": 104.375,
+      "stop_loss": 104.374,
       "take_profit": 106.0,
-      "risk_reward_ratio": 6.42,
-      "risk_distance": 0.219,
+      "risk_reward_ratio": 6.39,
+      "risk_distance": 0.22,
       "reward_distance": 1.406,
-      "strategy_memo": "【Put Wall (104.5)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:6.42 の損小利大を強制執行。"
+      "strategy_memo": "【Put Wall (104.5)】への押し目をミリ単位で引きつける指値。SLを直下にタイト配置し、RR 1:6.39 の損小利大を強制執行。"
     }
   }
 }
