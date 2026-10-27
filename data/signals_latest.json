@@ -1723,11 +1723,11 @@
       "put_wall_status_desc": "Put Wall支持中: 現在値(100.71)はPut Wall(98.0)の上にあり、強固な機関買い支え床として機能。"
     },
     "technicals": {
-      "close": 102.361,
-      "ema20": 101.777,
-      "ema50": 101.1293,
+      "close": 102.371,
+      "ema20": 101.7779,
+      "ema50": 101.1297,
       "atr14": 0.467,
-      "rsi14": 51.8
+      "rsi14": 51.9
     },
     "larry_forecast": {
       "symbol": "DXY",
@@ -1756,7 +1756,7 @@
       "【2026年数理サイクル】チャート74 (p.69): 年末利下げ織り込みのドル安トレンド",
       "【GEXレジーム】Positive Gamma（ボラティリティ安定、Put Wall (98.0)による下値支持が強固）",
       "【GEX防衛構造】Put Wall支持中: 現在値(100.71)はPut Wall(98.0)の上にあり、強固な機関買い支え床として機能。",
-      "【トレンドフォロー】中期上昇トレンド維持（EMA20:101.777 > EMA50:101.1293）",
+      "【トレンドフォロー】中期上昇トレンド維持（EMA20:101.7779 > EMA50:101.1297）",
       "【モメンタム追随】20日ドンチャン安値（101.03）ブレイクダウン圏"
     ],
     "trade_plans": {
@@ -1775,13 +1775,13 @@
       "market_plan": {
         "name": "⚡ 成行・戻り売り追随プラン",
         "direction": "売り (SHORT)",
-        "entry_target": 102.361,
-        "entry_range": "102.361 付近成行",
+        "entry_target": 102.371,
+        "entry_range": "102.371 付近成行",
         "stop_loss": 103.14,
         "take_profit": 98.0,
-        "risk_reward_ratio": 5.6,
-        "risk_distance": 0.779,
-        "reward_distance": 4.361,
+        "risk_reward_ratio": 5.68,
+        "risk_distance": 0.769,
+        "reward_distance": 4.371,
         "strategy_memo": "下落モメンタムに追随する成行ショート。SL幅が広がるためロット数を半分以下に落とすこと。"
       }
     },
