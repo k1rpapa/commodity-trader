@@ -14,7 +14,7 @@
     "is_positive_gamma": false,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒) Spot価格（7703.2）がZG（7730.6）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🇺🇸 S&P 500 (ES) 分析現在の重力場: スポット価格 7703.25 に対して、Zero-Gammaが 7730.582 と上方に位置しています。さらに、ガンマ・レジームは「NEGATIVE GAMMA REGIME (パニック売り警戒)」へ転換しています。Zero-Gammaアラート: 「REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)」が発令されており、Zero-Gammaは -0.9% (-67.218) と下落傾向にあります。ウォール分析: 最も近い重要なPut Wall（サポート）は 7700.0 (GEX: -460.17) に、Call Wall（レジスタンス）は 7900.0 (GEX: 224.17) に見られます。実践的な"
   },
   "NQ": {
     "symbol": "NQ",
@@ -31,7 +31,7 @@
     "is_positive_gamma": false,
     "alert_title": "ZG STABLE: 安定レジーム維持",
     "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -306.5244 / -1.0%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "💻 NASDAQ 100 (NQ) 分析現在の重力場: スポット価格 29129.0 に対して、Zero-Gammaが 30378.59 と大きく上方に位置しています。ガンマ・レジームは「NEGATIVE GAMMA REGIME (パニック売り警戒)」を維持しています。Zero-Gammaアラート: 「ZG STABLE: 安定レジーム維持」ですが、Zero-Gammaは -1.0% (-306.524) と下落傾向です。ウォール分析: 最も近い重要なPut Wall（サポート）は 28000.0 (GEX: -60.09) に、Call Wall（レジスタンス）は 31500.0 (GEX: 22.57) に見られます。実践的なトレード戦略:現在の状況: NEGATIVE GAMMAレジ"
   },
   "GC": {
     "symbol": "GC",
@@ -48,7 +48,7 @@
     "is_positive_gamma": true,
     "alert_title": "ZG SPIKE ALERT: Zero-Gamma 急落 🔻",
     "alert_text": "ZG SPIKE ALERT: Zero-Gamma 急落 🔻 ZGが直近比較で -391.3517 (-9.0%) 大幅変動（4357.1 ➔ 3965.8）。ZGが急低下したため、Positive Gamma圏が拡大し、相場が安定・レンジ回帰（Gamma Pinning）しやすくなっています。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🥇 ゴールド (GC) 分析現在の重力場: スポット価格 4008.9 に対して、Zero-Gammaは 3965.791 と下方に位置しています。ガンマ・レジームは「POSITIVE GAMMA REGIME (押し目買い優位)」を維持しています。Zero-Gammaアラート: 「ZG SPIKE ALERT: Zero-Gamma 急落 🔻」が発令されており、Zero-Gammaは -9.0% (-391.352) と急落しています。ウォール分析: 最も近い重要なPut Wall（サポート）は 4000.0 (GEX: -116.45) および 3900.0 (GEX: -125.77) に、Call Wall（レジスタンス）は 4200.0 (GEX: 80.62) に見られます。実践"
   },
   "SI": {
     "symbol": "SI",
@@ -65,7 +65,7 @@
     "is_positive_gamma": false,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒) Spot価格（53.65）がZG（53.87）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🥈 シルバー (SI) 分析現在の重力場: スポット価格 53.653 に対して、Zero-Gammaが 53.867 とわずかに上方に位置しています。ガンマ・レジームは「NEGATIVE GAMMA REGIME (パニック売り警戒)」へ転換しています。Zero-Gammaアラート: 「REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)」が発令されており、Zero-Gammaは -0.4% (-0.206) と下落しています。ウォール分析: 最も近いPut Wall（サポート）は 55.0 (GEX: -10.37) に、Call Wall（レジスタンス）は 57.0 (GEX: 2.87) に見られます。実践的なトレード戦略:現在の状況: NEGATI"
   },
   "PL": {
     "symbol": "PL",
@@ -82,7 +82,7 @@
     "is_positive_gamma": true,
     "alert_title": "ZG SHIFT: Zero-Gamma有意な変動検知",
     "alert_text": "ZG SHIFT: Zero-Gamma有意な変動検知 ZGが +79.47 (+4.7%) シフト（1676.9 ➔ 1756.3）。ウォールの移動と防衛ラインを確認してください。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "✨ プラチナ (PL) 分析現在の重力場: スポット価格 1759.7 に対して、Zero-Gammaは 1756.322 とわずかに下方に位置しています。ガンマ・レジームは「POSITIVE GAMMA REGIME (押し目買い優位)」を維持しています。Zero-Gammaアラート: 「ZG SHIFT: Zero-Gamma有意な変動検知」が発令されており、Zero-Gammaは +4.7% (+79.466) と大きく上昇しています。ウォール分析: 最も近いCall Wall（レジスタンス）は 2000.0 (GEX: 1.94) に、Put Wall（サポート）は 1650.0 (GEX: -0.53) に見られます。実践的なトレード戦略:現在の状況: POSITIVE GAMMA"
   },
   "CL": {
     "symbol": "CL",
@@ -99,7 +99,7 @@
     "is_positive_gamma": true,
     "alert_title": "ZG SHIFT: Zero-Gamma有意な変動検知",
     "alert_text": "ZG SHIFT: Zero-Gamma有意な変動検知 ZGが +3.01 (+3.2%) シフト（93.03 ➔ 96.04）。ウォールの移動と防衛ラインを確認してください。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🛢️ 原油 (CL) 分析現在の重力場: スポット価格 103.27 に対して、Zero-Gammaは 96.043 と下方に位置しています。ガンマ・レジームは「POSITIVE GAMMA REGIME (押し目買い優位)」を維持しています。Zero-Gammaアラート: 「ZG SHIFT: Zero-Gamma有意な変動検知」が発令されており、Zero-Gammaは +3.2% (+3.014) と上昇しています。ウォール分析: 最も近いCall Wall（レジスタンス）は 100.0 (GEX: 75.72) に、Put Wall（サポート）は 85.0 (GEX: -25.96) に見られます。実践的なトレード戦略:現在の状況: POSITIVE GAMMAレジームであり、Zero"
   },
   "NG": {
     "symbol": "NG",
@@ -116,7 +116,7 @@
     "is_positive_gamma": false,
     "alert_title": "ZG STABLE: 安定レジーム維持",
     "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 +0.0036 / +0.1%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🔥 天然ガス (NG) 分析現在の重力場: スポット価格 3.034 に対して、Zero-Gammaが 3.244 と上方に位置しています。ガンマ・レジームは「NEGATIVE GAMMA REGIME (パニック売り警戒)」を維持しています。Zero-Gammaアラート: 「ZG STABLE: 安定レジーム維持」で、Zero-Gammaは +0.1% (+0.004) と安定しています。ウォール分析: 最も近いPut Wall（サポート）は 2.7 (GEX: -0.65) に、Call Wall（レジスタンス）は 3.5 (GEX: 0.67) に見られます。実践的なトレード戦略:現在の状況: NEGATIVE GAMMAレジームが安定して継続しており、Zero-Gammaがスポット価"
   },
   "HG": {
     "symbol": "HG",
@@ -133,7 +133,7 @@
     "is_positive_gamma": true,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位) Spot価格（6.67）がZG（6.60）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🧱 銅 (HG) 分析現在の重力場: スポット価格 6.67 に対して、Zero-Gammaは 6.604 と下方に位置しています。ガンマ・レジームは「POSITIVE GAMMA REGIME (押し目買い優位)」へ転換しています。Zero-Gammaアラート: 「REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)」が発令されており、Zero-Gammaは +1.4% (+0.091) と上昇しています。ウォール分析: 最も近いCall Wall（レジスタンス）は 6.7 (GEX: 12.08) に、Put Wall（サポート）は 6.55 (GEX: -20.18) に見られます。実践的なトレード戦略:現在の状況: POSITIVE GAMMAへの転換"
   },
   "ZS": {
     "symbol": "ZS",
@@ -150,7 +150,7 @@
     "is_positive_gamma": false,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒) Spot価格（1270.0）がZG（1295.2）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🌱 大豆 (ZS) 分析現在の重力場: スポット価格 1270.0 に対して、Zero-Gammaが 1295.184 と上方に位置しています。ガンマ・レジームは「NEGATIVE GAMMA REGIME (パニック売り警戒)」へ転換しています。Zero-Gammaアラート: 「REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)」が発令されており、Zero-Gammaは +0.9% (+10.968) と上昇していますが、レジームはNEGATIVEです。ウォール分析: 最も近いCall Wall（レジスタンス）は 1280.0 (GEX: 13.86) に、Put Wall（サポート）も 1280.0 (GEX: -27.38) に見られ、この水準が非常"
   },
   "ZC": {
     "symbol": "ZC",
@@ -167,7 +167,7 @@
     "is_positive_gamma": false,
     "alert_title": "ZG STABLE: 安定レジーム維持",
     "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -0.8071 / -0.2%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🌽 トウモロコシ (ZC) 分析現在の重力場: スポット価格 465.0 に対して、Zero-Gammaが 468.822 と上方に位置しています。ガンマ・レジームは「NEGATIVE GAMMA REGIME (パニック売り警戒)」を維持しています。Zero-Gammaアラート: 「ZG STABLE: 安定レジーム維持」で、Zero-Gammaは -0.2% (-0.807) と安定傾向にあります。ウォール分析: 最も近いCall Wall（レジスタンス）は 470.0 (GEX: 8.46) に、Put Wall（サポート）は 460.0 (GEX: -11.18) に見られます。実践的なトレード戦略:現在の状況: NEGATIVE GAMMAレジームの継続とZero-Gammaが上値"
   },
   "ZW": {
     "symbol": "ZW",
@@ -184,7 +184,7 @@
     "is_positive_gamma": false,
     "alert_title": "ZG STABLE: 安定レジーム維持",
     "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 +12.97 / +2.0%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🌾 小麦 (ZW) 分析現在の重力場: スポット価格 635.0 に対して、Zero-Gammaが 647.173 と上方に位置しています。ガンマ・レジームは「NEGATIVE GAMMA REGIME (パニック売り警戒)」を維持しています。Zero-Gammaアラート: 「ZG STABLE: 安定レジーム維持」で、Zero-Gammaは +2.0% (+12.968) と上昇傾向にあります。ウォール分析: 最も近いPut Wall（サポート）は 630.0 (GEX: -1.93) に、Call Wall（レジスタンス）は 700.0 (GEX: 1.52) に見られます。実践的なトレード戦略:現在の状況: NEGATIVE GAMMAレジームが継続しており、Zero-Gammaがスポ"
   },
   "SB": {
     "symbol": "SB",
@@ -201,7 +201,7 @@
     "is_positive_gamma": true,
     "alert_title": "ZG STABLE: 安定レジーム維持",
     "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 +0.0464 / +0.3%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🍬 砂糖 (SB) 分析現在の重力場: スポット価格 20.24 に対して、Zero-Gammaは 18.08 と下方に位置しています。ガンマ・レジームは「POSITIVE GAMMA REGIME (押し目買い優位)」を維持しています。Zero-Gammaアラート: 「ZG STABLE: 安定レジーム維持」で、Zero-Gammaは +0.3% (+0.046) と安定傾向にあります。ウォール分析: 最も近いCall Wall（レジスタンス）は 20.0 (GEX: 10.90) に、Put Wall（サポート）は 18.0 (GEX: -4.99) に見られます。実践的なトレード戦略:現在の状況: POSITIVE GAMMAレジームの継続とZero-Gammaがスポット価格を下支えし"
   },
   "CT": {
     "symbol": "CT",
@@ -218,7 +218,7 @@
     "is_positive_gamma": true,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位) Spot価格（83.95）がZG（83.51）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🧵 コットン (CT) 分析現在の重力場: スポット価格 83.95 に対して、Zero-Gammaは 83.513 とわずかに下方に位置しています。ガンマ・レジームは「POSITIVE GAMMA REGIME (押し目買い優位)」へ転換しています。Zero-Gammaアラート: 「REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)」が発令されており、Zero-Gammaは +3.6% (+2.864) と上昇しています。ウォール分析: 最も近いCall Wall（レジスタンス）は 85.0 (GEX: 6.28) に、Put Wall（サポート）は 81.0 (GEX: -3.04) に見られます。実践的なトレード戦略:現在の状況: POSITIVE G"
   },
   "CC": {
     "symbol": "CC",
@@ -235,7 +235,7 @@
     "is_positive_gamma": true,
     "alert_title": "ZG SHIFT: Zero-Gamma有意な変動検知",
     "alert_text": "ZG SHIFT: Zero-Gamma有意な変動検知 ZGが -235.3598 (-4.1%) シフト（5797.2 ➔ 5561.9）。ウォールの移動と防衛ラインを確認してください。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🍫 ココア (CC) 分析現在の重力場: スポット価格 5592.0 に対して、Zero-Gammaは 5561.888 と下方に位置しています。ガンマ・レジームは「POSITIVE GAMMA REGIME (押し目買い優位)」を維持しています。Zero-Gammaアラート: 「ZG SHIFT: Zero-Gamma有意な変動検知」が発令されており、Zero-Gammaは -4.1% (-235.36) と大きく下落しています。ウォール分析: 最も近いCall Wall（レジスタンス）は 5500.0 (GEX: 7.28) に、Put Wall（サポート）も 5500.0 (GEX: -6.14) に見られ、この水準が非常に重要です。実践的なトレード戦略:現在の状況: POSITIVE"
   },
   "KC": {
     "symbol": "KC",
@@ -252,7 +252,7 @@
     "is_positive_gamma": false,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒) Spot価格（281.16）がZG（292.52）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "☕ コーヒー (KC) 分析現在の重力場: スポット価格 281.16 に対して、Zero-Gammaが 292.523 と上方に位置しています。ガンマ・レジームは「NEGATIVE GAMMA REGIME (パニック売り警戒)」へ転換しています。Zero-Gammaアラート: 「REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)」が発令されており、Zero-Gammaは -4.4% (-13.324) と下落しています。ウォール分析: 最も近いPut Wall（サポート）は 275.0 (GEX: -5.62) に、Call Wall（レジスタンス）は 300.0 (GEX: 5.30) に見られます。実践的なトレード戦略:現在の状況: NEGATIV"
   },
   "HE": {
     "symbol": "HE",
@@ -269,7 +269,7 @@
     "is_positive_gamma": false,
     "alert_title": "ZG SPIKE ALERT: Zero-Gamma 急落 🔻",
     "alert_text": "ZG SPIKE ALERT: Zero-Gamma 急落 🔻 ZGが直近比較で -8.1215 (-11.7%) 大幅変動（69.65 ➔ 61.53）。ZGが急低下したため、Positive Gamma圏が拡大し、相場が安定・レンジ回帰（Gamma Pinning）しやすくなっています。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🐷 豚肉 (HE) 分析現在の重力場: スポット価格 58.6 に対して、Zero-Gammaが 61.529 と上方に位置しています。ガンマ・レジームは「NEGATIVE GAMMA REGIME (パニック売り警戒)」を維持しています。Zero-Gammaアラート: 「ZG SPIKE ALERT: Zero-Gamma 急落 🔻」が発令されており、Zero-Gammaは -11.7% (-8.122) と急落しています。ウォール分析: 最も近いCall Wall（レジスタンス）は 62.0 (GEX: 2.32) に、Put Wall（サポート）は 64.0 (GEX: -2.06) に見られます。実践的なトレード戦略:現在の状況: NEGATIVE GAMMAレジームの継続に加え、Z"
   },
   "LE": {
     "symbol": "LE",
@@ -286,7 +286,7 @@
     "is_positive_gamma": false,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒) Spot価格（231.12）がZG（231.50）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🐂 生牛 (LE) 分析現在の重力場: スポット価格 231.125 に対して、Zero-Gammaが 231.5 とわずかに上方に位置しています。ガンマ・レジームは「NEGATIVE GAMMA REGIME (パニック売り警戒)」へ転換しています。Zero-Gammaアラート: 「REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)」が発令されており、Zero-Gammaは +3.0% (+6.758) と上昇していますが、レジームはNEGATIVEです。ウォール分析: 最も近いCall Wall（レジスタンス）は 230.0 (GEX: 55.62) に、Put Wall（サポート）も 230.0 (GEX: -41.76) に見られ、この水準が非常に"
   },
   "DXY": {
     "symbol": "DXY",
@@ -303,7 +303,7 @@
     "is_positive_gamma": true,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位) Spot価格（100.71）がZG（99.40）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "💵 ドルインデックス (DXY) 分析現在の重力場: スポット価格 100.71 に対して、Zero-Gammaは 99.401 と下方に位置しています。ガンマ・レジームは「POSITIVE GAMMA REGIME (押し目買い優位)」へ転換しています。Zero-Gammaアラート: 「REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)」が発令されており、Zero-Gammaは -0.2% (-0.227) とわずかに下落していますが、レジームはPOSITIVEです。ウォール分析: 最も近いCall Wall（レジスタンス）は 103.0 (GEX: 0.14) に、Put Wall（サポート）は 98.0 (GEX: -0.04) に見られます。実践的な"
   },
   "ZN": {
     "symbol": "ZN",
@@ -320,6 +320,6 @@
     "is_positive_gamma": false,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒) Spot価格（105.50）がZG（105.56）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "[AI生成エラー] 制限超過またはAPIの仕様変更による一時的な障害です。詳細: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+    "ai_summary": "🇺🇸 米10年債 (ZN) 分析現在の重力場: スポット価格 105.5 に対して、Zero-Gammaが 105.564 とわずかに上方に位置しています。ガンマ・レジームは「NEGATIVE GAMMA REGIME (パニック売り警戒)」へ転換しています。Zero-Gammaアラート: 「REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)」が発令されており、Zero-Gammaは +0.3% (+0.305) と上昇していますが、レジームはNEGATIVEです。ウォール分析: 最も近いCall Wall（レジスタンス）は 106.0 (GEX: 2225.53) に、Put Wall（サポート）は 105.0 (GEX: -1089.80) に見られ、"
   }
 }
