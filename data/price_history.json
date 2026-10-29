@@ -3,19 +3,19 @@
     "symbol": "ES",
     "ticker": "ES=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 7767.75,
-      "high": 7769.0,
-      "low": 7742.25,
-      "close": 7763.0,
-      "volume": 46095,
-      "ema20": 7754.9371,
-      "ema50": 7723.4338,
-      "atr14": 78.75,
-      "rsi14": 45.4,
+      "high": 7773.75,
+      "low": 7740.0,
+      "close": 7759.5,
+      "volume": 149934,
+      "ema20": 7757.1166,
+      "ema50": 7725.6111,
+      "atr14": 81.0,
+      "rsi14": 41.4,
       "donchian_high20": 7897.5,
       "donchian_low20": 7648.5,
-      "seasonal_avg": 7344.375
+      "seasonal_avg": 6847.9167
     },
     "history": [
       {
@@ -3796,7 +3796,7 @@
         "rsi14": 59.6,
         "donchian_high20": 5927.25,
         "donchian_low20": 5724.0,
-        "seasonal_avg": 6392.125
+        "seasonal_avg": 6847.9167
       },
       {
         "date": "2024-10-29",
@@ -7576,7 +7576,7 @@
         "rsi14": 58.7,
         "donchian_high20": 6944.75,
         "donchian_low20": 6540.25,
-        "seasonal_avg": 7344.375
+        "seasonal_avg": 7354.5
       },
       {
         "date": "2025-10-29",
@@ -7591,7 +7591,7 @@
         "rsi14": 60.2,
         "donchian_high20": 6952.0,
         "donchian_low20": 6540.25,
-        "seasonal_avg": 6392.125
+        "seasonal_avg": 6847.9167
       },
       {
         "date": "2025-10-30",
@@ -11319,7 +11319,7 @@
         "high": 7772.75,
         "low": 7699.75,
         "close": 7758.25,
-        "volume": 1677784,
+        "volume": 1556188,
         "ema20": 7754.0884,
         "ema50": 7721.8188,
         "atr14": 82.2143,
@@ -11330,18 +11330,33 @@
       },
       {
         "date": "2026-10-28",
-        "open": 7767.75,
-        "high": 7769.0,
-        "low": 7742.25,
-        "close": 7763.0,
-        "volume": 46095,
-        "ema20": 7754.9371,
-        "ema50": 7723.4338,
-        "atr14": 78.75,
-        "rsi14": 45.4,
+        "open": 7761.75,
+        "high": 7819.5,
+        "low": 7750.25,
+        "close": 7783.25,
+        "volume": 1556188,
+        "ema20": 7756.8657,
+        "ema50": 7724.2279,
+        "atr14": 81.7857,
+        "rsi14": 47.3,
         "donchian_high20": 7897.5,
         "donchian_low20": 7648.5,
-        "seasonal_avg": 7344.375
+        "seasonal_avg": 7354.5
+      },
+      {
+        "date": "2026-10-29",
+        "open": 7767.75,
+        "high": 7773.75,
+        "low": 7740.0,
+        "close": 7759.5,
+        "volume": 149934,
+        "ema20": 7757.1166,
+        "ema50": 7725.6111,
+        "atr14": 81.0,
+        "rsi14": 41.4,
+        "donchian_high20": 7897.5,
+        "donchian_low20": 7648.5,
+        "seasonal_avg": 6847.9167
       }
     ]
   },
@@ -11349,19 +11364,19 @@
     "symbol": "NQ",
     "ticker": "NQ=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 29793.5,
       "high": 29794.25,
-      "low": 29614.0,
-      "close": 29735.5,
-      "volume": 39568,
-      "ema20": 29980.7326,
-      "ema50": 29951.559,
-      "atr14": 555.4464,
-      "rsi14": 35.4,
+      "low": 29482.5,
+      "close": 29649.25,
+      "volume": 113038,
+      "ema20": 29970.1878,
+      "ema50": 29948.8972,
+      "atr14": 590.3929,
+      "rsi14": 33.8,
       "donchian_high20": 31616.5,
       "donchian_low20": 28987.0,
-      "seasonal_avg": 27949.5
+      "seasonal_avg": 25469.5833
     },
     "history": [
       {
@@ -15142,7 +15157,7 @@
         "rsi14": 56.8,
         "donchian_high20": 20707.25,
         "donchian_low20": 19818.0,
-        "seasonal_avg": 23379.75
+        "seasonal_avg": 25469.5833
       },
       {
         "date": "2024-10-29",
@@ -18922,7 +18937,7 @@
         "rsi14": 61.1,
         "donchian_high20": 26231.5,
         "donchian_low20": 24158.5,
-        "seasonal_avg": 27949.5
+        "seasonal_avg": 28071.5
       },
       {
         "date": "2025-10-29",
@@ -18937,7 +18952,7 @@
         "rsi14": 62.8,
         "donchian_high20": 26379.75,
         "donchian_low20": 24158.5,
-        "seasonal_avg": 23379.75
+        "seasonal_avg": 25469.5833
       },
       {
         "date": "2025-10-30",
@@ -22665,7 +22680,7 @@
         "high": 29881.25,
         "low": 29288.0,
         "close": 29812.0,
-        "volume": 679238,
+        "volume": 592565,
         "ema20": 30006.5466,
         "ema50": 29960.3778,
         "atr14": 589.4464,
@@ -22676,18 +22691,33 @@
       },
       {
         "date": "2026-10-28",
-        "open": 29793.5,
-        "high": 29794.25,
-        "low": 29614.0,
-        "close": 29735.5,
-        "volume": 39568,
-        "ema20": 29980.7326,
-        "ema50": 29951.559,
-        "atr14": 555.4464,
-        "rsi14": 35.4,
+        "open": 29814.25,
+        "high": 30178.0,
+        "low": 29674.25,
+        "close": 29979.5,
+        "volume": 592565,
+        "ema20": 30003.9707,
+        "ema50": 29961.1277,
+        "atr14": 577.2857,
+        "rsi14": 38.5,
         "donchian_high20": 31616.5,
         "donchian_low20": 28987.0,
-        "seasonal_avg": 27949.5
+        "seasonal_avg": 28071.5
+      },
+      {
+        "date": "2026-10-29",
+        "open": 29793.5,
+        "high": 29794.25,
+        "low": 29482.5,
+        "close": 29649.25,
+        "volume": 113038,
+        "ema20": 29970.1878,
+        "ema50": 29948.8972,
+        "atr14": 590.3929,
+        "rsi14": 33.8,
+        "donchian_high20": 31616.5,
+        "donchian_low20": 28987.0,
+        "seasonal_avg": 25469.5833
       }
     ]
   },
@@ -22695,19 +22725,19 @@
     "symbol": "GC",
     "ticker": "GC=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 4081.3999,
       "high": 4081.7,
-      "low": 4048.7,
-      "close": 4051.2,
-      "volume": 8080,
-      "ema20": 4141.1424,
-      "ema50": 4231.1657,
-      "atr14": 67.1071,
-      "rsi14": 39.8,
+      "low": 4033.3999,
+      "close": 4045.3999,
+      "volume": 38332,
+      "ema20": 4132.0586,
+      "ema50": 4223.8958,
+      "atr14": 66.9643,
+      "rsi14": 31.6,
       "donchian_high20": 4259.0,
       "donchian_low20": 3989.1001,
-      "seasonal_avg": 4017.15
+      "seasonal_avg": 3600.6666
     },
     "history": [
       {
@@ -26488,7 +26518,7 @@
         "rsi14": 77.2,
         "donchian_high20": 2772.6001,
         "donchian_low20": 2618.8,
-        "seasonal_avg": 3378.2999
+        "seasonal_avg": 3600.6666
       },
       {
         "date": "2024-10-29",
@@ -30268,7 +30298,7 @@
         "rsi14": 46.4,
         "donchian_high20": 4398.0,
         "donchian_low20": 3842.8,
-        "seasonal_avg": 4017.15
+        "seasonal_avg": 4017.3501
       },
       {
         "date": "2025-10-29",
@@ -30283,7 +30313,7 @@
         "rsi14": 51.3,
         "donchian_high20": 4398.0,
         "donchian_low20": 3842.8,
-        "seasonal_avg": 3378.2999
+        "seasonal_avg": 3600.6666
       },
       {
         "date": "2025-10-30",
@@ -34011,7 +34041,7 @@
         "high": 4079.3999,
         "low": 4001.6001,
         "close": 4074.6001,
-        "volume": 126007,
+        "volume": 139103,
         "ema20": 4150.6101,
         "ema50": 4238.5112,
         "atr14": 67.7928,
@@ -34022,18 +34052,33 @@
       },
       {
         "date": "2026-10-28",
-        "open": 4081.3999,
-        "high": 4081.7,
-        "low": 4048.7,
-        "close": 4051.2,
-        "volume": 8080,
-        "ema20": 4141.1424,
-        "ema50": 4231.1657,
-        "atr14": 67.1071,
+        "open": 4073.6001,
+        "high": 4097.2002,
+        "low": 4036.8999,
+        "close": 4051.6001,
+        "volume": 139103,
+        "ema20": 4141.1805,
+        "ema50": 4231.1814,
+        "atr14": 69.0571,
         "rsi14": 39.8,
         "donchian_high20": 4259.0,
         "donchian_low20": 3989.1001,
-        "seasonal_avg": 4017.15
+        "seasonal_avg": 4017.3501
+      },
+      {
+        "date": "2026-10-29",
+        "open": 4081.3999,
+        "high": 4081.7,
+        "low": 4033.3999,
+        "close": 4045.3999,
+        "volume": 38332,
+        "ema20": 4132.0586,
+        "ema50": 4223.8958,
+        "atr14": 66.9643,
+        "rsi14": 31.6,
+        "donchian_high20": 4259.0,
+        "donchian_low20": 3989.1001,
+        "seasonal_avg": 3600.6666
       }
     ]
   },
@@ -34041,19 +34086,19 @@
     "symbol": "SI",
     "ticker": "SI=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 54.05,
-      "high": 54.18,
-      "low": 53.625,
-      "close": 53.66,
-      "volume": 1530,
-      "ema20": 57.395,
-      "ema50": 60.427,
-      "atr14": 1.1294,
-      "rsi14": 30.9,
+      "high": 54.445,
+      "low": 52.655,
+      "close": 52.86,
+      "volume": 16338,
+      "ema20": 56.9456,
+      "ema50": 60.1226,
+      "atr14": 1.1522,
+      "rsi14": 20.7,
       "donchian_high20": 61.615,
-      "donchian_low20": 53.625,
-      "seasonal_avg": 50.3925
+      "donchian_low20": 52.655,
+      "seasonal_avg": 44.8037
     },
     "history": [
       {
@@ -37819,7 +37864,7 @@
         "rsi14": 74.2,
         "donchian_high20": 34.835,
         "donchian_low20": 30.355,
-        "seasonal_avg": 40.7755
+        "seasonal_avg": 44.8037
       },
       {
         "date": "2024-10-29",
@@ -41599,7 +41644,7 @@
         "rsi14": 46.1,
         "donchian_high20": 53.34,
         "donchian_low20": 45.385,
-        "seasonal_avg": 50.3925
+        "seasonal_avg": 50.291
       },
       {
         "date": "2025-10-29",
@@ -41614,7 +41659,7 @@
         "rsi14": 52.4,
         "donchian_high20": 53.34,
         "donchian_low20": 45.385,
-        "seasonal_avg": 40.7755
+        "seasonal_avg": 44.8037
       },
       {
         "date": "2025-10-30",
@@ -45342,7 +45387,7 @@
         "high": 54.293,
         "low": 53.655,
         "close": 54.293,
-        "volume": 128,
+        "volume": 229,
         "ema20": 57.7881,
         "ema50": 60.7032,
         "atr14": 1.152,
@@ -45353,18 +45398,33 @@
       },
       {
         "date": "2026-10-28",
-        "open": 54.05,
-        "high": 54.18,
-        "low": 53.625,
-        "close": 53.66,
-        "volume": 1530,
-        "ema20": 57.395,
-        "ema50": 60.427,
-        "atr14": 1.1294,
-        "rsi14": 30.9,
+        "open": 53.925,
+        "high": 53.925,
+        "low": 53.405,
+        "close": 53.457,
+        "volume": 229,
+        "ema20": 57.3756,
+        "ema50": 60.4191,
+        "atr14": 1.1451,
+        "rsi14": 30.4,
         "donchian_high20": 61.615,
-        "donchian_low20": 53.625,
-        "seasonal_avg": 50.3925
+        "donchian_low20": 53.405,
+        "seasonal_avg": 50.291
+      },
+      {
+        "date": "2026-10-29",
+        "open": 54.05,
+        "high": 54.445,
+        "low": 52.655,
+        "close": 52.86,
+        "volume": 16338,
+        "ema20": 56.9456,
+        "ema50": 60.1226,
+        "atr14": 1.1522,
+        "rsi14": 20.7,
+        "donchian_high20": 61.615,
+        "donchian_low20": 52.655,
+        "seasonal_avg": 44.8037
       }
     ]
   },
@@ -45372,19 +45432,19 @@
     "symbol": "PL",
     "ticker": "PL=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 1544.9,
       "high": 1548.6,
-      "low": 1534.3,
-      "close": 1536.3,
-      "volume": 470,
-      "ema20": 1621.6111,
-      "ema50": 1683.6998,
-      "atr14": 27.4,
-      "rsi14": 34.6,
+      "low": 1511.8,
+      "close": 1515.8,
+      "volume": 3953,
+      "ema20": 1612.5334,
+      "ema50": 1677.5525,
+      "atr14": 26.9643,
+      "rsi14": 20.8,
       "donchian_high20": 1744.5,
       "donchian_low20": 1494.0,
-      "seasonal_avg": 1556.65
+      "seasonal_avg": 1381.4667
     },
     "history": [
       {
@@ -49150,7 +49210,7 @@
         "rsi14": 79.0,
         "donchian_high20": 1040.0,
         "donchian_low20": 948.0,
-        "seasonal_avg": 1314.3
+        "seasonal_avg": 1381.4667
       },
       {
         "date": "2024-10-29",
@@ -52930,7 +52990,7 @@
         "rsi14": 42.2,
         "donchian_high20": 1741.2,
         "donchian_low20": 1477.1,
-        "seasonal_avg": 1556.65
+        "seasonal_avg": 1562.45
       },
       {
         "date": "2025-10-29",
@@ -52945,7 +53005,7 @@
         "rsi14": 46.5,
         "donchian_high20": 1741.2,
         "donchian_low20": 1477.1,
-        "seasonal_avg": 1314.3
+        "seasonal_avg": 1381.4667
       },
       {
         "date": "2025-10-30",
@@ -56673,7 +56733,7 @@
         "high": 1535.0,
         "low": 1494.0,
         "close": 1535.0,
-        "volume": 3,
+        "volume": 10,
         "ema20": 1630.5913,
         "ema50": 1689.7161,
         "atr14": 26.9143,
@@ -56684,18 +56744,33 @@
       },
       {
         "date": "2026-10-28",
-        "open": 1544.9,
-        "high": 1548.6,
-        "low": 1534.3,
-        "close": 1536.3,
-        "volume": 470,
-        "ema20": 1621.6111,
-        "ema50": 1683.6998,
-        "atr14": 27.4,
-        "rsi14": 34.6,
+        "open": 1560.0,
+        "high": 1560.0,
+        "low": 1547.9,
+        "close": 1547.9,
+        "volume": 10,
+        "ema20": 1622.7159,
+        "ema50": 1684.1547,
+        "atr14": 28.1643,
+        "rsi14": 37.1,
         "donchian_high20": 1744.5,
         "donchian_low20": 1494.0,
-        "seasonal_avg": 1556.65
+        "seasonal_avg": 1562.45
+      },
+      {
+        "date": "2026-10-29",
+        "open": 1544.9,
+        "high": 1548.6,
+        "low": 1511.8,
+        "close": 1515.8,
+        "volume": 3953,
+        "ema20": 1612.5334,
+        "ema50": 1677.5525,
+        "atr14": 26.9643,
+        "rsi14": 20.8,
+        "donchian_high20": 1744.5,
+        "donchian_low20": 1494.0,
+        "seasonal_avg": 1381.4667
       }
     ]
   },
@@ -56703,19 +56778,19 @@
     "symbol": "CL",
     "ticker": "CL=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 101.96,
       "high": 102.31,
-      "low": 101.75,
-      "close": 102.03,
-      "volume": 5418,
-      "ema20": 97.8934,
-      "ema50": 94.0353,
-      "atr14": 4.21,
-      "rsi14": 67.4,
+      "low": 101.02,
+      "close": 101.3,
+      "volume": 23689,
+      "ema20": 98.2825,
+      "ema50": 94.3484,
+      "atr14": 4.2807,
+      "rsi14": 64.7,
       "donchian_high20": 110.48,
       "donchian_low20": 86.86,
-      "seasonal_avg": 81.09
+      "seasonal_avg": 76.3867
     },
     "history": [
       {
@@ -60481,7 +60556,7 @@
         "rsi14": 35.2,
         "donchian_high20": 78.46,
         "donchian_low20": 66.33,
-        "seasonal_avg": 63.93
+        "seasonal_avg": 76.3867
       },
       {
         "date": "2024-10-29",
@@ -64261,7 +64336,7 @@
         "rsi14": 40.2,
         "donchian_high20": 62.92,
         "donchian_low20": 56.35,
-        "seasonal_avg": 81.09
+        "seasonal_avg": 81.465
       },
       {
         "date": "2025-10-29",
@@ -64276,7 +64351,7 @@
         "rsi14": 45.5,
         "donchian_high20": 62.92,
         "donchian_low20": 56.35,
-        "seasonal_avg": 63.93
+        "seasonal_avg": 76.3867
       },
       {
         "date": "2025-10-30",
@@ -68004,7 +68079,7 @@
         "high": 102.82,
         "low": 99.44,
         "close": 99.9,
-        "volume": 266519,
+        "volume": 272470,
         "ema20": 97.458,
         "ema50": 93.709,
         "atr14": 4.3893,
@@ -68015,18 +68090,33 @@
       },
       {
         "date": "2026-10-28",
-        "open": 101.96,
-        "high": 102.31,
-        "low": 101.75,
-        "close": 102.03,
-        "volume": 5418,
-        "ema20": 97.8934,
-        "ema50": 94.0353,
-        "atr14": 4.21,
-        "rsi14": 67.4,
+        "open": 100.17,
+        "high": 103.55,
+        "low": 99.75,
+        "close": 102.78,
+        "volume": 272470,
+        "ema20": 97.9648,
+        "ema50": 94.0647,
+        "atr14": 4.3093,
+        "rsi14": 68.2,
         "donchian_high20": 110.48,
         "donchian_low20": 86.86,
-        "seasonal_avg": 81.09
+        "seasonal_avg": 81.465
+      },
+      {
+        "date": "2026-10-29",
+        "open": 101.96,
+        "high": 102.31,
+        "low": 101.02,
+        "close": 101.3,
+        "volume": 23689,
+        "ema20": 98.2825,
+        "ema50": 94.3484,
+        "atr14": 4.2807,
+        "rsi14": 64.7,
+        "donchian_high20": 110.48,
+        "donchian_low20": 86.86,
+        "seasonal_avg": 76.3867
       }
     ]
   },
@@ -68034,19 +68124,19 @@
     "symbol": "NG",
     "ticker": "NG=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 3.032,
-      "high": 3.032,
+      "high": 3.037,
       "low": 3.005,
-      "close": 3.012,
-      "volume": 1805,
-      "ema20": 2.9425,
-      "ema50": 2.9593,
-      "atr14": 0.1731,
-      "rsi14": 44.4,
+      "close": 3.029,
+      "volume": 5472,
+      "ema20": 2.934,
+      "ema50": 2.9546,
+      "atr14": 0.1659,
+      "rsi14": 43.0,
       "donchian_high20": 3.334,
       "donchian_low20": 2.497,
-      "seasonal_avg": 3.1785
+      "seasonal_avg": 2.9047
     },
     "history": [
       {
@@ -71827,7 +71917,7 @@
         "rsi14": 30.1,
         "donchian_high20": 3.019,
         "donchian_low20": 2.21,
-        "seasonal_avg": 2.8425
+        "seasonal_avg": 2.9047
       },
       {
         "date": "2024-10-29",
@@ -75607,7 +75697,7 @@
         "rsi14": 50.4,
         "donchian_high20": 3.585,
         "donchian_low20": 2.893,
-        "seasonal_avg": 3.1785
+        "seasonal_avg": 3.081
       },
       {
         "date": "2025-10-29",
@@ -75622,7 +75712,7 @@
         "rsi14": 54.0,
         "donchian_high20": 3.585,
         "donchian_low20": 2.893,
-        "seasonal_avg": 2.8425
+        "seasonal_avg": 2.9047
       },
       {
         "date": "2025-10-30",
@@ -79350,7 +79440,7 @@
         "high": 2.743,
         "low": 2.551,
         "close": 2.697,
-        "volume": 76233,
+        "volume": 105097,
         "ema20": 2.9352,
         "ema50": 2.9571,
         "atr14": 0.1629,
@@ -79361,18 +79451,33 @@
       },
       {
         "date": "2026-10-28",
-        "open": 3.032,
-        "high": 3.032,
-        "low": 3.005,
-        "close": 3.012,
-        "volume": 1805,
-        "ema20": 2.9425,
-        "ema50": 2.9593,
-        "atr14": 0.1731,
-        "rsi14": 44.4,
+        "open": 2.722,
+        "high": 2.846,
+        "low": 2.704,
+        "close": 2.817,
+        "volume": 105097,
+        "ema20": 2.924,
+        "ema50": 2.9516,
+        "atr14": 0.1599,
+        "rsi14": 35.4,
         "donchian_high20": 3.334,
         "donchian_low20": 2.497,
-        "seasonal_avg": 3.1785
+        "seasonal_avg": 3.081
+      },
+      {
+        "date": "2026-10-29",
+        "open": 3.032,
+        "high": 3.037,
+        "low": 3.005,
+        "close": 3.029,
+        "volume": 5472,
+        "ema20": 2.934,
+        "ema50": 2.9546,
+        "atr14": 0.1659,
+        "rsi14": 43.0,
+        "donchian_high20": 3.334,
+        "donchian_low20": 2.497,
+        "seasonal_avg": 2.9047
       }
     ]
   },
@@ -79380,19 +79485,19 @@
     "symbol": "HG",
     "ticker": "HG=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 6.68,
       "high": 6.697,
-      "low": 6.675,
-      "close": 6.678,
-      "volume": 726,
-      "ema20": 6.5637,
-      "ema50": 6.545,
-      "atr14": 0.0898,
-      "rsi14": 58.4,
+      "low": 6.6215,
+      "close": 6.636,
+      "volume": 4427,
+      "ema20": 6.5675,
+      "ema50": 6.5472,
+      "atr14": 0.0817,
+      "rsi14": 49.6,
       "donchian_high20": 6.7255,
       "donchian_low20": 6.3595,
-      "seasonal_avg": 5.9093
+      "seasonal_avg": 5.4005
     },
     "history": [
       {
@@ -83173,7 +83278,7 @@
         "rsi14": 43.0,
         "donchian_high20": 4.611,
         "donchian_low20": 4.28,
-        "seasonal_avg": 4.7827
+        "seasonal_avg": 5.4005
       },
       {
         "date": "2024-10-29",
@@ -86953,7 +87058,7 @@
         "rsi14": 54.6,
         "donchian_high20": 5.1995,
         "donchian_low20": 4.782,
-        "seasonal_avg": 5.9093
+        "seasonal_avg": 5.891
       },
       {
         "date": "2025-10-29",
@@ -86968,7 +87073,7 @@
         "rsi14": 57.3,
         "donchian_high20": 5.2335,
         "donchian_low20": 4.834,
-        "seasonal_avg": 4.7827
+        "seasonal_avg": 5.4005
       },
       {
         "date": "2025-10-30",
@@ -90696,7 +90801,7 @@
         "high": 6.624,
         "low": 6.622,
         "close": 6.622,
-        "volume": 712,
+        "volume": 542,
         "ema20": 6.5517,
         "ema50": 6.5396,
         "atr14": 0.09,
@@ -90707,18 +90812,33 @@
       },
       {
         "date": "2026-10-28",
-        "open": 6.68,
-        "high": 6.697,
-        "low": 6.675,
-        "close": 6.678,
-        "volume": 726,
-        "ema20": 6.5637,
-        "ema50": 6.545,
-        "atr14": 0.0898,
-        "rsi14": 58.4,
+        "open": 6.6275,
+        "high": 6.6415,
+        "low": 6.6275,
+        "close": 6.6415,
+        "volume": 542,
+        "ema20": 6.5602,
+        "ema50": 6.5436,
+        "atr14": 0.0859,
+        "rsi14": 56.8,
         "donchian_high20": 6.7255,
         "donchian_low20": 6.3595,
-        "seasonal_avg": 5.9093
+        "seasonal_avg": 5.891
+      },
+      {
+        "date": "2026-10-29",
+        "open": 6.68,
+        "high": 6.697,
+        "low": 6.6215,
+        "close": 6.636,
+        "volume": 4427,
+        "ema20": 6.5675,
+        "ema50": 6.5472,
+        "atr14": 0.0817,
+        "rsi14": 49.6,
+        "donchian_high20": 6.7255,
+        "donchian_low20": 6.3595,
+        "seasonal_avg": 5.4005
       }
     ]
   },
@@ -90726,19 +90846,19 @@
     "symbol": "ZS",
     "ticker": "ZS=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 1236.5,
       "high": 1238.5,
-      "low": 1235.5,
-      "close": 1235.75,
-      "volume": 3177,
-      "ema20": 1262.4076,
-      "ema50": 1261.3635,
-      "atr14": 17.5714,
-      "rsi14": 23.1,
+      "low": 1229.75,
+      "close": 1232.25,
+      "volume": 18702,
+      "ema20": 1258.5661,
+      "ema50": 1259.7979,
+      "atr14": 16.875,
+      "rsi14": 19.4,
       "donchian_high20": 1309.0,
-      "donchian_low20": 1227.5,
-      "seasonal_avg": 1157.0
+      "donchian_low20": 1222.75,
+      "seasonal_avg": 1095.5
     },
     "history": [
       {
@@ -94504,7 +94624,7 @@
         "rsi14": 32.8,
         "donchian_high20": 1065.5,
         "donchian_low20": 968.25,
-        "seasonal_avg": 1027.125
+        "seasonal_avg": 1095.5
       },
       {
         "date": "2024-10-29",
@@ -98269,7 +98389,7 @@
         "rsi14": 73.3,
         "donchian_high20": 1091.5,
         "donchian_low20": 993.75,
-        "seasonal_avg": 1157.0
+        "seasonal_avg": 1151.375
       },
       {
         "date": "2025-10-29",
@@ -98284,7 +98404,7 @@
         "rsi14": 79.1,
         "donchian_high20": 1091.5,
         "donchian_low20": 1001.0,
-        "seasonal_avg": 1027.125
+        "seasonal_avg": 1095.5
       },
       {
         "date": "2025-10-30",
@@ -102012,7 +102132,7 @@
         "high": 1251.25,
         "low": 1228.25,
         "close": 1229.25,
-        "volume": 146174,
+        "volume": 159847,
         "ema20": 1265.2137,
         "ema50": 1262.4089,
         "atr14": 18.0179,
@@ -102023,18 +102143,33 @@
       },
       {
         "date": "2026-10-28",
+        "open": 1230.0,
+        "high": 1237.75,
+        "low": 1222.75,
+        "close": 1224.5,
+        "volume": 159847,
+        "ema20": 1261.3362,
+        "ema50": 1260.9223,
+        "atr14": 17.9821,
+        "rsi14": 16.7,
+        "donchian_high20": 1309.0,
+        "donchian_low20": 1222.75,
+        "seasonal_avg": 1151.375
+      },
+      {
+        "date": "2026-10-29",
         "open": 1236.5,
         "high": 1238.5,
-        "low": 1235.5,
-        "close": 1235.75,
-        "volume": 3177,
-        "ema20": 1262.4076,
-        "ema50": 1261.3635,
-        "atr14": 17.5714,
-        "rsi14": 23.1,
+        "low": 1229.75,
+        "close": 1232.25,
+        "volume": 18702,
+        "ema20": 1258.5661,
+        "ema50": 1259.7979,
+        "atr14": 16.875,
+        "rsi14": 19.4,
         "donchian_high20": 1309.0,
-        "donchian_low20": 1227.5,
-        "seasonal_avg": 1157.0
+        "donchian_low20": 1222.75,
+        "seasonal_avg": 1095.5
       }
     ]
   },
@@ -102042,19 +102177,19 @@
     "symbol": "ZC",
     "ticker": "ZC=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 451.75,
-      "high": 452.5,
-      "low": 451.25,
-      "close": 451.5,
-      "volume": 4999,
-      "ema20": 474.5208,
-      "ema50": 483.4836,
-      "atr14": 9.2679,
-      "rsi14": 11.5,
+      "high": 453.25,
+      "low": 450.75,
+      "close": 452.25,
+      "volume": 18006,
+      "ema20": 472.4213,
+      "ema50": 482.2681,
+      "atr14": 7.1429,
+      "rsi14": 18.4,
       "donchian_high20": 509.75,
       "donchian_low20": 448.5,
-      "seasonal_avg": 441.75
+      "seasonal_avg": 432.3333
     },
     "history": [
       {
@@ -105820,7 +105955,7 @@
         "rsi14": 40.9,
         "donchian_high20": 434.25,
         "donchian_low20": 399.0,
-        "seasonal_avg": 422.375
+        "seasonal_avg": 432.3333
       },
       {
         "date": "2024-10-29",
@@ -109585,7 +109720,7 @@
         "rsi14": 60.2,
         "donchian_high20": 436.25,
         "donchian_low20": 409.25,
-        "seasonal_avg": 441.75
+        "seasonal_avg": 441.875
       },
       {
         "date": "2025-10-29",
@@ -109600,7 +109735,7 @@
         "rsi14": 66.7,
         "donchian_high20": 436.25,
         "donchian_low20": 409.25,
-        "seasonal_avg": 422.375
+        "seasonal_avg": 432.3333
       },
       {
         "date": "2025-10-30",
@@ -113328,7 +113463,7 @@
         "high": 455.0,
         "low": 448.5,
         "close": 448.75,
-        "volume": 224285,
+        "volume": 220459,
         "ema20": 476.944,
         "ema50": 484.789,
         "atr14": 9.4286,
@@ -113339,18 +113474,33 @@
       },
       {
         "date": "2026-10-28",
-        "open": 451.75,
-        "high": 452.5,
-        "low": 451.25,
-        "close": 451.5,
-        "volume": 4999,
-        "ema20": 474.5208,
-        "ema50": 483.4836,
-        "atr14": 9.2679,
-        "rsi14": 11.5,
+        "open": 449.0,
+        "high": 454.75,
+        "low": 449.0,
+        "close": 451.75,
+        "volume": 220459,
+        "ema20": 474.5446,
+        "ema50": 483.4934,
+        "atr14": 9.4286,
+        "rsi14": 11.8,
         "donchian_high20": 509.75,
         "donchian_low20": 448.5,
-        "seasonal_avg": 441.75
+        "seasonal_avg": 441.875
+      },
+      {
+        "date": "2026-10-29",
+        "open": 451.75,
+        "high": 453.25,
+        "low": 450.75,
+        "close": 452.25,
+        "volume": 18006,
+        "ema20": 472.4213,
+        "ema50": 482.2681,
+        "atr14": 7.1429,
+        "rsi14": 18.4,
+        "donchian_high20": 509.75,
+        "donchian_low20": 448.5,
+        "seasonal_avg": 432.3333
       }
     ]
   },
@@ -113358,19 +113508,19 @@
     "symbol": "ZW",
     "ticker": "ZW=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 599.5,
       "high": 602.0,
-      "low": 599.0,
-      "close": 601.25,
-      "volume": 1068,
-      "ema20": 650.3199,
-      "ema50": 669.21,
-      "atr14": 14.3929,
-      "rsi14": 5.9,
+      "low": 598.25,
+      "close": 598.5,
+      "volume": 4197,
+      "ema20": 645.1908,
+      "ema50": 666.3522,
+      "atr14": 13.5357,
+      "rsi14": 6.6,
       "donchian_high20": 706.5,
-      "donchian_low20": 599.0,
-      "seasonal_avg": 565.125
+      "donchian_low20": 593.25,
+      "seasonal_avg": 563.1667
     },
     "history": [
       {
@@ -117136,7 +117286,7 @@
         "rsi14": 30.5,
         "donchian_high20": 617.25,
         "donchian_low20": 557.75,
-        "seasonal_avg": 545.5
+        "seasonal_avg": 563.1667
       },
       {
         "date": "2024-10-29",
@@ -120901,7 +121051,7 @@
         "rsi14": 69.5,
         "donchian_high20": 535.0,
         "donchian_low20": 492.25,
-        "seasonal_avg": 565.125
+        "seasonal_avg": 564.0
       },
       {
         "date": "2025-10-29",
@@ -120916,7 +121066,7 @@
         "rsi14": 72.1,
         "donchian_high20": 535.0,
         "donchian_low20": 492.25,
-        "seasonal_avg": 545.5
+        "seasonal_avg": 563.1667
       },
       {
         "date": "2025-10-30",
@@ -124644,7 +124794,7 @@
         "high": 618.5,
         "low": 609.75,
         "close": 610.25,
-        "volume": 90142,
+        "volume": 68836,
         "ema20": 655.4851,
         "ema50": 671.9838,
         "atr14": 14.2857,
@@ -124655,18 +124805,33 @@
       },
       {
         "date": "2026-10-28",
+        "open": 610.5,
+        "high": 614.75,
+        "low": 593.25,
+        "close": 599.0,
+        "volume": 68836,
+        "ema20": 650.1056,
+        "ema50": 669.1217,
+        "atr14": 15.125,
+        "rsi14": 5.8,
+        "donchian_high20": 706.5,
+        "donchian_low20": 593.25,
+        "seasonal_avg": 564.0
+      },
+      {
+        "date": "2026-10-29",
         "open": 599.5,
         "high": 602.0,
-        "low": 599.0,
-        "close": 601.25,
-        "volume": 1068,
-        "ema20": 650.3199,
-        "ema50": 669.21,
-        "atr14": 14.3929,
-        "rsi14": 5.9,
+        "low": 598.25,
+        "close": 598.5,
+        "volume": 4197,
+        "ema20": 645.1908,
+        "ema50": 666.3522,
+        "atr14": 13.5357,
+        "rsi14": 6.6,
         "donchian_high20": 706.5,
-        "donchian_low20": 599.0,
-        "seasonal_avg": 565.125
+        "donchian_low20": 593.25,
+        "seasonal_avg": 563.1667
       }
     ]
   },
@@ -124678,15 +124843,15 @@
       "open": 19.31,
       "high": 19.51,
       "low": 19.2,
-      "close": 19.36,
-      "volume": 0,
-      "ema20": 19.7975,
-      "ema50": 18.7985,
+      "close": 19.34,
+      "volume": 81465,
+      "ema20": 19.7956,
+      "ema50": 18.7977,
       "atr14": 0.5729,
-      "rsi14": 40.2,
+      "rsi14": 39.9,
       "donchian_high20": 21.29,
       "donchian_low20": 18.55,
-      "seasonal_avg": 16.865
+      "seasonal_avg": 16.855
     },
     "history": [
       {
@@ -132247,7 +132412,7 @@
         "rsi14": 22.6,
         "donchian_high20": 16.88,
         "donchian_low20": 14.28,
-        "seasonal_avg": 16.865
+        "seasonal_avg": 16.855
       },
       {
         "date": "2025-10-29",
@@ -135990,7 +136155,7 @@
         "high": 19.42,
         "low": 19.03,
         "close": 19.2,
-        "volume": 169697,
+        "volume": 81465,
         "ema20": 19.8435,
         "ema50": 18.7755,
         "atr14": 0.6179,
@@ -136004,15 +136169,15 @@
         "open": 19.31,
         "high": 19.51,
         "low": 19.2,
-        "close": 19.36,
-        "volume": 0,
-        "ema20": 19.7975,
-        "ema50": 18.7985,
+        "close": 19.34,
+        "volume": 81465,
+        "ema20": 19.7956,
+        "ema50": 18.7977,
         "atr14": 0.5729,
-        "rsi14": 40.2,
+        "rsi14": 39.9,
         "donchian_high20": 21.29,
         "donchian_low20": 18.55,
-        "seasonal_avg": 16.865
+        "seasonal_avg": 16.855
       }
     ]
   },
@@ -136021,18 +136186,18 @@
     "ticker": "CT=F",
     "latest": {
       "date": "2026-10-28",
-      "open": 0.0,
-      "high": 81.07,
-      "low": 80.01,
-      "close": 78.34,
-      "volume": 16096,
-      "ema20": 79.4762,
-      "ema50": 79.9782,
-      "atr14": 1.7479,
-      "rsi14": 59.5,
+      "open": 78.06,
+      "high": 78.56,
+      "low": 77.61,
+      "close": 78.15,
+      "volume": 32276,
+      "ema20": 79.4581,
+      "ema50": 79.9707,
+      "atr14": 1.6007,
+      "rsi14": 58.8,
       "donchian_high20": 82.25,
       "donchian_low20": 74.03,
-      "seasonal_avg": 71.695
+      "seasonal_avg": 71.6
     },
     "history": [
       {
@@ -143593,7 +143758,7 @@
         "rsi14": 72.3,
         "donchian_high20": 65.35,
         "donchian_low20": 62.02,
-        "seasonal_avg": 71.695
+        "seasonal_avg": 71.6
       },
       {
         "date": "2025-10-29",
@@ -147336,7 +147501,7 @@
         "high": 79.06,
         "low": 77.77,
         "close": 78.06,
-        "volume": 30378,
+        "volume": 32276,
         "ema20": 79.5958,
         "ema50": 80.045,
         "atr14": 1.5393,
@@ -147347,18 +147512,18 @@
       },
       {
         "date": "2026-10-28",
-        "open": 0.0,
-        "high": 81.07,
-        "low": 80.01,
-        "close": 78.34,
-        "volume": 16096,
-        "ema20": 79.4762,
-        "ema50": 79.9782,
-        "atr14": 1.7479,
-        "rsi14": 59.5,
+        "open": 78.06,
+        "high": 78.56,
+        "low": 77.61,
+        "close": 78.15,
+        "volume": 32276,
+        "ema20": 79.4581,
+        "ema50": 79.9707,
+        "atr14": 1.6007,
+        "rsi14": 58.8,
         "donchian_high20": 82.25,
         "donchian_low20": 74.03,
-        "seasonal_avg": 71.695
+        "seasonal_avg": 71.6
       }
     ]
   },
@@ -147370,15 +147535,15 @@
       "open": 5593.0,
       "high": 5614.0,
       "low": 5380.0,
-      "close": 5462.0,
-      "volume": 0,
-      "ema20": 5642.3139,
-      "ema50": 5639.7904,
+      "close": 5456.0,
+      "volume": 15124,
+      "ema20": 5641.7425,
+      "ema50": 5639.5552,
       "atr14": 227.1429,
-      "rsi14": 41.0,
+      "rsi14": 40.8,
       "donchian_high20": 6023.0,
       "donchian_low20": 5051.0,
-      "seasonal_avg": 5732.0
+      "seasonal_avg": 5729.0
     },
     "history": [
       {
@@ -154924,7 +155089,7 @@
         "rsi14": 50.1,
         "donchian_high20": 6821.0,
         "donchian_low20": 5631.0,
-        "seasonal_avg": 5732.0
+        "seasonal_avg": 5729.0
       },
       {
         "date": "2025-10-29",
@@ -158667,7 +158832,7 @@
         "high": 5622.0,
         "low": 5444.0,
         "close": 5577.0,
-        "volume": 14131,
+        "volume": 15124,
         "ema20": 5661.2943,
         "ema50": 5647.0472,
         "atr14": 231.2857,
@@ -158681,15 +158846,15 @@
         "open": 5593.0,
         "high": 5614.0,
         "low": 5380.0,
-        "close": 5462.0,
-        "volume": 0,
-        "ema20": 5642.3139,
-        "ema50": 5639.7904,
+        "close": 5456.0,
+        "volume": 15124,
+        "ema20": 5641.7425,
+        "ema50": 5639.5552,
         "atr14": 227.1429,
-        "rsi14": 41.0,
+        "rsi14": 40.8,
         "donchian_high20": 6023.0,
         "donchian_low20": 5051.0,
-        "seasonal_avg": 5732.0
+        "seasonal_avg": 5729.0
       }
     ]
   },
@@ -158701,15 +158866,15 @@
       "open": 292.95,
       "high": 293.15,
       "low": 284.05,
-      "close": 286.35,
-      "volume": 0,
-      "ema20": 299.9744,
-      "ema50": 304.8502,
+      "close": 286.75,
+      "volume": 18132,
+      "ema20": 300.0125,
+      "ema50": 304.8659,
       "atr14": 10.7321,
-      "rsi14": 48.2,
+      "rsi14": 48.5,
       "donchian_high20": 318.2,
       "donchian_low20": 283.3,
-      "seasonal_avg": 337.125
+      "seasonal_avg": 337.325
     },
     "history": [
       {
@@ -166270,7 +166435,7 @@
         "rsi14": 51.3,
         "donchian_high20": 437.95,
         "donchian_low20": 366.6,
-        "seasonal_avg": 337.125
+        "seasonal_avg": 337.325
       },
       {
         "date": "2025-10-29",
@@ -170013,7 +170178,7 @@
         "high": 304.9,
         "low": 289.05,
         "close": 293.75,
-        "volume": 20571,
+        "volume": 18132,
         "ema20": 301.4085,
         "ema50": 305.6054,
         "atr14": 10.675,
@@ -170027,15 +170192,15 @@
         "open": 292.95,
         "high": 293.15,
         "low": 284.05,
-        "close": 286.35,
-        "volume": 0,
-        "ema20": 299.9744,
-        "ema50": 304.8502,
+        "close": 286.75,
+        "volume": 18132,
+        "ema20": 300.0125,
+        "ema50": 304.8659,
         "atr14": 10.7321,
-        "rsi14": 48.2,
+        "rsi14": 48.5,
         "donchian_high20": 318.2,
         "donchian_low20": 283.3,
-        "seasonal_avg": 337.125
+        "seasonal_avg": 337.325
       }
     ]
   },
@@ -170047,15 +170212,15 @@
       "open": 62.0,
       "high": 62.275,
       "low": 58.225,
-      "close": 58.85,
-      "volume": 57090,
-      "ema20": 69.2824,
-      "ema50": 76.3488,
+      "close": 58.6,
+      "volume": 46412,
+      "ema20": 69.2586,
+      "ema50": 76.339,
       "atr14": 1.9036,
-      "rsi14": 8.4,
+      "rsi14": 8.3,
       "donchian_high20": 78.4,
       "donchian_low20": 58.225,
-      "seasonal_avg": 69.8375
+      "seasonal_avg": 69.7125
     },
     "history": [
       {
@@ -177586,7 +177751,7 @@
         "rsi14": 8.8,
         "donchian_high20": 99.875,
         "donchian_low20": 80.475,
-        "seasonal_avg": 69.8375
+        "seasonal_avg": 69.7125
       },
       {
         "date": "2025-10-29",
@@ -181329,7 +181494,7 @@
         "high": 64.6,
         "low": 61.625,
         "close": 62.025,
-        "volume": 24457,
+        "volume": 46412,
         "ema20": 70.3806,
         "ema50": 77.0631,
         "atr14": 1.6982,
@@ -181343,15 +181508,15 @@
         "open": 62.0,
         "high": 62.275,
         "low": 58.225,
-        "close": 58.85,
-        "volume": 57090,
-        "ema20": 69.2824,
-        "ema50": 76.3488,
+        "close": 58.6,
+        "volume": 46412,
+        "ema20": 69.2586,
+        "ema50": 76.339,
         "atr14": 1.9036,
-        "rsi14": 8.4,
+        "rsi14": 8.3,
         "donchian_high20": 78.4,
         "donchian_low20": 58.225,
-        "seasonal_avg": 69.8375
+        "seasonal_avg": 69.7125
       }
     ]
   },
@@ -181360,18 +181525,18 @@
     "ticker": "LE=F",
     "latest": {
       "date": "2026-10-28",
-      "open": 230.725,
-      "high": 231.25,
-      "low": 226.4,
-      "close": 227.025,
-      "volume": 27656,
-      "ema20": 226.0522,
-      "ema50": 224.893,
-      "atr14": 2.1804,
-      "rsi14": 67.5,
+      "open": 230.0,
+      "high": 230.25,
+      "low": 226.65,
+      "close": 227.375,
+      "volume": 1586,
+      "ema20": 226.0855,
+      "ema50": 224.9067,
+      "atr14": 2.0911,
+      "rsi14": 69.2,
       "donchian_high20": 232.325,
       "donchian_low20": 216.5,
-      "seasonal_avg": 227.2625
+      "seasonal_avg": 227.4375
     },
     "history": [
       {
@@ -188902,7 +189067,7 @@
         "rsi14": 40.9,
         "donchian_high20": 244.45,
         "donchian_low20": 226.25,
-        "seasonal_avg": 227.2625
+        "seasonal_avg": 227.4375
       },
       {
         "date": "2025-10-29",
@@ -192645,7 +192810,7 @@
         "high": 230.45,
         "low": 229.025,
         "close": 230.0,
-        "volume": 1213,
+        "volume": 1586,
         "ema20": 225.9498,
         "ema50": 224.806,
         "atr14": 1.95,
@@ -192656,18 +192821,18 @@
       },
       {
         "date": "2026-10-28",
-        "open": 230.725,
-        "high": 231.25,
-        "low": 226.4,
-        "close": 227.025,
-        "volume": 27656,
-        "ema20": 226.0522,
-        "ema50": 224.893,
-        "atr14": 2.1804,
-        "rsi14": 67.5,
+        "open": 230.0,
+        "high": 230.25,
+        "low": 226.65,
+        "close": 227.375,
+        "volume": 1586,
+        "ema20": 226.0855,
+        "ema50": 224.9067,
+        "atr14": 2.0911,
+        "rsi14": 69.2,
         "donchian_high20": 232.325,
         "donchian_low20": 216.5,
-        "seasonal_avg": 227.2625
+        "seasonal_avg": 227.4375
       }
     ]
   },
@@ -192675,19 +192840,19 @@
     "symbol": "DXY",
     "ticker": "DX-Y.NYB",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 102.083,
       "high": 102.299,
-      "low": 102.079,
-      "close": 102.248,
+      "low": 102.06,
+      "close": 102.237,
       "volume": 0,
-      "ema20": 101.8183,
-      "ema50": 101.1716,
-      "atr14": 0.4522,
-      "rsi14": 51.6,
+      "ema20": 101.8532,
+      "ema50": 101.2112,
+      "atr14": 0.4535,
+      "rsi14": 50.4,
       "donchian_high20": 102.95,
       "donchian_low20": 101.45,
-      "seasonal_avg": 100.469
+      "seasonal_avg": 101.9257
     },
     "history": [
       {
@@ -196453,7 +196618,7 @@
         "rsi14": 75.5,
         "donchian_high20": 104.57,
         "donchian_low20": 100.7,
-        "seasonal_avg": 101.77
+        "seasonal_avg": 101.9257
       },
       {
         "date": "2024-10-29",
@@ -200233,7 +200398,7 @@
         "rsi14": 47.6,
         "donchian_high20": 99.56,
         "donchian_low20": 97.46,
-        "seasonal_avg": 100.469
+        "seasonal_avg": 100.44
       },
       {
         "date": "2025-10-29",
@@ -200248,7 +200413,7 @@
         "rsi14": 44.9,
         "donchian_high20": 99.56,
         "donchian_low20": 97.52,
-        "seasonal_avg": 101.77
+        "seasonal_avg": 101.9257
       },
       {
         "date": "2025-10-30",
@@ -203987,18 +204152,33 @@
       },
       {
         "date": "2026-10-28",
-        "open": 102.083,
-        "high": 102.299,
-        "low": 102.079,
-        "close": 102.248,
+        "open": 102.37,
+        "high": 102.49,
+        "low": 102.05,
+        "close": 102.19,
         "volume": 0,
-        "ema20": 101.8183,
-        "ema50": 101.1716,
-        "atr14": 0.4522,
-        "rsi14": 51.6,
+        "ema20": 101.8128,
+        "ema50": 101.1693,
+        "atr14": 0.4664,
+        "rsi14": 50.7,
         "donchian_high20": 102.95,
         "donchian_low20": 101.45,
-        "seasonal_avg": 100.469
+        "seasonal_avg": 100.44
+      },
+      {
+        "date": "2026-10-29",
+        "open": 102.083,
+        "high": 102.299,
+        "low": 102.06,
+        "close": 102.237,
+        "volume": 0,
+        "ema20": 101.8532,
+        "ema50": 101.2112,
+        "atr14": 0.4535,
+        "rsi14": 50.4,
+        "donchian_high20": 102.95,
+        "donchian_low20": 101.45,
+        "seasonal_avg": 101.9257
       }
     ]
   },
@@ -204006,19 +204186,19 @@
     "symbol": "ZN",
     "ticker": "ZN=F",
     "latest": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "open": 105.9062,
-      "high": 106.0312,
+      "high": 106.2188,
       "low": 105.8125,
-      "close": 105.875,
-      "volume": 65872,
-      "ema20": 105.5378,
-      "ema50": 106.1471,
-      "atr14": 0.5826,
-      "rsi14": 66.5,
+      "close": 106.0781,
+      "volume": 253212,
+      "ema20": 105.5825,
+      "ema50": 106.1415,
+      "atr14": 0.5949,
+      "rsi14": 69.9,
       "donchian_high20": 106.5156,
-      "donchian_low20": 103.8906,
-      "seasonal_avg": 109.6719
+      "donchian_low20": 103.9062,
+      "seasonal_avg": 109.8958
     },
     "history": [
       {
@@ -207799,7 +207979,7 @@
         "rsi14": 29.5,
         "donchian_high20": 115.0156,
         "donchian_low20": 110.185,
-        "seasonal_avg": 111.8047
+        "seasonal_avg": 109.8958
       },
       {
         "date": "2024-10-29",
@@ -211579,7 +211759,7 @@
         "rsi14": 65.5,
         "donchian_high20": 114.0625,
         "donchian_low20": 112.2812,
-        "seasonal_avg": 109.6719
+        "seasonal_avg": 109.6328
       },
       {
         "date": "2025-10-29",
@@ -211594,7 +211774,7 @@
         "rsi14": 56.6,
         "donchian_high20": 114.0625,
         "donchian_low20": 112.2812,
-        "seasonal_avg": 111.8047
+        "seasonal_avg": 109.8958
       },
       {
         "date": "2025-10-30",
@@ -215322,7 +215502,7 @@
         "high": 106.2812,
         "low": 105.9531,
         "close": 106.0469,
-        "volume": 1824462,
+        "volume": 1892131,
         "ema20": 105.5023,
         "ema50": 106.1582,
         "atr14": 0.6217,
@@ -215333,18 +215513,33 @@
       },
       {
         "date": "2026-10-28",
-        "open": 105.9062,
-        "high": 106.0312,
-        "low": 105.8125,
-        "close": 105.875,
-        "volume": 65872,
-        "ema20": 105.5378,
-        "ema50": 106.1471,
-        "atr14": 0.5826,
-        "rsi14": 66.5,
+        "open": 106.0,
+        "high": 106.0938,
+        "low": 105.6719,
+        "close": 105.7969,
+        "volume": 1892131,
+        "ema20": 105.5304,
+        "ema50": 106.1441,
+        "atr14": 0.596,
+        "rsi14": 65.1,
         "donchian_high20": 106.5156,
         "donchian_low20": 103.8906,
-        "seasonal_avg": 109.6719
+        "seasonal_avg": 109.6328
+      },
+      {
+        "date": "2026-10-29",
+        "open": 105.9062,
+        "high": 106.2188,
+        "low": 105.8125,
+        "close": 106.0781,
+        "volume": 253212,
+        "ema20": 105.5825,
+        "ema50": 106.1415,
+        "atr14": 0.5949,
+        "rsi14": 69.9,
+        "donchian_high20": 106.5156,
+        "donchian_low20": 103.9062,
+        "seasonal_avg": 109.8958
       }
     ]
   }
