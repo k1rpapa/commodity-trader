@@ -14,7 +14,7 @@
     "is_positive_gamma": false,
     "alert_title": "ZG STABLE: 安定レジーム維持",
     "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 +13.25 / +0.2%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "🇺🇸 S&P 500 (ES) 分析現在のスポット価格は 6935.5、重力場の中心であるZero-Gammaは 7548.926 と、スポット価格よりかなり高い位置にあります。現在のレジームは NEGATIVE GAMMA REGIME (パニック売り警戒) です。Zero-Gammaは安定しており、急変アラートはありませんが、スポットとZero-Gammaの大きな乖離は、下方へのボラティリティ拡大を示唆しています。主要なオプションの壁を見ると、7000 に非常に強力なPut Wall (GEX -356.12) とCall Wall (GEX 113.25) が集中しています。スポットがPut Wall 7000の下にある現状は、このレベルが強力なレジスタンスとして機能する可能性が高いこ"
+    "ai_summary": "🇺🇸 S&P 500 (ES) 分析現在の価格 (スポット): 6935.5ゼロガンマ (ZG): 7548.926現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: ZG STABLE: 安定レジーム維持重力場の分析:ESは現在、NEGATIVE GAMMA REGIMEにあり、ボラティリティの拡大とトレンドの加速に注意が必要です。市場の急落や急騰リスクが通常より高い状態です。Zero-Gamma (7548.926) は現在のスポット価格 (6935.5) より大幅に上方に位置しており、上値が重い展開を示唆しています。この大きな乖離は、スポットがZero-Gammaに回帰しようとする際には強い買い圧力が生じる可能性がある一方で、下落方向への動"
   },
   "NQ": {
     "symbol": "NQ",
@@ -31,7 +31,7 @@
     "is_positive_gamma": false,
     "alert_title": "ZG SPIKE ALERT: Zero-Gamma 急落 🔻",
     "alert_text": "ZG SPIKE ALERT: Zero-Gamma 急落 🔻 ZGが直近比較で -2082.5085 (-7.3%) 大幅変動（28375.4 ➔ 26292.9）。ZGが急低下したため、Positive Gamma圏が拡大し、相場が安定・レンジ回帰（Gamma Pinning）しやすくなっています。",
-    "ai_summary": "💻 NASDAQ 100 (NQ) 分析現在のスポット価格は 25266.0、重力場の中心であるZero-Gammaは 26292.915 と、スポット価格よりかなり高い位置にあります。現在のレジームは NEGATIVE GAMMA REGIME (パニック売り警戒) です。Zero-Gammaには ZG SPIKE ALERT: Zero-Gamma 急落 🔻 (-7.3% 急落) が発令されており、市場のセンチメントが急速に悪化し、下方へのモメンタムが非常に強いことを示唆しています。主要なオプションの壁を見ると、26000 に強力なPut Wall (GEX -56.13) が存在しますが、スポット価格はこのレベルをすでに大きく下回っています。そのため、26000 は強力なレジスタンスに"
+    "ai_summary": "💻 NASDAQ 100 (NQ) 分析現在の価格 (スポット): 25266.0ゼロガンマ (ZG): 26292.915現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: ZG SPIKE ALERT: Zero-Gamma 急落 🔻 (-7.3%)重力場の分析:NQは現在、NEGATIVE GAMMA REGIMEにあり、ボラティリティの拡大とトレンドの加速に注意が必要です。さらに重要なのは、Zero-Gammaが直近で-7.3%もの急落を記録している点です。これはディーラーのオプションデルタヘッジが大幅に変化し、市場全体のリスクセンチメントが極めて弱気に転じたことを示唆しています。下値抵抗が弱まり、価格が一度下がり始めると、売りが売りを呼"
   },
   "GC": {
     "symbol": "GC",
@@ -48,24 +48,24 @@
     "is_positive_gamma": false,
     "alert_title": "ZG STABLE: 安定レジーム維持",
     "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -21.6983 / -0.5%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "🥇 ゴールド (GC) 分析現在のスポット価格は 3515.4、重力場の中心であるZero-Gammaは 3932.057 と、スポット価格より大幅に高い位置にあります。現在のレジームは NEGATIVE GAMMA REGIME (パニック売り警戒) です。Zero-Gammaは安定しており急変アラートはありませんが、スポットとの乖離は下方へのボラティリティ拡大の可能性を示唆しています。主要なオプションの壁を見ると、3500 に非常に強力なPut Wall (GEX -144.19) が存在し、スポット価格はこの壁に非常に近接しています。これは強力な下値サポートとして機能する可能性が高いです。上値には 3800 と 3900 にCall Wallがあります。実践的なトレード戦略：方向性： "
+    "ai_summary": "🥇 ゴールド (GC) 分析現在の価格 (スポット): 3515.4ゼロガンマ (ZG): 3932.057現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: ZG STABLE: 安定レジーム維持重力場の分析:ゴールドは現在、NEGATIVE GAMMA REGIMEにあり、ボラティリティが高まりやすい状態です。しかし、Zero-Gammaが安定していることから、現状の市場心理が急変する可能性は低いと見られます。Zero-Gamma (3932.057) は現在のスポット価格 (3515.4) より大幅に上方に乖離しており、上値は重い展開が予想されます。最も近いプットウォール（サポート）は 3500.0 (Put_GEX: -144.19) で"
   },
   "SI": {
     "symbol": "SI",
     "name": "シルバー (SI)",
     "url": "https://k1rpapa.github.io/options-gex-radar/index.html",
-    "as_of_info": "Expiry: 11_24_26  |  As of: 11-21-2026",
-    "spot_price": 41.071,
-    "zero_gamma": 46.2289,
+    "as_of_info": "Expiry: 02_23_27  |  As of: 11-25-2026",
+    "spot_price": 41.242,
+    "zero_gamma": 48.8907,
     "put_wall": 40.0,
-    "call_wall": 45.0,
-    "minor_put_wall": 45.0,
-    "minor_call_wall": 48.0,
+    "call_wall": 60.0,
+    "minor_put_wall": 35.0,
+    "minor_call_wall": 70.0,
     "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
     "is_positive_gamma": false,
-    "alert_title": "ZG STABLE: 安定レジーム維持",
-    "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -0.0079 / -0.0%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "🥈 シルバー (SI) 分析現在のスポット価格は 41.071、重力場の中心であるZero-Gammaは 46.229 と、スポット価格よりかなり高い位置にあります。現在のレジームは NEGATIVE GAMMA REGIME (パニック売り警戒) です。Zero-Gammaは安定しており急変アラートはありませんが、スポットとの乖離は下方へのボラティリティ拡大の可能性を示唆しています。主要なオプションの壁を見ると、40 に強力なPut Wall (GEX -5.19) が存在し、スポット価格はこの壁に比較的近接しています。これは強力な下値サポートとして機能する可能性が高いです。上値には 45 と 48 にCall Wallがあります。実践的なトレード戦略：方向性： NEGATIVE GAMM"
+    "alert_title": "ZG SPIKE ALERT: Zero-Gamma 急騰 🚀",
+    "alert_text": "ZG SPIKE ALERT: Zero-Gamma 急騰 🚀 ZGが直近比較で +2.66 (+5.8%) 大幅変動（46.23 ➔ 48.89）。ZGが大幅に切り上がったため、SpotがNegative Gamma圏へ転落しやすく、ボラティリティ急拡大・下落スクイーズへの警戒が必要です。",
+    "ai_summary": "🥈 シルバー (SI) 分析現在の価格 (スポット): 41.242ゼロガンマ (ZG): 48.891現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: ZG SPIKE ALERT: Zero-Gamma 急騰 🚀 (+5.8%)重力場の分析:シルバーは現在、NEGATIVE GAMMA REGIMEにあり、ボラティリティの拡大とトレンドの加速に注意が必要です。しかし、Zero-Gammaが直近で+5.8%もの急騰を記録している点が極めて重要です。これは、ディーラーがロングデルタポジションを増やし、市場全体のセンチメントが潜在的に強気に転じつつあることを示唆しています。Zero-Gammaへの回帰圧力として、スポット価格の上昇が期待される可能"
   },
   "PL": {
     "symbol": "PL",
@@ -82,7 +82,7 @@
     "is_positive_gamma": true,
     "alert_title": "ZG SHIFT: Zero-Gamma有意な変動検知",
     "alert_text": "ZG SHIFT: Zero-Gamma有意な変動検知 ZGが +79.47 (+4.7%) シフト（1676.9 ➔ 1756.3）。ウォールの移動と防衛ラインを確認してください。",
-    "ai_summary": "✨ プラチナ (PL) 分析現在のスポット価格は 1759.7、重力場の中心であるZero-Gammaは 1756.322 と、スポット価格よりわずかに低い位置にあります。現在のレジームは POSITIVE GAMMA REGIME (押し目買い優位) です。Zero-Gammaは +4.7% の有意な上昇を伴っており、底堅さの強化を示唆しています。主要なオプションの壁を見ると、上値には 2000 にCall Wall (GEX 1.94) が存在します。下値には 1650 にPut Wall (GEX -0.53) があります。GEX値は比較的低いです。実践的なトレード戦略：方向性： Zero-Gammaの有意な上昇とPOSITIVE GAMMA REGIMEは市場の底堅さを示唆しており、"
+    "ai_summary": "✨ プラチナ (PL) 分析現在の価格 (スポット): 1759.7ゼロガンマ (ZG): 1756.322現在のレジーム: POSITIVE GAMMA REGIME (押し目買い優位)ZGアラート: ZG SHIFT: Zero-Gamma有意な変動検知 (+4.7%)重力場の分析:プラチナは現在、POSITIVE GAMMA REGIMEにあり、市場はレンジに収束しやすく、押し目買いが優位な状況です。Zero-Gamma (1756.322) は現在のスポット価格 (1759.7) よりわずかに下方に位置しており、スポットがZero-Gammaに近づくと買い圧力が強まりやすい特性を示しています。Zero-Gammaがサポートとして機能する可能性が高いです。しかし、Zero-Gammaが"
   },
   "CL": {
     "symbol": "CL",
@@ -99,7 +99,7 @@
     "is_positive_gamma": false,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒) Spot価格（83.41）がZG（85.16）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "🛢️ 原油 (CL) 分析現在のスポット価格は 83.41、重力場の中心であるZero-Gammaは 85.156 と、スポット価格よりわずかに高い位置にあります。Zero-Gammaは -4.3% の有意な下落を伴い、レジームが NEGATIVE GAMMA REGIME (ボラ拡大警戒) へ転換しました。これは、市場のセンチメントが弱気方向へ転換し、下方へのボラティリティ拡大とトレンド加速の可能性を示唆しています。主要なオプションの壁を見ると、上値には 90 に強力なCall Wall (GEX 28.72) が存在します。下値には 80 (GEX -22.23) と 75 (GEX -37.21) にPut Wallがあります。実践的なトレード戦略：方向性： REGIME FLIPとZ"
+    "ai_summary": "🛢️ 原油 (CL) 分析現在の価格 (スポット): 83.41ゼロガンマ (ZG): 85.156現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)重力場の分析:原油は現在、NEGATIVE GAMMA REGIMEにあります。さらに重要なのは、ガンマ・レジームがNEGATIVEに転換したばかりであることです。これは、市場のボラティリティが拡大し、価格の上下動が激しくなる可能性が高く、特定のトレンドが加速しやすい状況を示唆しています。Zero-Gamma (85.156) は現在のスポット価格 (83.41) よりわずかに上方に位置しており、スポットはZer"
   },
   "NG": {
     "symbol": "NG",
@@ -116,24 +116,24 @@
     "is_positive_gamma": true,
     "alert_title": "ZG SPIKE ALERT: Zero-Gamma 急落 🔻",
     "alert_text": "ZG SPIKE ALERT: Zero-Gamma 急落 🔻 ZGが直近比較で -0.4610 (-11.7%) 大幅変動（3.94 ➔ 3.48）。ZGが急低下したため、Positive Gamma圏が拡大し、相場が安定・レンジ回帰（Gamma Pinning）しやすくなっています。",
-    "ai_summary": "🔥 天然ガス (NG) 分析現在のスポット価格は 3.523、重力場の中心であるZero-Gammaは 3.482 と、スポット価格よりわずかに低い位置にあります。現在のレジームは POSITIVE GAMMA REGIME (押し目買い優位) です。しかし、Zero-Gammaには ZG SPIKE ALERT: Zero-Gamma 急落 🔻 (-11.7% 急落) が発令されており、短期的なセンチメントの急激な悪化を示唆しています。主要なオプションの壁を見ると、上値には 3.7 と 4.0 にCall Wallが存在します。下値には 3.25 と 2.75 にPut Wallがあります。実践的なトレード戦略：方向性： POSITIVE GAMMA REGIMEにもかかわらず、Zero-"
+    "ai_summary": "🔥 天然ガス (NG) 分析現在の価格 (スポット): 3.523ゼロガンマ (ZG): 3.482現在のレジーム: POSITIVE GAMMA REGIME (押し目買い優位)ZGアラート: ZG SPIKE ALERT: Zero-Gamma 急落 🔻 (-11.7%)重力場の分析:天然ガスは現在、POSITIVE GAMMA REGIMEにあり、通常であればレンジに収束しやすく、押し目買いが優位な状況です。しかし、Zero-Gammaが直近で-11.7%もの急落を記録している点が極めて深刻なシグナルです。これはディーラーのデルタヘッジが大幅に変化し、市場全体のリスクセンチメントが極めて弱気に転じたことを示唆しています。POSITIVE GAMMAレジームの安定性が崩壊し、レンジが下方"
   },
   "HG": {
     "symbol": "HG",
     "name": "銅 (HG)",
     "url": "https://k1rpapa.github.io/options-gex-radar/hg.html",
-    "as_of_info": "Expiry: 02_23_27  |  As of: 11-24-2026",
-    "spot_price": 5.721,
-    "zero_gamma": 5.9446,
+    "as_of_info": "Expiry: 02_23_27  |  As of: 11-25-2026",
+    "spot_price": 5.453,
+    "zero_gamma": 5.897,
     "put_wall": 5.25,
     "call_wall": 6.0,
-    "minor_put_wall": 5.75,
+    "minor_put_wall": 4.75,
     "minor_call_wall": 7.0,
     "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
     "is_positive_gamma": false,
-    "alert_title": "ZG SHIFT: Zero-Gamma有意な変動検知",
-    "alert_text": "ZG SHIFT: Zero-Gamma有意な変動検知 ZGが +0.25 (+4.4%) シフト（5.69 ➔ 5.94）。ウォールの移動と防衛ラインを確認してください。",
-    "ai_summary": "🧱 銅 (HG) 分析現在のスポット価格は 5.721、重力場の中心であるZero-Gammaは 5.945 と、スポット価格より高い位置にあります。現在のレジームは NEGATIVE GAMMA REGIME (パニック売り警戒) です。Zero-Gammaは +4.4% の有意な上昇を伴っていますが、レジームはNEGATIVEのままです。主要なオプションの壁を見ると、上値には 6.0 に強力なCall Wall (GEX 3.85) が存在します。下値には 5.25 に非常に強力なPut Wall (GEX -7.14) があり、5.75 にもPut Wall (GEX -5.18) があります。実践的なトレード戦略：方向性： Zero-Gammaの上昇は短期的な底堅さを示す一方で、NE"
+    "alert_title": "ZG STABLE: 安定レジーム維持",
+    "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -0.0476 / -0.8%）。現在の防衛ラインが機能中です。",
+    "ai_summary": "🧱 銅 (HG) 分析現在の価格 (スポット): 5.453ゼロガンマ (ZG): 5.897現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: ZG STABLE: 安定レジーム維持重力場の分析:銅は現在、NEGATIVE GAMMA REGIMEにあり、ボラティリティの拡大とトレンドの加速に注意が必要です。Zero-Gamma (5.897) は現在のスポット価格 (5.453) より大幅に上方に位置しており、上値が重い展開を示唆しています。Zero-Gammaが安定していることから、市場の急激な変化は予想されにくいですが、レジームの性質上、一度トレンドが出ると加速しやすいことに留意すべきです。最も近いプットウォール（サポート）は 5.25 "
   },
   "ZS": {
     "symbol": "ZS",
@@ -150,15 +150,15 @@
     "is_positive_gamma": true,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位) Spot価格（1230.0）がZG（1217.7）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "🌱 大豆 (ZS) 分析現在のスポット価格は 1230.0、重力場の中心であるZero-Gammaは 1217.699 と、スポット価格より低い位置にあります。レジームは REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位) となり、Zero-Gammaも上昇しています。これは、市場が押し目買い優位のレンジ相場へ移行したことを示唆する強気なシグナルです。主要なオプションの壁を見ると、スポット価格と同水準の 1230 に強力なCall Wall (GEX 44.07) があり、その上に 1250 にも非常に強力なCall Wall (GEX 50.64) が存在します。下値には 1200 に強力なPut Wall (GEX -35.89) があります。実践的なト"
+    "ai_summary": "🌱 大豆 (ZS) 分析現在の価格 (スポット): 1230.0ゼロガンマ (ZG): 1217.699現在のレジーム: POSITIVE GAMMA REGIME (押し目買い優位)ZGアラート: REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)重力場の分析:大豆は現在、POSITIVE GAMMA REGIMEにあり、市場はレンジに収束しやすく、押し目買いが優位な状況です。さらに重要なのは、ガンマ・レジームがPOSITIVEに転換したばかりであることです。これは、市場が安定化し、レンジ相場の中で押し目買いが効果的になる可能性を示唆しています。Zero-Gamma (1217.699) は現在のスポット価格 (1230.0) より下方に位置しており、Ze"
   },
   "ZC": {
     "symbol": "ZC",
     "name": "トウモロコシ (ZC)",
     "url": "https://k1rpapa.github.io/options-gex-radar/zc.html",
-    "as_of_info": "Expiry: 02_19_27  |  As of: 11-24-2026",
+    "as_of_info": "Expiry: 02_19_27  |  As of: 11-25-2026",
     "spot_price": 450.0,
-    "zero_gamma": 464.009,
+    "zero_gamma": 464.4999,
     "put_wall": 460.0,
     "call_wall": 500.0,
     "minor_put_wall": 450.0,
@@ -166,25 +166,25 @@
     "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
     "is_positive_gamma": false,
     "alert_title": "ZG STABLE: 安定レジーム維持",
-    "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -0.0030 / -0.0%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "🌽 トウモロコシ (ZC) 分析現在のスポット価格は 450.0、重力場の中心であるZero-Gammaは 464.009 と、スポット価格より高い位置にあります。現在のレジームは NEGATIVE GAMMA REGIME (パニック売り警戒) です。Zero-Gammaは安定しており、急変アラートはありませんが、スポットとZero-Gammaの乖離はボラティリティ拡大の可能性を示唆しています。主要なオプションの壁を見ると、スポット価格と同水準の 450 に強力なPut Wall (GEX -15.43) が存在します。上値には 480 (GEX 16.77) と 500 (GEX 19.58) にCall Wallがあります。実践的なトレード戦略：方向性： NEGATIVE GAMMA "
+    "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 +0.49 / +0.1%）。現在の防衛ラインが機能中です。",
+    "ai_summary": "🌽 トウモロコシ (ZC) 分析現在の価格 (スポット): 450.0ゼロガンマ (ZG): 464.5現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: ZG STABLE: 安定レジーム維持重力場の分析:トウモロコシは現在、NEGATIVE GAMMA REGIMEにあり、ボラティリティの拡大とトレンドの加速に注意が必要です。Zero-Gamma (464.5) は現在のスポット価格 (450.0) より上方に位置しており、上値が重い展開を示唆しています。Zero-Gammaが安定していることから、市場の急激な変化は予想されにくいですが、レジームの性質上、一度トレンドが出ると加速しやすいことに留意すべきです。最も近いプットウォール（サポート）"
   },
   "ZW": {
     "symbol": "ZW",
     "name": "小麦 (ZW)",
     "url": "https://k1rpapa.github.io/options-gex-radar/zw.html",
-    "as_of_info": "Expiry: 02_19_27  |  As of: 11-24-2026",
-    "spot_price": 600.0,
-    "zero_gamma": 603.9499,
+    "as_of_info": "Expiry: 02_19_27  |  As of: 11-25-2026",
+    "spot_price": 585.0,
+    "zero_gamma": 604.3005,
     "put_wall": 600.0,
     "call_wall": 650.0,
-    "minor_put_wall": 570.0,
+    "minor_put_wall": 550.0,
     "minor_call_wall": 700.0,
     "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
     "is_positive_gamma": false,
     "alert_title": "ZG STABLE: 安定レジーム維持",
-    "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -0.1125 / -0.0%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "🌾 小麦 (ZW) 分析現在のスポット価格は 600.0、重力場の中心であるZero-Gammaは 603.95 と、スポット価格よりわずかに高い位置にあります。現在のレジームは NEGATIVE GAMMA REGIME (パニック売り警戒) です。Zero-Gammaは安定しており、急変アラートはありません。主要なオプションの壁を見ると、スポット価格と同水準の 600 に強力なPut Wall (GEX -4.00) が存在します。上値には 650 (GEX 3.35) と 700 (GEX 2.00) にCall Wallがあります。実践的なトレード戦略：方向性： NEGATIVE GAMMA REGIMEではありますが、スポット価格が強力なPut Wall 600 にあり、Zero-"
+    "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 +0.35 / +0.1%）。現在の防衛ラインが機能中です。",
+    "ai_summary": "🌾 小麦 (ZW) 分析現在の価格 (スポット): 585.0ゼロガンマ (ZG): 604.3現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: ZG STABLE: 安定レジーム維持重力場の分析:小麦は現在、NEGATIVE GAMMA REGIMEにあり、ボラティリティの拡大とトレンドの加速に注意が必要です。Zero-Gamma (604.3) は現在のスポット価格 (585.0) より上方に位置しており、上値が重い展開を示唆しています。Zero-Gammaが安定していることから、市場の急激な変化は予想されにくいですが、レジームの性質上、一度トレンドが出ると加速しやすいことに留意すべきです。最も近いプットウォール（サポート）は 600.0 "
   },
   "SB": {
     "symbol": "SB",
@@ -201,7 +201,7 @@
     "is_positive_gamma": true,
     "alert_title": "ZG STABLE: 安定レジーム維持",
     "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 +0.0464 / +0.3%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "🍬 砂糖 (SB) 分析現在のスポット価格は 20.24、重力場の中心であるZero-Gammaは 18.08 と、スポット価格よりかなり低い位置にあります。現在のレジームは POSITIVE GAMMA REGIME (押し目買い優位) です。Zero-Gammaは安定しており、急変アラートはありません。主要なオプションの壁を見ると、上値には 21 に強力なCall Wall (GEX 12.93) が存在し、20 にもCall Wall (GEX 10.91) があります（スポットはこれを上回っています）。下値には 18 (GEX -5.00) と 17 (GEX -5.37) に強力なPut Wallがあり、Zero-Gammaに近接しています。実践的なトレード戦略：方向性： POSI"
+    "ai_summary": "🍬 砂糖 (SB) 分析現在の価格 (スポット): 20.24ゼロガンマ (ZG): 18.08現在のレジーム: POSITIVE GAMMA REGIME (押し目買い優位)ZGアラート: ZG STABLE: 安定レジーム維持重力場の分析:砂糖は現在、POSITIVE GAMMA REGIMEにあり、市場はレンジに収束しやすく、押し目買いが優位な状況です。Zero-Gamma (18.08) は現在のスポット価格 (20.24) より下方に位置しており、ZGがサポートとして機能しやすい特性を示しています。スポットがZGから離れているため、ZGへの回帰圧力が意識されるかもしれません。Zero-Gammaが安定しており、市場の急激な変化は予想されにくく、安定したレンジ相場が続く可能性が高いで"
   },
   "CT": {
     "symbol": "CT",
@@ -218,7 +218,7 @@
     "is_positive_gamma": true,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位) Spot価格（83.95）がZG（83.51）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "🧵 コットン (CT) 分析現在のスポット価格は 83.95、重力場の中心であるZero-Gammaは 83.513 と、スポット価格よりわずかに低い位置にあります。レジームは REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位) となり、Zero-Gammaも上昇しています。これは、市場が押し目買い優位のレンジ相場へ移行したことを示唆する強気なシグナルです。主要なオプションの壁を見ると、上値には 85 (GEX 6.29) と 90 (GEX 5.91) にCall Wallが存在します。下値には 80 (GEX -4.22) に強力なPut Wallがあります。実践的なトレード戦略：方向性： REGIME FLIPとZero-Gammaの上昇は非常に強気な"
+    "ai_summary": "🧵 コットン (CT) 分析現在の価格 (スポット): 83.95ゼロガンマ (ZG): 83.513現在のレジーム: POSITIVE GAMMA REGIME (押し目買い優位)ZGアラート: REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)重力場の分析:コットンは現在、POSITIVE GAMMA REGIMEにあり、市場はレンジに収束しやすく、押し目買いが優位な状況です。さらに重要なのは、ガンマ・レジームがPOSITIVEに転換したばかりであることです。これは、市場が安定化し、レンジ相場の中で押し目買いが効果的になる可能性を示唆しています。Zero-Gamma (83.513) は現在のスポット価格 (83.95) よりわずかに下方に位置しており、"
   },
   "CC": {
     "symbol": "CC",
@@ -235,7 +235,7 @@
     "is_positive_gamma": false,
     "alert_title": "ZG STABLE: 安定レジーム維持",
     "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 +0.0550 / +0.0%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "🍫 ココア (CC) 分析現在のスポット価格は 5271.0、重力場の中心であるZero-Gammaは 5282.241 と、スポット価格よりわずかに高い位置にあります。現在のレジームは NEGATIVE GAMMA REGIME (パニック売り警戒) です。Zero-Gammaは安定しており、急変アラートはありません。主要なオプションの壁を見ると、上値には 5500 (GEX 3.45) と 6000 (GEX 4.77) にCall Wallが存在します。下値には 5000 (GEX -3.14) と 4500 (GEX -3.20) にPut Wallがあります。実践的なトレード戦略：方向性： NEGATIVE GAMMA REGIMEかつZero-Gammaがスポットのすぐ上にあるた"
+    "ai_summary": "🍫 ココア (CC) 分析現在の価格 (スポット): 5271.0ゼロガンマ (ZG): 5282.241現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: ZG STABLE: 安定レジーム維持重力場の分析:ココアは現在、NEGATIVE GAMMA REGIMEにあり、ボラティリティの拡大とトレンドの加速に注意が必要です。Zero-Gamma (5282.241) は現在のスポット価格 (5271.0) よりわずかに上方に位置しており、スポットがZero-Gammaに近づくと抵抗を受けやすく、上値が重くなる傾向があります。Zero-Gammaが安定していることから、市場の急激な変化は予想されにくいですが、レジームの性質上、一度トレンドが出ると"
   },
   "KC": {
     "symbol": "KC",
@@ -252,24 +252,24 @@
     "is_positive_gamma": false,
     "alert_title": "ZG STABLE: 安定レジーム維持",
     "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -0.0729 / -0.0%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "☕ コーヒー (KC) 分析現在のスポット価格は 268.53、重力場の中心であるZero-Gammaは 279.3 と、スポット価格よりかなり高い位置にあります。現在のレジームは NEGATIVE GAMMA REGIME (パニック売り警戒) です。Zero-Gammaは安定しており、急変アラートはありません。主要なオプションの壁を見ると、上値には 300 に強力なCall Wall (GEX 5.48) が存在します。下値には 260 (GEX -7.40) と 250 (GEX -10.75) に非常に強力なPut Wallがあり、スポットは260のPut Wallを突破しているため、250が次の重要なサポートとなります。実践的なトレード戦略：方向性： NEGATIVE GAMMA "
+    "ai_summary": "☕ コーヒー (KC) 分析現在の価格 (スポット): 268.53ゼロガンマ (ZG): 279.3現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: ZG STABLE: 安定レジーム維持重力場の分析:コーヒーは現在、NEGATIVE GAMMA REGIMEにあり、ボラティリティの拡大とトレンドの加速に注意が必要です。Zero-Gamma (279.3) は現在のスポット価格 (268.53) より大幅に上方に位置しており、上値が重い展開を示唆しています。Zero-Gammaが安定していることから、市場の急激な変化は予想されにくいですが、レジームの性質上、一度トレンドが出ると加速しやすいことに留意すべきです。最も近いプットウォール（サポート"
   },
   "HE": {
     "symbol": "HE",
     "name": "豚肉 (HE)",
     "url": "https://k1rpapa.github.io/options-gex-radar/he.html",
-    "as_of_info": "Expiry: 02_12_27  |  As of: 11-21-2026",
-    "spot_price": 56.975,
-    "zero_gamma": 56.7865,
+    "as_of_info": "Expiry: 02_12_27  |  As of: 11-25-2026",
+    "spot_price": 56.45,
+    "zero_gamma": 56.9941,
     "put_wall": 60.0,
     "call_wall": 56.0,
-    "minor_put_wall": 55.0,
+    "minor_put_wall": 54.0,
     "minor_call_wall": 60.0,
-    "regime": "● POSITIVE GAMMA REGIME (押し目買い優位)",
-    "is_positive_gamma": true,
-    "alert_title": "ZG STABLE: 安定レジーム維持",
-    "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -0.7168 / -1.2%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "🐷 豚肉 (HE) 分析現在のスポット価格は 56.975、重力場の中心であるZero-Gammaは 56.787 と、スポット価格よりわずかに低い位置にあります。現在のレジームは POSITIVE GAMMA REGIME (押し目買い優位) です。Zero-Gammaは安定しており、急変アラートはありません。主要なオプションの壁を見ると、上値には 60 にCall Wall (GEX 1.56) が存在します。下値には 55 にPut Wall (GEX -1.54) があります。実践的なトレード戦略：方向性： POSITIVE GAMMA REGIMEであり、Zero-Gammaがスポットのすぐ下でサポートとして機能するため、レンジ内での押し目買い戦略が有効です。エントリー： Zero"
+    "regime": "● NEGATIVE GAMMA REGIME (パニック売り警戒)",
+    "is_positive_gamma": false,
+    "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)",
+    "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒) Spot価格（56.45）がZG（56.99）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
+    "ai_summary": "🐷 豚肉 (HE) 分析現在の価格 (スポット): 56.45ゼロガンマ (ZG): 56.994現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)重力場の分析:豚肉は現在、NEGATIVE GAMMA REGIMEにあります。さらに重要なのは、ガンマ・レジームがNEGATIVEに転換したばかりであることです。これは、市場のボラティリティが拡大し、価格の上下動が激しくなる可能性が高く、特定のトレンドが加速しやすい状況を示唆しています。Zero-Gamma (56.994) は現在のスポット価格 (56.45) よりわずかに上方に位置しており、スポットはZero"
   },
   "LE": {
     "symbol": "LE",
@@ -286,7 +286,7 @@
     "is_positive_gamma": false,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒) Spot価格（231.12）がZG（231.50）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "🐂 生牛 (LE) 分析現在のスポット価格は 231.125、重力場の中心であるZero-Gammaは 231.5 と、スポット価格よりわずかに高い位置にあります。レジームは REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒) となりました。Zero-Gamma自体は上昇していますが、NEGATIVE GAMMA REGIMEであるため、上下どちらへのブレイクでもボラティリティが拡大する可能性に注意が必要です。主要なオプションの壁を見ると、230 に非常に強力なCall Wall (GEX 55.62) とPut Wall (GEX -41.76) が集中しており、この水準が重要な攻防の舞台となります。スポットは230をわずかに上回っています。実践的なトレ"
+    "ai_summary": "🐂 生牛 (LE) 分析現在の価格 (スポット): 231.125ゼロガンマ (ZG): 231.5現在のレジーム: NEGATIVE GAMMA REGIME (パニック売り警戒)ZGアラート: REGIME FLIP: ガンマ・レジーム転換 ➔ NEGATIVE (ボラ拡大警戒)重力場の分析:生牛は現在、NEGATIVE GAMMA REGIMEにあります。さらに重要なのは、ガンマ・レジームがNEGATIVEに転換したばかりであることです。これは、市場のボラティリティが拡大し、価格の上下動が激しくなる可能性が高く、特定のトレンドが加速しやすい状況を示唆しています。Zero-Gamma (231.5) は現在のスポット価格 (231.125) よりわずかに上方に位置しており、スポットはZe"
   },
   "DXY": {
     "symbol": "DXY",
@@ -303,7 +303,7 @@
     "is_positive_gamma": true,
     "alert_title": "ZG STABLE: 安定レジーム維持",
     "alert_text": "ZG STABLE: 安定レジーム維持 Zero-Gammaは安定推移しています（前日比 -0.1605 / -0.2%）。現在の防衛ラインが機能中です。",
-    "ai_summary": "💵 ドルインデックス (DXY) 分析現在のスポット価格は 103.745、重力場の中心であるZero-Gammaは 100.042 と、スポット価格よりかなり低い位置にあります。現在のレジームは POSITIVE GAMMA REGIME (押し目買い優位) です。Zero-Gammaは安定しており、急変アラートはありません。主要なオプションの壁を見ると、上値には 103 にCall Wall (GEX 0.41) が存在しましたが、スポット価格はこれを突破しており、次の上値抵抗は 105 (GEX 0.04) です。下値のPut WallはGEX値が非常に低く、影響は小さいと考えられます。実践的なトレード戦略：方向性： POSITIVE GAMMA REGIMEであり、Zero-Gamm"
+    "ai_summary": "💵 ドルインデックス (DXY) 分析現在の価格 (スポット): 103.745ゼロガンマ (ZG): 100.042現在のレジーム: POSITIVE GAMMA REGIME (押し目買い優位)ZGアラート: ZG STABLE: 安定レジーム維持重力場の分析:ドルインデックスは現在、POSITIVE GAMMA REGIMEにあり、市場はレンジに収束しやすく、押し目買いが優位な状況です。Zero-Gamma (100.042) は現在のスポット価格 (103.745) より下方に位置しており、Zero-Gammaが強力なサポートとして機能しやすい特性を示しています。スポットがZGからやや離れているため、ZGへの回帰圧力が意識されるかもしれません。Zero-Gammaが安定しており、市場"
   },
   "ZN": {
     "symbol": "ZN",
@@ -320,6 +320,6 @@
     "is_positive_gamma": true,
     "alert_title": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)",
     "alert_text": "REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位) Spot価格（106.50）がZG（105.87）と交差し、レジームが反転しました。トレード戦略の切り替えを推奨します。",
-    "ai_summary": "🇺🇸 米10年債 (ZN) 分析現在のスポット価格は 106.5、重力場の中心であるZero-Gammaは 105.872 と、スポット価格より低い位置にあります。レジームは REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位) となりました。これは、市場が押し目買い優位のレンジ相場へ移行したことを示唆する強気なシグナルです。主要なオプションの壁を見ると、上値には 106 (GEX 189.97) と 107 (GEX 242.20) に非常に強力なCall Wallが存在します。下値には 104.5 (GEX -752.24) と 103.5 (GEX -860.87) に非常に強力なPut Wallが存在します。実践的なトレード戦略：方向性： REGIME"
+    "ai_summary": "🇺🇸 米10年債 (ZN) 分析現在の価格 (スポット): 106.5ゼロガンマ (ZG): 105.872現在のレジーム: POSITIVE GAMMA REGIME (押し目買い優位)ZGアラート: REGIME FLIP: ガンマ・レジーム転換 ➔ POSITIVE (押し目優位)重力場の分析:米10年債は現在、POSITIVE GAMMA REGIMEにあり、市場はレンジに収束しやすく、押し目買いが優位な状況です。さらに重要なのは、ガンマ・レジームがPOSITIVEに転換したばかりであることです。これは、市場が安定化し、レンジ相場の中で押し目買いが効果的になる可能性を示唆しています。Zero-Gamma (105.872) は現在のスポット価格 (106.5) より下方に位置しており"
   }
 }
